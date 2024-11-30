@@ -32,4 +32,13 @@ Visit [here](report.html) to review detailed report.
 
 ### **Pick your superhero!**
 
-Want to pick your tailored superhero? Click here to explore! 
+**Here is why we designed this project in the first place.**
+
+We hope that users browsing this project will find the strongest superhero of their choice, whether it be in terms of capability, alignment or moral character. That being said, our team hopes that every user browsing this page can become their own superhero! 
+
+**You are the best!** 
+
+Want to pick your tailored superhero? Click [here](https://cj0915.shinyapps.io/shinyapp/) to explore! 
+
+![](images/ownhero.jpg)
+[image source](https://medium.com/@anilkumarjangir/be-your-own-hero-more-accurate-superhero-a4a0f630f1d7)
