@@ -25,7 +25,7 @@ library(fmsb)
 
 Now, we get our neat dataset, `superheroes`. For this dataset, we get boxplots for the numerical variables `intelligence`, `strength`, `speed`, `durability`, `power`, `combat`, `height_cm`, `weight_kg` which helps us to understand their distribution. For the categorical variables `publisher`, `alignment`, `gender`, `eye_color`, `hair_color`, we also analyzed them accordingly. At the end of this section, we performed a clustering analysis of all heroes without missing data and categorized them into three groups: the balanced group, the strength group, and the mediocre group.
 
-## Boxplot and correlation matrix for all numeric variables
+## Boxplot and correlation matrix
 
 ```{r message = FALSE, warning = FALSE}
 superheros <- read_csv("data/superheroes.csv")
@@ -118,7 +118,7 @@ alignment_pie
 
 This pie chart illustrates the distribution of superhero alignments. The majority of superheroes, about 67.6%, fall under the "Good" category, represented in orange. The second largest segment is the "Bad" alignment, accounting for 28.2%, shown in green. The "Neutral" category, depicted in light blue, represents 3.28% of the characters. Lastly, a tiny slice, labeled as "null" in pink, makes up 0.958% of the characters.
 
-## Further analysis for Marvel and DC
+### Further analysis for Marvel and DC
 
 ```{r}
 marvel_alignment <- superheros |>
@@ -185,7 +185,7 @@ hair_color_bar
 
 This figure contains two bar charts displaying the distribution of superhero eye colors and hair colors. Overall, blue eyes and black hair are the most common features among superheroes.
 
-## Demographic Table classified by alignment and gender
+## Demographic Table
 
 ```{r message = FALSE}
 superheros1 <- superheros |>
@@ -213,10 +213,11 @@ gender_summary_df |> as.data.frame() |>
 
 ```
 
-
 This table summarizes the demographic characteristics of superheroes by alignment ("Bad," "Good," "Neutral") and gender ("Female," "Male"). The mean and standard deviation are provided for attributes such as intelligence, strength, speed, and others. Significant differences are observed among alignment categories for attributes like intelligence, strength, durability, height, and weight, as indicated by F-test p-values. In the gender comparison, significant differences are found in strength, durability, height, and weight, with males generally showing higher values. These statistical tests highlight notable variations in superhero traits based on alignment and gender.
 
-## Clustering
+## Clustering analysis
+
+In this section, we use K-means methods to cluster the superheroes into different groups based on 8 numeric variables: `intelligence`, `strength`, `speed`, `durability`, `power`, `combat`, `height_cm`, `weight_kg`. If one superhero has any missing value of these 8 variables, we exclude this superhero from our clustering analysis. Finally, 428 superheroes are included in our analysis.
 
 ```{r}
 numeric_vars <- superheros |>
@@ -253,9 +254,11 @@ plot_4 <- fviz_cluster(kmeans_result_4, data = numeric_vars_scaled,
 grid.arrange(plot_2, plot_3, plot_4, ncol = 3)
 ```
 
+We clustered the 428 superheroes into 2, 3, 4 groups, respectively. We find that dividing superheroes into two categories results in under classification; dividing them into four categories results in reclassification; and dividing them into three categories is the ideal situation.
+
 ### List of clustering
 
-This is the list of superheroes in each clustering group. Let's see where your superhero is!
+This is the list of superheroes in each clustering group. **Let's see where your superhero is!**
 
 ```{r}
 superheros_clean$cluster <- kmeans_result_3$cluster
@@ -266,7 +269,12 @@ superheros_clean |>
   kable()
 ```
 
-### Check capability statistics within each cluster group
+We find that Iron Man, the all-around hero we know, is placed in the first group, strength heroes such as the Hulk are placed in the second group, and mortal heroes such as Captain America are placed in the third group.
+
+![](images/CHI.jpg)
+[image source](https://screenrant.com/17-captain-america-fights-black-widow-iron-man/)
+
+### Dig into each cluster group
 
 ```{r}
 superheros_clean |>
@@ -296,7 +304,11 @@ superheros_clean |>
   kable()
 ```
 
+We then calculated the average of the six capability values and two physical values for each clustering to dig into our clustering result, as shown in the table above. We found that the first group of heroes, such as Iron Man, is more versatile **(“They are Hexagonal Warriors”)**. We call the first group “Balanced Group”; The second group of heroes has more strength and staying power, such as Hulk: **“Smash! Smash! Smash!”** The second group is called the “Strength Group”; The third group of heroes, who are mostly mortals, have significantly lower values than the first two groups, except for intelligence. But they are also the leaders of the team, and **their tenacity is infectious to the whole team**, as in the case of Captain America. The third group is called the “Mediocre Group”.
+
 ### Radar Plot!
+
+Below is a visualization of superhero 6 capabilities values in each group from the previous section, using radar charts!
 
 ```{r warning=FALSE}
 cluster_averages <- superheros_clean |>
@@ -324,5 +336,5 @@ radarchart(radar_data, axistype = 2,
            cglcol = "grey", cglty = 1, 
            axislabcol = "black")
 
-legend(x = "topright", legend = paste("Cluster", 1:3), pch = 20, col = colors_border, text.col = "black", cex = 1.2, pt.cex = 2)
+legend(x = "topright", legend = c('Balanced Group', 'Strength Group', 'Mediocre Group'), pch = 20, col = colors_border, text.col = "black", cex = 0.8, pt.cex = 1)
 ```
