@@ -4,130 +4,172 @@ library(tidyverse)
 superheros <- read_csv("superheroes.csv")
 
 superheros_shiny <- superheros |>
-  filter(complete.cases(intelligence, strength, speed, durability, combat, height_cm, weight_kg, gender, alignment, power))
+  filter(complete.cases(intelligence, strength, speed, durability, combat, power)) |>
+  mutate(across(c(intelligence, strength, speed, durability, combat, power),
+                ~ 100 * (. - min(.)) / (max(.) - min(.))))
 
 ui <- navbarPage(
   theme = shinythemes::shinytheme("flatly"),
-  title = "Superhero Selector-Pick your Best Hero!",
+  title = "Superhero Selector - Pick Your Best Hero!",
   
   tabPanel("Home Page",
            fluidPage(
              titlePanel("Welcome to the Superhero Selector!"),
              p("This application allows you to select the best superhero
              based on your preferences.
-             You can choose a hero based on total weighted attribute values 
-             by setting your own preferred weight of each capability.
-             Or, you can  use various filters such as
-             publisher, alignment, gender, eye color, 
-               and hair color to find your favorite hero.",
+             You can choose two attributes, find the top 5 ranked heroes (including ties)
+             based on their average score, and then filter the result further by alignment, gender, hair color, and eye color in any order.",
                style = "font-size: 20px;"),
              img(src = "selector.jpg")
            )
   ),
   
-  tabPanel("Weighted Attribute Value Selection",
+  tabPanel("Custom Attribute Selection",
            sidebarLayout(
              sidebarPanel(
-               sliderInput("intelligence", "Intelligence Weight:", min = 0, max = 1, value = 0.2),
-               sliderInput("strength", "Strength Weight:", min = 0, max = 1, value = 0.2),
-               sliderInput("speed", "Speed Weight:", min = 0, max = 1, value = 0.2),
-               sliderInput("durability", "Durability Weight:", min = 0, max = 1, value = 0.2),
-               sliderInput("power", "Power Weight:", min = 0, max = 1, value = 0.1),
-               sliderInput("combat", "Combat Weight:", min = 0, max = 1, value = 0.1),
-               actionButton("calculate", "Find Best Hero")
+               selectInput("attribute1", "Select First Attribute:", 
+                           choices = c("intelligence", "strength", "speed", "durability", "combat", "power")),
+               selectInput("attribute2", "Select Second Attribute:", 
+                           choices = c("intelligence", "strength", "speed", "durability", "combat", "power")),
+               textOutput("warning_message"),
+               actionButton("calculate", "Find Top 5 Ranked Heroes", class = "btn-primary", disabled = TRUE),
+               br(),
+               uiOutput("dynamic_filters")
              ),
              mainPanel(
-               textOutput("best_hero_name"),
-               textOutput("best_hero_score"),
-               uiOutput("best_hero_image")
-             )
-           )
-  ),
-  
-  tabPanel("Filter Selection",
-           sidebarLayout(
-             sidebarPanel(
-               selectInput("publisher", "Publisher:", choices = c("All", unique(superheros$publisher)), selected = "All"),
-               selectInput("alignment", "Alignment:", choices = c("All", unique(superheros$alignment)), selected = "All"),
-               selectInput("gender", "Gender:", choices = c("All", unique(superheros$gender)), selected = "All"),
-               selectInput("eye_color", "Eye Color:", choices = c("All", unique(superheros$eye_color)), selected = "All"),
-               selectInput("hair_color", "Hair Color:", choices = c("All", unique(superheros$hair_color)), selected = "All")
-             ),
-             mainPanel(
-               uiOutput("filtered_heroes_ui")
+               textOutput("top_hero_names"),
+               uiOutput("hero_details")
              )
            )
   )
 )
 
-server <- function(input, output) {
+server <- function(input, output, session) {
+  
+  top_heroes <- reactiveVal(NULL)
+  
+  observe({
+    if (input$attribute1 == input$attribute2) {
+      output$warning_message <- renderText("Warning: Please select two different attributes!")
+      updateActionButton(session, "calculate", disabled = TRUE)
+    } else {
+      output$warning_message <- renderText("")
+      updateActionButton(session, "calculate", disabled = FALSE)
+    }
+  })
   
   observeEvent(input$calculate, {
-    weights <- c(
-      intelligence = input$intelligence,
-      strength = input$strength,
-      speed = input$speed,
-      durability = input$durability,
-      power = input$power,
-      combat = input$combat
-    )
+    attr1 <- input$attribute1
+    attr2 <- input$attribute2
     
-    superheros_shiny <- superheros_shiny |>
-      mutate(weighted_score = intelligence * weights["intelligence"] +
-               strength * weights["strength"] +
-               speed * weights["speed"] +
-               durability * weights["durability"] +
-               power * weights["power"] +
-               combat * weights["combat"])
+    heroes <- superheros_shiny |>
+      mutate(average_score = rowMeans(across(all_of(c(attr1, attr2)))),
+             rank = dense_rank(desc(average_score)))
     
-    best_hero <- superheros_shiny |>
-      arrange(desc(weighted_score)) |>
-      slice(1)
+    top <- heroes |>
+      filter(rank <= 5)
+    top_heroes(top)
     
-    output$best_hero_name <- renderText({ paste("Best Hero: ", best_hero$name) })
-    output$best_hero_score <- renderText({ paste("Score: ", round(best_hero$weighted_score, 2)) })
+    updateSelectInput(session, "filter_alignment", 
+                      choices = c("All", na.omit(unique(top$alignment))))
+    updateSelectInput(session, "filter_gender", 
+                      choices = c("All", na.omit(unique(top$gender))))
+    updateSelectInput(session, "filter_hair_color", 
+                      choices = c("All", na.omit(unique(top$hair_color))))
+    updateSelectInput(session, "filter_eye_color", 
+                      choices = c("All", na.omit(unique(top$eye_color))))
     
-    output$best_hero_image <- renderUI({
-      tags$img(src = best_hero$url, height = "400px")
+    output$top_hero_names <- renderText({
+      paste("Top Ranked Heroes: ", paste(top$name, collapse = ", "))
     })
   })
   
-  output$filtered_heroes_ui <- renderUI({
-    filtered_heroes <- superheros
+  output$dynamic_filters <- renderUI({
+    if (is.null(top_heroes())) return(NULL)
+    tagList(
+      selectInput("filter_alignment", "Filter by Alignment:", choices = c("All")),
+      selectInput("filter_gender", "Filter by Gender:", choices = c("All")),
+      selectInput("filter_hair_color", "Filter by Hair Color:", choices = c("All")),
+      selectInput("filter_eye_color", "Filter by Eye Color:", choices = c("All"))
+    )
+  })
+  
+  observe({
+    if (is.null(top_heroes())) return()
     
-    if (input$publisher != "All") {
+    filtered_heroes <- top_heroes()
+    
+    if (!is.null(input$filter_alignment) && input$filter_alignment != "All") {
       filtered_heroes <- filtered_heroes |>
-        filter(publisher == input$publisher)
+        filter(alignment == input$filter_alignment)
     }
-    if (input$alignment != "All") {
+    if (!is.null(input$filter_gender) && input$filter_gender != "All") {
       filtered_heroes <- filtered_heroes |>
-        filter(alignment == input$alignment)
+        filter(gender == input$filter_gender)
     }
-    if (input$gender != "All") {
+    if (!is.null(input$filter_hair_color) && input$filter_hair_color != "All") {
       filtered_heroes <- filtered_heroes |>
-        filter(gender == input$gender)
+        filter(hair_color == input$filter_hair_color)
     }
-    if (input$eye_color != "All") {
+    if (!is.null(input$filter_eye_color) && input$filter_eye_color != "All") {
       filtered_heroes <- filtered_heroes |>
-        filter(eye_color == input$eye_color)
+        filter(eye_color == input$filter_eye_color)
     }
-    if (input$hair_color != "All") {
+    
+    updateSelectInput(session, "filter_alignment", 
+                      choices = c("All", na.omit(unique(filtered_heroes$alignment))),
+                      selected = ifelse(input$filter_alignment %in% unique(filtered_heroes$alignment), 
+                                        input$filter_alignment, "All"))
+    updateSelectInput(session, "filter_gender", 
+                      choices = c("All", na.omit(unique(filtered_heroes$gender))),
+                      selected = ifelse(input$filter_gender %in% unique(filtered_heroes$gender), 
+                                        input$filter_gender, "All"))
+    updateSelectInput(session, "filter_hair_color", 
+                      choices = c("All", na.omit(unique(filtered_heroes$hair_color))),
+                      selected = ifelse(input$filter_hair_color %in% unique(filtered_heroes$hair_color), 
+                                        input$filter_hair_color, "All"))
+    updateSelectInput(session, "filter_eye_color", 
+                      choices = c("All", na.omit(unique(filtered_heroes$eye_color))),
+                      selected = ifelse(input$filter_eye_color %in% unique(filtered_heroes$eye_color), 
+                                        input$filter_eye_color, "All"))
+  })
+  
+  output$hero_details <- renderUI({
+    if (is.null(top_heroes())) return(NULL)
+    
+    filtered_heroes <- top_heroes()
+    if (!is.null(input$filter_alignment) && input$filter_alignment != "All") {
       filtered_heroes <- filtered_heroes |>
-        filter(hair_color == input$hair_color)
+        filter(alignment == input$filter_alignment)
+    }
+    if (!is.null(input$filter_gender) && input$filter_gender != "All") {
+      filtered_heroes <- filtered_heroes |>
+        filter(gender == input$filter_gender)
+    }
+    if (!is.null(input$filter_hair_color) && input$filter_hair_color != "All") {
+      filtered_heroes <- filtered_heroes |>
+        filter(hair_color == input$filter_hair_color)
+    }
+    if (!is.null(input$filter_eye_color) && input$filter_eye_color != "All") {
+      filtered_heroes <- filtered_heroes |>
+        filter(eye_color == input$filter_eye_color)
     }
     
     tagList(
       lapply(1:nrow(filtered_heroes), function(i) {
         hero <- filtered_heroes[i, ]
-        tagList(
-          tags$h4(hero$name),
-          tags$img(src = hero$url, height = "200px"),
-          tags$p(paste("Publisher: ", hero$publisher)),
-          tags$p(paste("Alignment: ", hero$alignment)),
-          tags$p(paste("Gender: ", hero$gender)),
-          tags$p(paste("Eye Color: ", hero$eye_color)),
-          tags$p(paste("Hair Color: ", hero$hair_color)),
-          tags$hr()
+        fluidRow(
+          column(3, tags$img(src = hero$url, height = "150px")),
+          column(9, 
+                 tags$p(strong(hero$name)),
+                 tags$p(paste(input$attribute1, ":", round(hero[[input$attribute1]], 2))),
+                 tags$p(paste(input$attribute2, ":", round(hero[[input$attribute2]], 2))),
+                 tags$p(paste("Alignment:", hero$alignment)),
+                 tags$p(paste("Gender:", hero$gender)),
+                 tags$p(paste("Hair Color:", hero$hair_color)),
+                 tags$p(paste("Eye Color:", hero$eye_color)),
+                 tags$p(paste("Rank:", hero$rank)),
+                 tags$hr())
         )
       })
     )
