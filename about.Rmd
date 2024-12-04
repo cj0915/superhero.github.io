@@ -15,7 +15,7 @@ output:
 
 ### [**Ziqi Guo**](https://gzqgzq9.github.io/)
 
-<img src="images/Ziqi.jpg" style="width:25%">
+<img src="images/ziqi.jpg" style="width:25%">
 
 ### [**Ruiyang Wu**](https://ruiyang-wu.github.io/)
 
