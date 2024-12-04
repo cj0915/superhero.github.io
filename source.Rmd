@@ -1,0 +1,152 @@
+---
+title: "Data Source and Data Cleaning Process"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    code_folding: hide
+    theme: flatly
+---
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+library(naniar)
+library(stringr)
+library(janitor)
+library(plotly)
+library(factoextra)
+library(gridExtra)
+library(kableExtra)
+library(knitr)
+```
+
+### **Data Source**
+
+Our data source is from [kaggle website](https://www.kaggle.com/datasets/shreyasur965/super-heroes-dataset). This dataset covers detailed information on 731 superheroes and villains from various comic universes. It includes a wide range of attributes such as capability statistics, biographical information, physical appearance, and affiliations. The data was collected using the SuperHero API.The original dataset is called `superheroes_data`.
+
+### **Data Cleaning Process**
+
+However, we are not interested in each variables in `superheroes_data` dataset. In addition, some of the data in this original dataset is not readable and analyzable. As a result, we conducted the following data cleaning process:
+
+* When importing data, we set "NA", ".", "", "null", and “-” as missing values;
+
+* We harmonized the height of heroes in cm and their weight in kg;
+
+* We marked heroes with a height and weight of 0 as missing values: they are meaningless;
+
+* If a hero has two hair colors or two eye colors (e.g. Blue/Yellow), we marked this color as 'Dual Color';
+
+* We also reclassified some categorical variables. Specifically, if a `publisher` contains only one hero, then the publisher to which this hero belongs will be noted as 'Others'. We did the same for the variables `alignment`, `eye_color`, and `hair_color`.
+
+* We selected only the variables we were interested and deleted `aliases`, `base`, `occupation`, `group_affiliation`, `relatives`, `alter_egos`, `place_of_birth`, `first_appearance`, `race`. These variables are documented in a way that is difficult to read and difficult to clean.
+
+```{r message=FALSE}
+superheroes_df <- read_csv(
+  "data/superheroes_data.csv",
+  na = c("NA", ".", "", "null", "-")
+) |>
+  janitor::clean_names() |>
+  mutate(
+    height_cm = str_extract(height, "\\d+(?= cm)") |> as.numeric(),
+    height_cm = if_else(height_cm == 0, NA_real_, height_cm),
+    weight_kg = str_extract(weight, "\\d+(?= kg)") |> as.numeric(),
+    weight_kg = if_else(weight_kg == 0, NA_real_, weight_kg),
+    hair_color = if_else(str_detect(hair_color, "/"), "Dual Color", hair_color),
+    eye_color = str_remove_all(eye_color, "\\(.*?\\)") |> str_trim(),
+    eye_color = if_else(str_detect(eye_color, "/"), "Dual Color", eye_color)
+  ) |>
+  mutate(across(
+    where(is.character) & !any_of("url"), 
+    ~ str_to_title(.)
+  )) |>
+  dplyr::select(
+    -aliases, -height, -weight, -base, -occupation, -group_affiliation, -relatives, -alter_egos, -place_of_birth, -first_appearance, -race
+  )
+
+superheros <- superheroes_df
+
+publisher_counts <- superheros |>
+  group_by(publisher) |>
+  summarise(hero_count = n()) |>
+  arrange(desc(hero_count))
+
+single_hero_publishers <- filter(publisher_counts, hero_count == 1) |>
+  pull(publisher)
+
+superheros <- superheros |>
+  mutate(publisher = ifelse(publisher %in% single_hero_publishers, "Others", publisher))
+
+alignment_counts <- superheros |>
+  group_by(alignment) |>
+  summarise(hero_count = n()) |>
+  arrange(desc(hero_count))
+
+gender_counts <- superheros |>
+  group_by(gender) |>
+  summarise(hero_count = n()) |>
+  arrange(desc(hero_count))
+
+eye_color_counts <- superheros |>
+  group_by(eye_color) |>
+  summarise(hero_count = n()) |>
+  arrange(desc(hero_count))
+
+single_hero_eye_color <- filter(eye_color_counts, hero_count == 1) |>
+  pull(eye_color)
+
+superheros <- superheros |>
+  mutate(eye_color = ifelse(eye_color %in% single_hero_eye_color, "Others", eye_color))
+
+hair_color_counts <- superheros |>
+  group_by(hair_color) |>
+  summarise(hero_count = n()) |>
+  arrange(desc(hero_count))
+
+single_hero_hair_color <- filter(hair_color_counts, hero_count == 1) |>
+  pull(hair_color)
+
+superheros <- superheros |>
+  mutate(hair_color = ifelse(hair_color %in% single_hero_hair_color, "Others", hair_color))
+```
+
+
+### **Cleaned Dataset**
+
+The cleaned dataset is tidy, readable and analyzable. It includes the following variables:
+
+* `id`: A unique identifier for each character.
+
+* `name`: The superhero's alias or code name.
+
+* `intelligence`: A numerical representation of the character's intelligence level.
+
+* `strength`: A numerical value representing the character's physical strength.
+
+* `speed`: A numerical representation of how fast the character can move.
+
+* `durability`: A measure of the character’s resilience and ability to withstand damage.
+
+* `power`: A numerical value representing the character's overall power or abilities.
+
+* `combat`: A score depicting the character’s combat skills and experience.
+
+* `full-name`: The character’s real or full name, as opposed to their superhero alias.
+
+* `publisher`: The company responsible for creating and publishing the character.
+
+* `alignment`: Whether the character is good, evil, or neutral.
+
+* `gender`: The gender of the character.
+
+* `height_cm`: The character’s height, given in centimeters.
+
+* `weight_kg`: The character’s weight, provided in kilograms.
+
+* `eye-color`: The color of the character’s eyes.
+
+* `hair-color`: The color of the character’s hair.
+
+* `url`: A link to an image of the character or more detailed information.
+
+Click [here](eda.html) to explore these superhero attributes!
+

@@ -1,0 +1,732 @@
+id,name,intelligence,strength,speed,durability,power,combat,full_name,publisher,alignment,gender,eye_color,hair_color,url,height_cm,weight_kg
+1,A-Bomb,38,100,17,80,24,64,Richard Milhouse Jones,Marvel Comics,Good,Male,Yellow,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/10060.jpg,203,441
+2,Abe Sapien,88,28,35,65,100,85,Abraham Sapien,Dark Horse Comics,Good,Male,Blue,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/956.jpg,191,65
+3,Abin Sur,50,90,53,64,99,65,NA,Dc Comics,Good,Male,Blue,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/1460.jpg,185,90
+4,Abomination,63,80,53,90,62,95,Emil Blonsky,Marvel Comics,Bad,Male,Green,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/1.jpg,203,441
+5,Abraxas,88,63,83,100,100,55,Abraxas,Marvel Comics,Bad,Male,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/181.jpg,NA,NA
+6,Absorbing Man,38,80,25,100,98,64,Carl Creel,Marvel Comics,Bad,Male,Blue,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/1448.jpg,193,122
+7,Adam Monroe,63,10,12,100,100,64,NA,Nbc - Heroes,Good,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/1026.jpg,NA,NA
+8,Adam Strange,69,10,33,40,37,50,Adam Strange,Dc Comics,Good,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/626.jpg,185,88
+9,Agent 13,NA,46,NA,NA,NA,NA,Sharon Carter,Others,Good,Female,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/167.jpg,173,61
+10,Agent Bob,10,8,13,5,5,20,Bob,Marvel Comics,Good,Male,Brown,Brown,https://www.superherodb.com/pictures2/portraits/10/100/10255.jpg,178,81
+11,Agent Zero,75,28,38,80,72,95,Christoph Nord,Marvel Comics,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/396.jpg,191,104
+12,Air-Walker,50,85,100,85,100,40,Gabriel Lan,Marvel Comics,Bad,Male,Blue,White,https://www.superherodb.com/pictures2/portraits/10/100/1358.jpg,188,108
+13,Ajax,56,48,35,80,34,55,Francis,Marvel Comics,Bad,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/10422.jpg,193,90
+14,Alan Scott,63,80,23,90,100,32,Alan Ladd Wellington Scott,Dc Comics,Good,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/698.jpg,180,90
+15,Alex Mercer,50,80,42,90,100,50,Alexander J. Mercer,Wildstorm,Bad,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/10398.jpg,NA,NA
+16,Alex Woolsly,NA,37,NA,NA,NA,NA,Alex Woolsly,Nbc - Heroes,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1309.jpg,NA,NA
+17,Alfred Pennyworth,63,10,17,10,7,55,Alfred Thaddeus Crane Pennyworth,Dc Comics,Good,Male,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/628.jpg,178,72
+18,Alien,50,28,42,90,57,60,Xenomorph,Dark Horse Comics,Bad,Male,NA,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/10449.jpg,244,169
+19,Allan Quatermain,NA,NA,NA,NA,NA,NA,NA,Wildstorm,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/630.jpg,NA,NA
+20,Amazo,63,100,83,100,100,100,NA,Dc Comics,Bad,Male,Red,NA,https://www.superherodb.com/pictures2/portraits/10/100/1390.jpg,257,173
+21,Ammo,NA,NA,NA,NA,NA,NA,NA,Marvel Comics,Bad,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/184.jpg,188,101
+22,Ando Masahashi,NA,NA,NA,NA,NA,NA,Ando Masahashi,Nbc - Heroes,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1310.jpg,NA,NA
+23,Angel,75,30,58,90,100,75,Liam,Dark Horse Comics,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/10431.jpg,NA,NA
+24,Angel,63,13,46,64,28,42,Warren Kenneth Worthington Iii,Others,Good,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/829.jpg,183,68
+25,Angel Dust,38,55,23,42,17,30,Christina,Marvel Comics,Good,Female,Yellow,Black,https://www.superherodb.com/pictures2/portraits/10/100/10405.jpg,165,57
+26,Angel Salvadore,38,10,28,28,56,60,Angel Salvadore Bohusk,Others,Good,Female,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/1406.jpg,163,54
+27,Angela,NA,97,NA,NA,NA,NA,NA,Image Comics,Bad,Female,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1070.jpg,NA,NA
+28,Animal Man,56,48,47,85,73,80,Bernhard Baker,Dc Comics,Good,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/632.jpg,183,83
+29,Annihilus,75,80,47,56,59,64,Annihilus,Marvel Comics,Bad,Male,Green,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/1307.jpg,180,90
+30,Ant-Man,100,18,23,28,32,32,Hank Pym,Others,Good,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/857.jpg,211,122
+31,Ant-Man Ii,75,18,17,40,53,30,Scott Lang,Marvel Comics,Good,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/166.jpg,183,86
+32,Anti-Monitor,88,100,50,100,100,90,NA,Dc Comics,Bad,Male,Yellow,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/1292.jpg,NA,NA
+33,Anti-Spawn,NA,58,NA,NA,NA,NA,Jason Wynn,Image Comics,Bad,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1071.jpg,NA,NA
+34,Anti-Venom,75,60,65,90,96,84,Eddie Brock,Others,NA,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/1485.jpg,229,358
+35,Apocalypse,100,100,33,100,100,60,En Sabah Nur,Marvel Comics,Bad,Male,Red,Black,https://www.superherodb.com/pictures2/portraits/10/100/852.jpg,213,135
+36,Aquababy,10,16,12,14,37,14,"Arthur Curry, Jr.",Dc Comics,Good,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/1389.jpg,NA,NA
+37,Aqualad,63,44,42,75,89,60,Garth,Dc Comics,Good,Male,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/1395.jpg,178,106
+38,Aquaman,81,85,79,80,100,80,Orin,Dc Comics,Good,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/634.jpg,185,146
+39,Arachne,50,48,50,70,71,70,Julia Carpenter,Marvel Comics,Good,Female,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/882.jpg,175,63
+40,Archangel,63,13,58,64,35,42,Warren Kenneth Worthington Iii,Others,Good,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/838.jpg,183,68
+41,Arclight,38,63,23,42,52,70,Philippa Sontag,Marvel Comics,Bad,Female,Violet,Purple,https://www.superherodb.com/pictures2/portraits/10/100/832.jpg,173,57
+42,Ardina,63,100,100,80,100,25,Ardina,Marvel Comics,Good,Female,White,Orange,https://www.superherodb.com/pictures2/portraits/10/100/10132.jpg,193,98
+43,Ares,75,82,35,80,84,101,NA,Marvel Comics,Good,Male,Brown,Brown,https://www.superherodb.com/pictures2/portraits/10/100/1118.jpg,185,270
+44,Ariel,50,10,12,14,94,28,Ariel,Marvel Comics,Good,Female,Purple,Others,https://www.superherodb.com/pictures2/portraits/10/100/1348.jpg,165,59
+45,Armor,50,63,12,80,55,54,Hisako Ichiki,Marvel Comics,Good,Female,Black,Black,https://www.superherodb.com/pictures2/portraits/10/100/1347.jpg,163,50
+46,Arsenal,NA,54,NA,NA,NA,NA,"Roy William Harper, Jr.",Others,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1014.jpg,NA,NA
+47,Astro Boy,NA,90,NA,NA,NA,NA,Atom,NA,Good,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/1159.jpg,NA,NA
+48,Atlas,63,80,25,100,98,50,Erik Josten,Goliath,Good,Male,Brown,Red,https://www.superherodb.com/pictures2/portraits/10/100/878.jpg,183,101
+49,Atlas,63,100,42,100,27,80,NA,Dc Comics,Bad,Male,Blue,Brown,https://www.superherodb.com/pictures2/portraits/10/100/10838.jpg,198,126
+50,Atom,NA,NA,NA,NA,NA,NA,Albert Pratt,Dc Comics,Good,Male,Blue,Red,https://www.superherodb.com/pictures2/portraits/10/100/934.jpg,178,68
+51,Atom,NA,NA,NA,NA,NA,NA,NA,Dc Comics,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1379.jpg,NA,NA
+52,Atom Girl,38,10,23,28,38,42,Salu Digby,Dc Comics,Good,Female,Black,Black,https://www.superherodb.com/pictures2/portraits/10/100/1180.jpg,168,54
+53,Atom Ii,88,10,33,45,40,60,Ray Palmer,Dc Comics,Good,Male,Brown,Auburn,https://www.superherodb.com/pictures2/portraits/10/100/938.jpg,183,81
+54,Atom Iii,NA,NA,NA,NA,NA,NA,Adam Cray,Dc Comics,Good,Male,NA,Red,https://www.superherodb.com/pictures2/portraits/10/100/939.jpg,NA,NA
+55,Atom Iv,NA,NA,NA,NA,NA,NA,Ryan Choi,Dc Comics,Good,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/940.jpg,NA,72
+56,Aurora,63,10,96,60,74,56,Jeanne-Marie Beaubier,Marvel Comics,Good,Female,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/1289.jpg,180,63
+57,Azazel,50,11,47,95,100,80,NA,Marvel Comics,Bad,Male,Yellow,Black,https://www.superherodb.com/pictures2/portraits/10/100/1481.jpg,183,67
+58,Azrael,63,18,17,20,35,80,Michael Washington Lane,Dc Comics,Good,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/1532.jpg,NA,NA
+59,Aztar,NA,98,NA,NA,NA,NA,Aztar,Others,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1012.jpg,NA,NA
+60,Bane,88,38,23,56,51,95,NA,Dc Comics,Bad,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/637.jpg,203,180
+61,Banshee,50,10,58,40,63,70,Sean Cassidy,Marvel Comics,Good,Male,Green,Strawberry Blond,https://www.superherodb.com/pictures2/portraits/10/100/26.jpg,183,77
+62,Bantam,25,53,23,54,21,56,Roberto Velasquez,Marvel Comics,Good,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/229.jpg,165,54
+63,Batgirl,88,11,33,40,34,90,Barbara Gordon,Others,Good,Female,Green,Red,https://www.superherodb.com/pictures2/portraits/10/100/1111.jpg,170,57
+64,Batgirl,NA,27,NA,NA,NA,NA,Mary Elizabeth Kane,Others,Good,Female,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/638.jpg,NA,NA
+65,Batgirl Iii,NA,43,NA,NA,NA,NA,Helena Rosa Bertinelli,Others,Good,Female,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1112.jpg,NA,NA
+66,Batgirl Iv,69,12,27,56,46,100,Cassandra Cain,Dc Comics,Good,Female,Green,Black,https://www.superherodb.com/pictures2/portraits/10/100/1113.jpg,165,52
+67,Batgirl V,NA,NA,NA,NA,NA,NA,Charlotte Gage-Radcliffe,Others,Good,Female,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1115.jpg,NA,NA
+68,Batgirl Vi,75,10,23,28,22,80,Stephanie Brown,Others,Good,Female,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/1398.jpg,168,61
+69,Batman,81,40,29,55,63,90,Terry Mcginnis,Dc Comics,Good,Male,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/10441.jpg,178,77
+70,Batman,100,26,27,50,47,100,Bruce Wayne,Dc Comics,Good,Male,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/639.jpg,188,95
+71,Batman Ii,88,11,33,28,36,100,Dick Grayson,Others,Good,Male,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/1496.jpg,178,79
+72,Battlestar,50,53,35,74,48,74,Lemar Hoskins,Marvel Comics,Good,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/231.jpg,198,133
+73,Batwoman V,81,8,29,25,27,80,Katherine Rebecca Kane,Dc Comics,Good,Female,Green,Red,https://www.superherodb.com/pictures2/portraits/10/100/10234.jpg,178,NA
+74,Beak,NA,NA,NA,NA,NA,NA,Barnell Bohusk,Marvel Comics,Good,Male,Black,White,https://www.superherodb.com/pictures2/portraits/10/100/232.jpg,175,63
+75,Beast,94,48,38,60,43,85,Henry Philip Mccoy,Marvel Comics,Good,Male,Blue,Blue,https://www.superherodb.com/pictures2/portraits/10/100/27.jpg,180,181
+76,Beast Boy,50,28,50,70,79,40,Garfield Mark Logan,Dc Comics,Good,Male,Green,Green,https://www.superherodb.com/pictures2/portraits/10/100/640.jpg,173,68
+77,Beetle,NA,54,NA,NA,NA,NA,NA,Marvel Comics,Bad,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1122.jpg,NA,NA
+78,Ben 10,10,7,8,10,90,40,Benjamin Kirby Tennyson,Dc Comics,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1365.jpg,NA,NA
+79,Beta Ray Bill,63,80,35,95,100,84,Beta Ray Bill (Translation Of His Korbinite Name),Marvel Comics,Good,Male,NA,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/28.jpg,201,216
+80,Beyonder,100,100,100,100,100,84,NA,Marvel Comics,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1293.jpg,NA,NA
+81,Big Barda,88,100,79,100,100,100,Barda Free,Dc Comics,Bad,Female,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/1169.jpg,188,135
+82,Big Daddy,38,10,12,32,22,64,Damon Macready,Icon Comics,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1338.jpg,NA,NA
+83,Big Man,75,12,23,28,19,70,Frederick Foswell,Marvel Comics,Bad,Male,Blue,Brown,https://www.superherodb.com/pictures2/portraits/10/100/1038.jpg,165,71
+84,Bill Harken,63,36,33,60,27,40,NA,Syfy,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1527.jpg,NA,NA
+85,Billy Kincaid,NA,NA,NA,NA,NA,NA,Billy Kincaid,Image Comics,Bad,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1072.jpg,NA,NA
+86,Binary,NA,NA,NA,NA,NA,NA,Carol Danvers,Others,Good,Female,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/30.jpg,180,54
+87,Bionic Woman,56,37,33,40,20,40,Jamie Sommers,NA,Good,Female,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/10648.jpg,NA,NA
+88,Bird-Brain,25,10,35,28,21,42,NA,Marvel Comics,Good,NA,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/240.jpg,NA,NA
+89,Bird-Man,NA,NA,NA,NA,NA,NA,Henry Hawk,Marvel Comics,Bad,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1503.jpg,NA,NA
+90,Bird-Man Ii,NA,NA,NA,NA,NA,NA,Achille Dibacco,Marvel Comics,Bad,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1504.jpg,NA,NA
+91,Birdman,NA,35,NA,NA,NA,NA,Ray Randal,Others,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1506.jpg,NA,NA
+92,Bishop,63,14,23,75,100,65,Lucas Bishop,Marvel Comics,Good,Male,Brown,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/31.jpg,198,124
+93,Bizarro,38,95,100,100,100,85,Bizarro,Dc Comics,Neutral,Male,Black,Black,https://www.superherodb.com/pictures2/portraits/10/100/642.jpg,191,155
+94,Black Abbott,NA,NA,NA,NA,NA,NA,NA,Marvel Comics,Bad,Male,Red,Black,https://www.superherodb.com/pictures2/portraits/10/100/1049.jpg,NA,NA
+95,Black Adam,88,100,92,100,100,56,Teth-Adam,Dc Comics,Bad,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/643.jpg,191,113
+96,Black Bolt,75,67,100,84,100,56,Blackagar Boltagon,Marvel Comics,Good,Male,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/243.jpg,188,95
+97,Black Canary,63,8,33,20,52,80,Laurel Lance,Dc Comics,Good,Female,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/1005.jpg,170,59
+98,Black Canary,63,8,33,15,45,80,Dinah Drake Lance,Dc Comics,Good,Female,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/644.jpg,165,58
+99,Black Cat,75,16,33,10,23,70,Felicia Hardy,Marvel Comics,Good,Female,Green,Blond,https://www.superherodb.com/pictures2/portraits/10/100/32.jpg,178,54
+100,Black Flash,44,10,100,80,100,30,NA,Dc Comics,Neutral,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/10831.jpg,NA,NA
+101,Black Goliath,NA,NA,NA,NA,NA,NA,NA,Marvel Comics,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/245.jpg,NA,NA
+102,Black Knight Iii,63,10,8,70,43,70,Dane Whitman,Marvel Comics,Good,Male,Brown,Brown,https://www.superherodb.com/pictures2/portraits/10/100/246.jpg,183,86
+103,Black Lightning,50,11,53,28,70,75,Jefferson Pierce,Dc Comics,Good,Male,Brown,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/1128.jpg,185,90
+104,Black Mamba,75,10,35,42,88,65,Tanya Sealy,Marvel Comics,Bad,Female,Green,Black,https://www.superherodb.com/pictures2/portraits/10/100/1106.jpg,170,52
+105,Black Manta,75,28,50,60,76,85,David,Dc Comics,Bad,Male,Black,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/10546.jpg,188,92
+106,Black Panther,88,16,30,60,41,100,T'challa,Marvel Comics,Good,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/247.jpg,183,90
+107,Black Widow,75,13,33,30,36,100,Natasha Romanoff,Marvel Comics,Good,Female,Green,Auburn,https://www.superherodb.com/pictures2/portraits/10/100/248.jpg,170,59
+108,Black Widow Ii,NA,48,NA,NA,NA,NA,Yelena Belova,Marvel Comics,Good,Female,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/618.jpg,170,61
+109,Blackout,63,32,45,80,45,65,NA,Marvel Comics,Bad,Male,Red,White,https://www.superherodb.com/pictures2/portraits/10/100/1507.jpg,191,104
+110,Blackwing,38,10,35,32,20,56,Joseph Manfredi,Marvel Comics,Bad,Male,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/249.jpg,185,86
+111,Blackwulf,50,28,8,30,69,25,Lucian,Marvel Comics,NA,Male,Red,White,https://www.superherodb.com/pictures2/portraits/10/100/1508.jpg,188,88
+112,Blade,63,28,38,50,40,90,Eric Brooks,Marvel Comics,Good,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/33.jpg,188,97
+113,Blaquesmith,NA,NA,NA,NA,NA,NA,NA,Others,Good,NA,Black,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/34.jpg,NA,NA
+114,Bling!,69,14,12,90,52,28,Roxanne Washington,Marvel Comics,Good,Female,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1349.jpg,168,68
+115,Blink,50,8,20,28,77,64,Clarice Ferguson,Marvel Comics,Good,Female,Green,Others,https://www.superherodb.com/pictures2/portraits/10/100/35.jpg,165,56
+116,Blizzard,NA,NA,NA,NA,NA,NA,Gregor Shapanka,Marvel Comics,Bad,Male,NA,Brown,https://www.superherodb.com/pictures2/portraits/10/100/899.jpg,NA,NA
+117,Blizzard,NA,72,NA,NA,NA,NA,NA,Marvel Comics,Bad,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/898.jpg,NA,NA
+118,Blizzard Ii,38,10,27,42,47,56,Donald Gill,Marvel Comics,Bad,Male,Brown,Brown,https://www.superherodb.com/pictures2/portraits/10/100/619.jpg,175,77
+119,Blob,10,83,23,95,28,72,Frederick J. Dukes,Marvel Comics,Bad,Male,Brown,Brown,https://www.superherodb.com/pictures2/portraits/10/100/1119.jpg,178,230
+120,Bloodaxe,63,80,33,80,100,84,Jackie Lukus,Marvel Comics,Bad,Female,Blue,Brown,https://www.superherodb.com/pictures2/portraits/10/100/1509.jpg,218,495
+121,Bloodhawk,50,10,50,80,80,64,Lemuel Krug,Marvel Comics,Good,Male,Black,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/1510.jpg,NA,NA
+122,Bloodwraith,NA,72,NA,NA,NA,NA,Sean Dolan,Marvel Comics,Bad,Male,White,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/186.jpg,NA,NA
+123,Blue Beetle,NA,NA,NA,NA,NA,NA,Daniel Garrett,Dc Comics,Good,Male,Blue,Brown,https://www.superherodb.com/pictures2/portraits/10/100/646.jpg,NA,NA
+124,Blue Beetle,NA,NA,NA,NA,NA,NA,NA,Dc Comics,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1010.jpg,NA,NA
+125,Blue Beetle Ii,NA,45,NA,NA,NA,NA,Theodore Kord,Dc Comics,Good,Male,Blue,Brown,https://www.superherodb.com/pictures2/portraits/10/100/1008.jpg,183,86
+126,Blue Beetle Iii,50,34,58,80,100,30,Jaime Reyes,Dc Comics,Good,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/1009.jpg,NA,NA
+127,Boba Fett,63,10,38,36,68,70,NA,George Lucas,Bad,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/10467.jpg,183,NA
+128,Bolt,NA,NA,NA,NA,NA,NA,NA,Marvel Comics,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1340.jpg,NA,NA
+129,Bomb Queen,NA,73,NA,NA,NA,NA,NA,Image Comics,Bad,Female,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1116.jpg,NA,NA
+130,Boom-Boom,38,10,12,42,57,64,Tabitha Smith,Others,Good,Female,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/400.jpg,165,55
+131,Boomer,NA,NA,NA,NA,NA,NA,NA,Marvel Comics,Good,Female,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/259.jpg,NA,NA
+132,Booster Gold,69,85,42,70,100,40,Michael Jon Carter,Dc Comics,Good,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/647.jpg,196,97
+133,Box,NA,NA,NA,NA,NA,NA,Roger Bochs,Marvel Comics,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/864.jpg,NA,NA
+134,Box Iii,NA,NA,NA,NA,NA,NA,Dr. Walter Langowski,Marvel Comics,Good,NA,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/37.jpg,193,110
+135,Box Iv,50,75,23,28,11,56,Madison Jeffries,Others,Good,NA,Brown,Dual Color,https://www.superherodb.com/pictures2/portraits/10/100/38.jpg,NA,NA
+136,Brainiac,100,95,63,90,60,75,Vril Dox,Dc Comics,Bad,Male,Green,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/648.jpg,198,135
+137,Brainiac 5,100,10,23,28,60,32,Querl Dox,Dc Comics,Good,Male,Green,Blond,https://www.superherodb.com/pictures2/portraits/10/100/1183.jpg,170,61
+138,Brother Voodoo,NA,65,NA,NA,NA,NA,Jericho Drumm,Marvel Comics,Good,Male,Brown,Dual Color,https://www.superherodb.com/pictures2/portraits/10/100/39.jpg,183,99
+139,Brundlefly,69,32,25,40,27,15,Seth Brundle,NA,NA,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/10642.jpg,193,NA
+140,Buffy,63,28,42,70,48,60,Buffy Anne Summers,Dark Horse Comics,Good,Female,Green,Blond,https://www.superherodb.com/pictures2/portraits/10/100/10430.jpg,157,52
+141,Bullseye,50,11,25,70,20,70,Lester,Marvel Comics,Bad,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/624.jpg,183,90
+142,Bumblebee,63,28,25,10,47,35,Karen Beecher,Dc Comics,Good,Female,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/1542.jpg,170,59
+143,Bumbleboy,NA,NA,NA,NA,NA,NA,NA,Marvel Comics,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1346.jpg,NA,NA
+144,Bushido,38,10,8,10,19,70,Ryuko Orsono,Dc Comics,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1541.jpg,NA,NA
+145,Cable,88,48,23,56,100,80,Nathan Summers,Marvel Comics,Good,Male,Blue,White,https://www.superherodb.com/pictures2/portraits/10/100/40.jpg,203,158
+146,Callisto,63,53,23,42,52,85,Callisto,Marvel Comics,Bad,Female,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/271.jpg,175,74
+147,Cameron Hicks,50,10,23,28,51,70,NA,Syfy,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1528.jpg,NA,NA
+148,Cannonball,50,28,67,99,94,56,Samuel Zachery Guthrie,Marvel Comics,Good,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/272.jpg,183,81
+149,Captain America,69,19,38,55,60,100,Steve Rogers,Marvel Comics,Good,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/274.jpg,188,108
+150,Captain Atom,81,93,83,90,100,80,Nathaniel Adam,Dc Comics,Good,Male,Blue,Silver,https://www.superherodb.com/pictures2/portraits/10/100/1007.jpg,193,90
+151,Captain Britain,75,77,50,60,31,80,Brian Braddock,Marvel Comics,Good,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/276.jpg,198,116
+152,Captain Cold,50,10,17,20,28,20,Leonard Snart,Dc Comics,Neutral,Male,Brown,Brown,https://www.superherodb.com/pictures2/portraits/10/100/653.jpg,NA,NA
+153,Captain Epic,NA,NA,NA,NA,NA,NA,NA,Team Epic Tv,Good,Male,Blue,Brown,https://www.superherodb.com/pictures2/portraits/10/100/3.jpg,188,NA
+154,Captain Hindsight,25,10,83,30,10,20,Jack Brolin,Others,Good,Male,NA,Black,https://www.superherodb.com/pictures2/portraits/10/100/10399.jpg,NA,NA
+155,Captain Mar-Vell,NA,80,NA,NA,NA,NA,Mar-Vell,Marvel Comics,Good,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/654.jpg,188,108
+156,Captain Marvel,88,100,88,95,100,75,Billy Batson,Dc Comics,Good,Male,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/278.jpg,193,101
+157,Captain Marvel,84,88,71,95,100,90,Carol Danvers,Binary,Good,Female,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/103.jpg,180,74
+158,Captain Marvel Ii,75,81,27,90,34,56,Frederick Christopher Freeman,Dc Comics,Good,Male,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/279.jpg,175,74
+159,Captain Midnight,NA,NA,NA,NA,NA,NA,NA,Dark Horse Comics,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/10443.jpg,NA,NA
+160,Captain Planet,50,88,75,80,100,60,NA,Marvel Comics,Good,Male,Red,Green,https://www.superherodb.com/pictures2/portraits/10/100/1285.jpg,NA,NA
+161,Captain Universe,NA,92,NA,NA,NA,NA,NA,Marvel Comics,Good,NA,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/855.jpg,NA,NA
+162,Carnage,63,63,70,84,88,90,Cletus Kasady,Marvel Comics,Bad,Male,Green,Red,https://www.superherodb.com/pictures2/portraits/10/100/187.jpg,185,86
+163,Cat,NA,90,NA,NA,NA,NA,Shirlee Bryant,Marvel Comics,Good,Female,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/904.jpg,173,61
+164,Cat Ii,NA,NA,NA,NA,NA,NA,NA,Marvel Comics,Good,Female,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/903.jpg,NA,NA
+165,Catwoman,69,11,33,28,27,85,Selina Kyle,Dc Comics,Good,Female,Green,Black,https://www.superherodb.com/pictures2/portraits/10/100/659.jpg,175,61
+166,Cecilia Reyes,NA,NA,NA,NA,NA,NA,Dr. Cecilia Reyes,Marvel Comics,Good,NA,Brown,Brown,https://www.superherodb.com/pictures2/portraits/10/100/43.jpg,170,62
+167,Century,88,80,53,64,100,100,NA,Marvel Comics,Good,Male,White,White,https://www.superherodb.com/pictures2/portraits/10/100/1511.jpg,201,97
+168,Cerebra,NA,57,NA,NA,NA,NA,Shakti Haddad,Marvel Comics,Good,Female,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1512.jpg,NA,NA
+169,Chamber,50,10,20,80,57,64,Jonothon Evan Starsmore,Marvel Comics,Good,Male,Brown,Brown,https://www.superherodb.com/pictures2/portraits/10/100/44.jpg,175,63
+170,Chameleon,88,10,12,28,28,28,Dmitri Anatoly Smerdyakov Kravinoff,Dc Comics,Bad,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/660.jpg,NA,NA
+171,Changeling,63,10,23,42,64,64,Kevin Sidney,Marvel Comics,Bad,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/1107.jpg,180,81
+172,Cheetah,38,8,42,20,32,70,Priscilla Rich,Dc Comics,Bad,Female,Green,Blond,https://www.superherodb.com/pictures2/portraits/10/100/661.jpg,163,50
+173,Cheetah Ii,38,20,42,20,39,60,Deborah Domaine,Dc Comics,Bad,Female,Green,Brown,https://www.superherodb.com/pictures2/portraits/10/100/925.jpg,170,55
+174,Cheetah Iii,88,100,88,80,78,95,Barbara Minerva,Dc Comics,Bad,Female,Brown,Brown,https://www.superherodb.com/pictures2/portraits/10/100/926.jpg,175,54
+175,Chromos,NA,NA,NA,NA,NA,NA,Bernard Embers,Team Epic Tv,Bad,Male,Brown,Dual Color,https://www.superherodb.com/pictures2/portraits/10/100/1001.jpg,185,86
+176,Chuck Norris,50,80,47,56,42,99,Carlos Ray Norris,NA,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/954.jpg,178,NA
+177,Citizen Steel,50,95,33,100,23,60,Nathan Heywood,Dc Comics,Good,Male,Green,Red,https://www.superherodb.com/pictures2/portraits/10/100/10661.jpg,183,170
+178,Claire Bennet,38,9,12,100,90,28,Claire Bennet,Nbc - Heroes,Good,Female,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/941.jpg,NA,NA
+179,Clea,NA,39,NA,NA,NA,NA,Clea,Marvel Comics,Good,NA,NA,White,https://www.superherodb.com/pictures2/portraits/10/100/45.jpg,NA,NA
+180,Cloak,63,10,47,64,100,56,Tyrone Johnson,Marvel Comics,Good,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/46.jpg,226,70
+181,Clock King,75,10,17,10,7,40,William Tockman,Dc Comics,Bad,Male,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/10396.jpg,178,78
+182,Cogliostro,NA,NA,NA,NA,NA,NA,Cain,Image Comics,Bad,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1074.jpg,NA,NA
+183,Colin Wagner,NA,NA,NA,NA,NA,NA,NA,Harpercollins,Good,Male,Grey,Brown,https://www.superherodb.com/pictures2/portraits/10/100/1153.jpg,NA,NA
+184,Colossal Boy,NA,NA,NA,NA,NA,NA,NA,Dc Comics,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1182.jpg,NA,NA
+185,Colossus,63,83,33,100,45,80,Piotr Nikolaievitch Rasputin,Marvel Comics,Good,Male,Others,Black,https://www.superherodb.com/pictures2/portraits/10/100/48.jpg,226,225
+186,Copycat,56,10,21,25,54,60,Vanessa Carlysle,Marvel Comics,Neutral,Female,Red,White,https://www.superherodb.com/pictures2/portraits/10/100/10423.jpg,183,67
+187,Corsair,NA,16,NA,NA,NA,NA,Christopher Summers,Marvel Comics,Good,Male,Brown,Brown,https://www.superherodb.com/pictures2/portraits/10/100/49.jpg,191,79
+188,Cottonmouth,50,10,8,10,27,25,Burchell Clemens,Marvel Comics,Bad,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/10452.jpg,183,99
+189,Crimson Crusader,NA,58,NA,NA,NA,NA,Rory Destine,Marvel Comics,Good,Male,Blue,Strawberry Blond,https://www.superherodb.com/pictures2/portraits/10/100/303.jpg,NA,NA
+190,Crimson Dynamo,NA,65,NA,NA,NA,NA,Anton Vanko,Marvel Comics,Good,Male,Brown,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/1093.jpg,180,104
+191,Crystal,63,16,12,14,61,56,Crystallia Amaquelin,Marvel Comics,Good,Female,Green,Red,https://www.superherodb.com/pictures2/portraits/10/100/305.jpg,168,50
+192,Curse,NA,NA,NA,NA,NA,NA,Phillip Krahn,Image Comics,Bad,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1066.jpg,NA,NA
+193,Cy-Gor,NA,96,NA,NA,NA,NA,NA,Image Comics,Bad,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1075.jpg,NA,NA
+194,Cyborg,75,53,42,85,71,64,Victor Stone,Dc Comics,Good,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/1204.jpg,198,173
+195,Cyborg Superman,75,93,92,100,100,80,Henry Henshaw,Dc Comics,Bad,Male,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/667.jpg,NA,NA
+196,Cyclops,75,10,23,42,76,80,Scott Summers,Marvel Comics,Good,Male,Brown,Brown,https://www.superherodb.com/pictures2/portraits/10/100/50.jpg,191,88
+197,Cypher,NA,44,NA,NA,NA,NA,Douglas Aaron Ramsey,Marvel Comics,Good,NA,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/168.jpg,175,68
+198,Dagger,63,10,35,42,52,70,Tandy Bowen,Marvel Comics,Good,Female,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/51.jpg,NA,52
+199,Danny Cooper,NA,NA,NA,NA,NA,NA,NA,Harpercollins,Good,Male,Brown,Blond,https://www.superherodb.com/pictures2/portraits/10/100/1152.jpg,NA,NA
+200,Daphne Powell,38,10,8,10,56,10,Daphne Powell,Abc Studios,Good,Female,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1356.jpg,NA,NA
+201,Daredevil,75,13,25,35,61,100,Matt Murdock,Marvel Comics,Good,Male,Blue,Red,https://www.superherodb.com/pictures2/portraits/10/100/52.jpg,183,90
+202,Darkhawk,50,32,33,70,74,64,Christopher Powell,Marvel Comics,Good,Male,Brown,Brown,https://www.superherodb.com/pictures2/portraits/10/100/53.jpg,185,81
+203,Darkman,75,14,23,85,12,28,Peyton Westlake,Others,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1126.jpg,NA,NA
+204,Darkseid,88,100,83,100,100,95,Uxas,Dc Comics,Bad,Male,Red,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/668.jpg,267,817
+205,Darkside,NA,NA,NA,NA,NA,NA,NA,NA,Bad,NA,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/840.jpg,NA,NA
+206,Darkstar,38,8,35,42,79,64,Laynia Petrovna,Marvel Comics,Good,Female,Brown,Blond,https://www.superherodb.com/pictures2/portraits/10/100/169.jpg,168,56
+207,Darth Maul,56,48,50,30,100,100,NA,George Lucas,Bad,Male,Dual Color,NA,https://www.superherodb.com/pictures2/portraits/10/100/10464.jpg,170,NA
+208,Darth Vader,69,48,33,35,100,100,Anakin Skywalker,George Lucas,Bad,Male,Yellow,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/10444.jpg,198,135
+209,Dash,25,12,92,60,20,30,Dashiell Robert Parr,Dark Horse Comics,Good,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/824.jpg,122,27
+210,Data,100,32,21,40,56,50,Data,Star Trek,Good,Male,Yellow,Brown,https://www.superherodb.com/pictures2/portraits/10/100/10577.jpg,NA,NA
+211,Dazzler,63,10,33,60,100,55,Alison Blaire,Marvel Comics,Good,Female,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/1043.jpg,173,52
+212,Deadman,50,10,33,100,100,42,Boston Brand,Dc Comics,Good,Male,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/1472.jpg,183,90
+213,Deadpool,69,32,50,100,100,100,Wade Wilson,Others,Neutral,Male,Brown,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/835.jpg,188,95
+214,Deadshot,50,10,23,28,55,80,Floyd Lawton,Dc Comics,Bad,Male,Brown,Brown,https://www.superherodb.com/pictures2/portraits/10/100/670.jpg,185,91
+215,Deathlok,69,32,30,70,40,60,Luther Manning,Marvel Comics,Good,Male,Brown,Grey,https://www.superherodb.com/pictures2/portraits/10/100/1304.jpg,193,178
+216,Deathstroke,75,30,35,100,47,90,Slade Joseph Wilson,Dc Comics,Neutral,Male,Blue,White,https://www.superherodb.com/pictures2/portraits/10/100/672.jpg,193,101
+217,Demogoblin,50,48,42,35,67,60,NA,Marvel Comics,Bad,Male,Red,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/1515.jpg,185,95
+218,Destroyer,50,95,58,98,85,70,NA,Marvel Comics,Bad,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1294.jpg,188,383
+219,Diamondback,44,16,23,28,45,60,Willis Stryker,Marvel Comics,Bad,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/1404.jpg,193,90
+220,Dl Hawkins,50,12,12,56,48,56,Daniel Lawrence Hawkins,Nbc - Heroes,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/943.jpg,NA,NA
+221,Doc Samson,75,80,33,80,36,70,Leonard Samson,Marvel Comics,Good,Male,Blue,Green,https://www.superherodb.com/pictures2/portraits/10/100/54.jpg,198,171
+222,Doctor Doom,100,32,20,100,100,84,Victor Von Doom,Marvel Comics,Bad,Male,Brown,Brown,https://www.superherodb.com/pictures2/portraits/10/100/189.jpg,201,187
+223,Doctor Doom Ii,NA,NA,NA,NA,NA,NA,Kristoff Vernard,Marvel Comics,Bad,Male,Brown,Brown,https://www.superherodb.com/pictures2/portraits/10/100/1018.jpg,201,132
+224,Doctor Fate,81,16,25,80,100,50,Kent Nelson,Dc Comics,Good,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/676.jpg,188,89
+225,Doctor Octopus,94,48,33,40,53,65,Otto Octavius,Marvel Comics,Bad,Male,Brown,Brown,https://www.superherodb.com/pictures2/portraits/10/100/622.jpg,175,110
+226,Doctor Strange,100,10,12,84,100,60,Stephen Strange,Marvel Comics,Good,Male,Grey,Black,https://www.superherodb.com/pictures2/portraits/10/100/55.jpg,188,81
+227,Domino,63,10,27,28,49,74,Neena Thurman,Marvel Comics,Good,Female,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/902.jpg,173,54
+228,Donatello,88,14,46,60,58,75,NA,Idw Publishing,Good,Male,Green,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/10330.jpg,NA,NA
+229,Donna Troy,NA,89,NA,NA,NA,NA,Donna Hinckley Stacey Troy,Dc Comics,Good,Female,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/806.jpg,175,63
+230,Doomsday,75,100,67,100,100,90,Doomsday,Dc Comics,Bad,Male,Red,White,https://www.superherodb.com/pictures2/portraits/10/100/679.jpg,244,412
+231,Doppelganger,8,63,60,95,69,84,NA,Marvel Comics,Bad,Male,White,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/1320.jpg,196,104
+232,Dormammu,88,95,83,100,100,80,Dormammu,Marvel Comics,Bad,Male,Yellow,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/1359.jpg,185,NA
+233,Dr Manhattan,88,100,42,100,100,42,Jonathan Osterman,Dc Comics,Good,Male,White,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/884.jpg,NA,NA
+234,Drax The Destroyer,56,80,25,85,46,65,Arthur Sampson Douglas,Marvel Comics,Good,Male,Red,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/10016.jpg,193,306
+235,Ego,88,80,83,99,71,28,Ego,Marvel Comics,Bad,NA,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/6.jpg,NA,NA
+236,Elastigirl,63,32,33,95,52,70,Helen Parr,Dark Horse Comics,Good,Female,Brown,Brown,https://www.superherodb.com/pictures2/portraits/10/100/870.jpg,168,56
+237,Electro,69,10,50,56,67,64,Maxwell Dillon,Marvel Comics,Bad,Male,Blue,Auburn,https://www.superherodb.com/pictures2/portraits/10/100/7.jpg,180,74
+238,Elektra,63,11,30,28,59,100,Elektra Natchios,Marvel Comics,Good,Female,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/625.jpg,175,59
+239,Elle Bishop,50,8,12,42,63,42,NA,Nbc - Heroes,Bad,Female,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/1021.jpg,NA,NA
+240,Elongated Man,75,10,33,90,44,40,Ralph Dibny,Dc Comics,Good,Male,Blue,Red,https://www.superherodb.com/pictures2/portraits/10/100/1381.jpg,185,80
+241,Emma Frost,75,63,35,90,100,42,Emma Frost,Marvel Comics,Good,Female,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/325.jpg,178,65
+242,Enchantress,63,14,25,60,100,40,June Moone,Dc Comics,Good,Female,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/687.jpg,168,57
+243,Energy,NA,NA,NA,NA,NA,NA,NA,Harpercollins,Good,Female,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1155.jpg,NA,NA
+244,Erg-1,NA,NA,NA,NA,NA,NA,NA,Dc Comics,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1187.jpg,NA,NA
+245,Ethan Hunt,75,11,29,30,26,95,Ethan Hunt,NA,Good,Male,Brown,Brown,https://www.superherodb.com/pictures2/portraits/10/100/10476.jpg,168,NA
+246,Etrigan,50,85,17,100,100,50,Jason Blood,Dc Comics,Neutral,Male,Red,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/10429.jpg,193,203
+247,Evil Deadpool,69,32,50,100,100,100,Wade Wilson,Deadpool,Bad,Male,White,Red,https://www.superherodb.com/pictures2/portraits/10/100/10090.jpg,188,95
+248,Evilhawk,50,32,33,70,85,64,Dargin Bokk,Marvel Comics,Bad,Male,Red,Black,https://www.superherodb.com/pictures2/portraits/10/100/1516.jpg,191,106
+249,Exodus,63,81,28,28,100,70,Bennet Du Paris,Marvel Comics,Bad,Male,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/1517.jpg,183,88
+250,Fabian Cortez,NA,NA,NA,NA,NA,NA,Fabian Cortez,Marvel Comics,Bad,NA,Blue,Brown,https://www.superherodb.com/pictures2/portraits/10/100/24.jpg,196,96
+251,Falcon,38,13,50,28,22,64,Sam Wilson,Marvel Comics,Good,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/56.jpg,188,108
+252,Fallen One Ii,88,85,83,100,100,56,NA,Marvel Comics,Bad,Male,Black,Blue,https://www.superherodb.com/pictures2/portraits/10/100/1051.jpg,NA,NA
+253,Faora,88,95,75,100,98,90,Faora Hu-Ul,Dc Comics,Bad,Female,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1502.jpg,NA,NA
+254,Feral,38,28,45,28,27,70,Maria Callasantos,Marvel Comics,Good,NA,Yellow,Dual Color,https://www.superherodb.com/pictures2/portraits/10/100/57.jpg,175,50
+255,Fighting Spirit,NA,NA,NA,NA,NA,NA,Carol Carter,Dc Comics,Good,Female,NA,Red,https://www.superherodb.com/pictures2/portraits/10/100/1167.jpg,NA,NA
+256,Fin Fang Foom,50,81,23,100,75,70,NA,Marvel Comics,Good,Male,Red,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/1518.jpg,975,NA
+257,Firebird,38,8,40,14,100,42,Bonita Juarez,Marvel Comics,Good,Female,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/58.jpg,165,56
+258,Firelord,38,63,75,90,52,28,Pyreus Kril,Marvel Comics,Good,NA,White,Yellow,https://www.superherodb.com/pictures2/portraits/10/100/59.jpg,193,99
+259,Firestar,50,8,54,55,71,32,Angelica Jones,Marvel Comics,Good,Female,Green,Red,https://www.superherodb.com/pictures2/portraits/10/100/60.jpg,173,56
+260,Firestorm,50,53,58,56,100,42,Jason Rusch,Dc Comics,Good,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/689.jpg,NA,NA
+261,Firestorm,38,80,58,80,100,40,Ronald Raymond,Dc Comics,Good,Male,Blue,Auburn,https://www.superherodb.com/pictures2/portraits/10/100/10395.jpg,188,91
+262,Fixer,NA,NA,NA,NA,NA,NA,Paul Norbert Ebersol,Marvel Comics,Bad,NA,Red,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/9.jpg,NA,NA
+263,Flash,63,10,100,50,68,32,Jay Garrick,Dc Comics,Good,Male,Blue,Dual Color,https://www.superherodb.com/pictures2/portraits/10/100/891.jpg,180,81
+264,Flash Gordon,NA,69,NA,NA,NA,NA,Steven Gordon,NA,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1345.jpg,NA,NA
+265,Flash Ii,88,48,100,60,100,60,Barry Allen,Others,Good,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/892.jpg,183,88
+266,Flash Iii,63,10,100,60,100,32,Wally West,Others,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/690.jpg,183,86
+267,Flash Iv,63,10,100,32,100,48,Bartholomew Allen Ii,Others,Good,Male,Yellow,Auburn,https://www.superherodb.com/pictures2/portraits/10/100/893.jpg,157,52
+268,Forge,63,10,12,28,25,48,NA,Marvel Comics,Good,NA,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/62.jpg,183,81
+269,Franklin Richards,63,80,50,60,100,50,Franklin  Richards,Marvel Comics,Good,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/63.jpg,142,45
+270,Franklin Storm,38,10,1,1,0,10,Dr. Franklin Storm,Marvel Comics,Good,NA,Blue,Grey,https://www.superherodb.com/pictures2/portraits/10/100/170.jpg,188,92
+271,Frenzy,63,53,35,100,38,52,Joanna Cargill,Marvel Comics,Bad,Female,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/1108.jpg,211,104
+272,Frigga,NA,NA,NA,NA,NA,NA,Frigga,Marvel Comics,Good,Female,Blue,White,https://www.superherodb.com/pictures2/portraits/10/100/172.jpg,180,167
+273,Galactus,100,100,83,100,100,50,Galan,Marvel Comics,Neutral,Male,Black,Black,https://www.superherodb.com/pictures2/portraits/10/100/862.jpg,876,NA
+274,Gambit,63,10,23,28,55,84,Remy Etienne Lebeau,Marvel Comics,Good,Male,Red,Brown,https://www.superherodb.com/pictures2/portraits/10/100/64.jpg,185,81
+275,Gamora,75,85,42,85,53,100,Gamora Zen Whoberi Ben Titan,Marvel Comics,Good,Female,Yellow,Black,https://www.superherodb.com/pictures2/portraits/10/100/65.jpg,183,77
+276,Garbage Man,NA,82,NA,NA,NA,NA,Richard Ethan Morse,Dc Comics,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1467.jpg,NA,NA
+277,Gary Bell,63,5,8,10,54,10,Gary Bell,Syfy,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1526.jpg,NA,NA
+278,General Zod,94,100,96,100,100,95,Dru-Zod,Dc Comics,Bad,Male,Black,Black,https://www.superherodb.com/pictures2/portraits/10/100/837.jpg,NA,NA
+279,Genesis,NA,68,NA,NA,NA,NA,Tyler Dayspring,Marvel Comics,Good,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/1055.jpg,185,86
+280,Ghost Rider,50,55,25,100,100,60,Johnny Blaze,Marvel Comics,Good,Male,Red,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/67.jpg,188,99
+281,Ghost Rider Ii,NA,70,NA,NA,NA,NA,Daniel Ketch,Marvel Comics,Good,NA,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/68.jpg,NA,NA
+282,Giant-Man,NA,78,NA,NA,NA,NA,Hank Pym,Ant-Man,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/858.jpg,NA,NA
+283,Giant-Man Ii,NA,NA,NA,NA,NA,NA,NA,Marvel Comics,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/343.jpg,NA,NA
+284,Giganta,81,89,23,85,32,42,Doris Zuel,Dc Comics,Bad,Female,Green,Red,https://www.superherodb.com/pictures2/portraits/10/100/1376.jpg,NA,630
+285,Gladiator,50,100,100,100,77,70,Kallark,Marvel Comics,Neutral,Male,Blue,Blue,https://www.superherodb.com/pictures2/portraits/10/100/1521.jpg,198,268
+286,Goblin Queen,75,10,23,28,65,56,Madelyne Jennifer Pryor,Marvel Comics,Bad,Female,Green,Red,https://www.superherodb.com/pictures2/portraits/10/100/1054.jpg,168,50
+287,Godzilla,44,100,54,100,100,20,Gojira,NA,Bad,NA,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/10590.jpg,NA,NA
+288,Gog,50,34,47,72,39,56,NA,Dc Comics,Bad,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/693.jpg,NA,NA
+289,Goku,56,100,75,90,100,100,Kakarot,Shueisha,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1284.jpg,175,62
+290,Goliath,NA,NA,NA,NA,NA,NA,Erik Josten,Others,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/845.jpg,NA,NA
+291,Goliath,NA,NA,NA,NA,NA,NA,Clint Barton,Others,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/847.jpg,NA,NA
+292,Goliath,NA,NA,NA,NA,NA,NA,Hank Pym,Ant-Man,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/846.jpg,NA,NA
+293,Goliath Iv,NA,NA,NA,NA,NA,NA,William Barrett Foster,Marvel Comics,Good,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/879.jpg,183,90
+294,Gorilla Grodd,81,53,33,70,100,65,Grodd,Dc Comics,Bad,Male,Yellow,Black,https://www.superherodb.com/pictures2/portraits/10/100/694.jpg,198,270
+295,Granny Goodness,NA,96,NA,NA,NA,NA,NA,Dc Comics,Bad,Female,Blue,White,https://www.superherodb.com/pictures2/portraits/10/100/1344.jpg,178,115
+296,Gravity,50,32,33,40,69,30,Greg Willis,Marvel Comics,Good,Male,Blue,Brown,https://www.superherodb.com/pictures2/portraits/10/100/74.jpg,178,79
+297,Greedo,38,10,13,15,31,40,Greedo,George Lucas,Bad,Male,Purple,NA,https://www.superherodb.com/pictures2/portraits/10/100/10468.jpg,170,NA
+298,Green Arrow,81,12,35,28,39,90,Oliver Queen,Dc Comics,Good,Male,Green,Blond,https://www.superherodb.com/pictures2/portraits/10/100/696.jpg,188,88
+299,Green Goblin,100,48,38,60,48,50,Norman Osborn,Marvel Comics,Bad,Male,Blue,Auburn,https://www.superherodb.com/pictures2/portraits/10/100/579.jpg,180,83
+300,Green Goblin Ii,75,55,37,50,44,26,Harold Osborn,Marvel Comics,Bad,Male,Blue,Auburn,https://www.superherodb.com/pictures2/portraits/10/100/25.jpg,178,77
+301,Green Goblin Iii,NA,NA,NA,NA,NA,NA,Barton Hamilton,Marvel Comics,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/351.jpg,183,88
+302,Green Goblin Iv,NA,NA,NA,NA,NA,NA,Phillip Benjamin Urich,Marvel Comics,Good,Male,Green,Brown,https://www.superherodb.com/pictures2/portraits/10/100/75.jpg,178,79
+303,Groot,75,85,33,70,100,64,Groot,Marvel Comics,Good,Male,Yellow,NA,https://www.superherodb.com/pictures2/portraits/10/100/10017.jpg,701,NA
+304,Guardian,NA,45,NA,NA,NA,NA,James Hudson,Marvel Comics,Good,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/76.jpg,NA,NA
+305,Guy Gardner,38,90,53,64,100,64,Guy Gardner,Dc Comics,Good,Male,Blue,Red,https://www.superherodb.com/pictures2/portraits/10/100/700.jpg,188,95
+306,Hal Jordan,69,90,75,80,100,70,Hal Jordan,Dc Comics,Good,Male,Brown,Brown,https://www.superherodb.com/pictures2/portraits/10/100/697.jpg,188,90
+307,Han Solo,50,10,17,20,43,60,Han Solo,George Lucas,Good,Male,Brown,Brown,https://www.superherodb.com/pictures2/portraits/10/100/10456.jpg,183,79
+308,Hancock,63,90,67,100,100,50,John Hancock,Sony Pictures,Good,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/1109.jpg,188,NA
+309,Harley Quinn,88,12,33,65,55,80,Harley Quinn,Dc Comics,Bad,Female,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/701.jpg,170,63
+310,Harry Potter,75,7,21,10,100,50,Harry James Potter,Others,Good,Male,Green,Black,https://www.superherodb.com/pictures2/portraits/10/100/10878.jpg,NA,NA
+311,Havok,63,10,25,60,71,45,Alexander Summers,Marvel Comics,Good,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/77.jpg,183,79
+312,Hawk,38,38,35,95,43,42,Henry Hall,Dc Comics,Good,Male,Red,Brown,https://www.superherodb.com/pictures2/portraits/10/100/1382.jpg,185,89
+313,Hawkeye,56,12,21,10,29,80,Clint Barton,Goliath,Good,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/73.jpg,191,104
+314,Hawkeye Ii,50,6,8,10,24,50,Katherine Elizabeth Bishop,Marvel Comics,Good,Female,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/10043.jpg,165,57
+315,Hawkgirl,50,28,53,99,96,72,Kendra Saunders,Dc Comics,Good,Female,Green,Red,https://www.superherodb.com/pictures2/portraits/10/100/703.jpg,175,61
+316,Hawkman,NA,66,NA,NA,NA,NA,Carter Hall,Dc Comics,Good,Male,Blue,Brown,https://www.superherodb.com/pictures2/portraits/10/100/839.jpg,185,88
+317,Hawkwoman,NA,96,NA,NA,NA,NA,Shayera Hol,Dc Comics,Good,Female,Green,Red,https://www.superherodb.com/pictures2/portraits/10/100/702.jpg,175,54
+318,Hawkwoman Ii,NA,NA,NA,NA,NA,NA,Sharon Parker,Dc Comics,Good,Female,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1129.jpg,NA,NA
+319,Hawkwoman Iii,NA,92,NA,NA,NA,NA,Shayera Thal,Dc Comics,Good,Female,Blue,Red,https://www.superherodb.com/pictures2/portraits/10/100/1130.jpg,170,65
+320,Heat Wave,38,10,17,45,27,30,Mick Rory,Dc Comics,Bad,Male,Blue,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/705.jpg,180,81
+321,Hela,63,100,46,100,100,45,NA,Marvel Comics,Bad,Female,Green,Black,https://www.superherodb.com/pictures2/portraits/10/100/10835.jpg,213,225
+322,Hellboy,63,53,21,95,73,75,Anung Un Rama,Dark Horse Comics,Good,Male,Gold,Black,https://www.superherodb.com/pictures2/portraits/10/100/813.jpg,259,158
+323,Hellcat,63,11,33,45,46,70,Patricia Walker,Marvel Comics,Good,Female,Blue,Red,https://www.superherodb.com/pictures2/portraits/10/100/79.jpg,173,61
+324,Hellstorm,NA,56,NA,NA,NA,NA,Daimon Hellstrom,Marvel Comics,Good,Male,Red,Red,https://www.superherodb.com/pictures2/portraits/10/100/80.jpg,185,81
+325,Hercules,63,100,46,85,89,100,Heracles,Marvel Comics,Good,Male,Blue,Brown,https://www.superherodb.com/pictures2/portraits/10/100/78.jpg,196,146
+326,Hiro Nakamura,NA,15,NA,NA,NA,NA,Hiro Nakamura,Nbc - Heroes,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/947.jpg,NA,NA
+327,Hit-Girl,56,7,29,20,27,65,Mindy Mccready,Icon Comics,Good,Female,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1336.jpg,NA,NA
+328,Hobgoblin,NA,53,NA,NA,NA,NA,Roderick Kingsley,Marvel Comics,Bad,Male,Blue,Grey,https://www.superherodb.com/pictures2/portraits/10/100/896.jpg,180,83
+329,Hollow,NA,NA,NA,NA,NA,NA,Monet St. Croix,Marvel Comics,Good,Female,Blue,Red,https://www.superherodb.com/pictures2/portraits/10/100/931.jpg,170,NA
+330,Hope Summers,63,10,12,32,93,75,Hope Summers,Marvel Comics,Good,Female,Green,Red,https://www.superherodb.com/pictures2/portraits/10/100/1351.jpg,168,48
+331,Howard The Duck,NA,44,NA,NA,NA,NA,Howard (Last Name Unrevealed),Marvel Comics,Good,Male,Brown,Yellow,https://www.superherodb.com/pictures2/portraits/10/100/82.jpg,79,18
+332,Hulk,88,100,63,100,98,85,Bruce Banner,Marvel Comics,Good,Male,Green,Green,https://www.superherodb.com/pictures2/portraits/10/100/83.jpg,244,630
+333,Human Torch,63,11,63,70,87,42,Johnny Storm,Marvel Comics,Good,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/362.jpg,178,77
+334,Huntress,69,10,23,28,34,95,Helena Rosa Bertinelli,Others,Good,Female,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/707.jpg,180,59
+335,Husk,63,63,35,78,48,64,Paige Elisabeth Guthrie,Marvel Comics,Good,Female,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/84.jpg,170,58
+336,Hybrid,63,63,58,75,100,80,Scott Washington,Marvel Comics,Good,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/10493.jpg,175,77
+337,Hydro-Man,38,13,25,80,66,50,Morris Bench,Marvel Comics,Bad,Male,Brown,Brown,https://www.superherodb.com/pictures2/portraits/10/100/1451.jpg,188,119
+338,Hyperion,88,100,100,95,87,80,Mark Milton,Marvel Comics,Good,Male,Blue,Red,https://www.superherodb.com/pictures2/portraits/10/100/1286.jpg,183,207
+339,Iceman,63,32,53,100,100,64,Bobby Drake,Marvel Comics,Good,Male,Brown,Brown,https://www.superherodb.com/pictures2/portraits/10/100/816.jpg,173,65
+340,Impulse,50,10,100,60,74,60,Bartholomew Allen Ii,Flash Iv,Good,Male,Yellow,Auburn,https://www.superherodb.com/pictures2/portraits/10/100/895.jpg,170,65
+341,Indiana Jones,69,10,17,30,19,30,Indiana Jones,George Lucas,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/10560.jpg,183,79
+342,Indigo,75,63,50,50,100,50,Iroque,Dc Comics,Neutral,Female,NA,Purple,https://www.superherodb.com/pictures2/portraits/10/100/708.jpg,NA,NA
+343,Ink,38,28,17,40,73,50,Eric Gitter,Marvel Comics,Good,Male,Blue,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/10337.jpg,180,81
+344,Invisible Woman,88,10,27,85,93,56,Susan Storm Richards,Marvel Comics,Good,Female,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/620.jpg,168,54
+345,Iron Fist,75,55,33,50,95,100,Danny Rand,Marvel Comics,Good,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/1120.jpg,180,79
+346,Iron Man,100,85,58,85,100,64,Tony Stark,Marvel Comics,Good,Male,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/85.jpg,198,191
+347,Iron Monger,88,63,25,90,57,56,Obadiah Stane,Marvel Comics,Bad,Male,Blue,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/886.jpg,NA,NA
+348,Isis,75,48,75,46,50,56,Adrianna Tomaz,Dc Comics,Good,Female,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1164.jpg,NA,NA
+349,Jack Bauer,NA,43,NA,NA,NA,NA,Kiefer Sutherland,NA,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1203.jpg,NA,NA
+350,Jack Of Hearts,63,55,100,30,77,30,Jonathan Hart,Marvel Comics,Good,Male,Dual Color,Brown,https://www.superherodb.com/pictures2/portraits/10/100/86.jpg,155,79
+351,Jack-Jack,6,34,67,80,100,6,Jack-Jack Parr,Dark Horse Comics,Good,Male,Blue,Brown,https://www.superherodb.com/pictures2/portraits/10/100/871.jpg,71,14
+352,James Bond,88,13,17,35,25,90,James Bond,Others,Good,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/10404.jpg,183,NA
+353,James T. Kirk,69,11,17,30,30,75,James T. Kirk,Star Trek,Good,Male,Hazel,Brown,https://www.superherodb.com/pictures2/portraits/10/100/10565.jpg,178,77
+354,Jar Jar Binks,10,6,33,10,21,15,Jar Jar Binks,George Lucas,Good,Male,Yellow,NA,https://www.superherodb.com/pictures2/portraits/10/100/10563.jpg,193,NA
+355,Jason Bourne,88,12,29,30,26,100,Jason Bourne,NA,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/10477.jpg,NA,NA
+356,Jean Grey,94,80,21,20,92,70,Jean Grey,Others,Good,Female,Green,Red,https://www.superherodb.com/pictures2/portraits/10/100/814.jpg,168,52
+357,Jean-Luc Picard,75,10,17,30,26,65,Jean-Luc Picard,Star Trek,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/10567.jpg,NA,NA
+358,Jennifer Kale,75,10,35,42,74,72,Jennifer Kale,Marvel Comics,Good,Female,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/1321.jpg,168,55
+359,Jesse Quick,NA,42,NA,NA,NA,NA,Jesse Chambers,Others,Good,Female,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/10544.jpg,NA,NA
+360,Jessica Cruz,56,90,46,50,100,55,Jessica Cruz,Dc Comics,Good,Female,Green,Brown,https://www.superherodb.com/pictures2/portraits/10/100/10650.jpg,NA,NA
+361,Jessica Jones,56,44,50,70,18,55,Jessica Campbell Jones Cage,Others,Good,Female,Brown,Brown,https://www.superherodb.com/pictures2/portraits/10/100/10403.jpg,170,56
+362,Jessica Sanders,NA,NA,NA,NA,NA,NA,NA,Nbc - Heroes,Good,Female,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1029.jpg,NA,NA
+363,Jigsaw,NA,NA,NA,NA,NA,NA,Billy Russo,Marvel Comics,Bad,Male,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/887.jpg,188,113
+364,Jim Powell,38,38,23,80,23,20,Jim Powell,Abc Studios,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1354.jpg,NA,NA
+365,Jj Powell,88,10,8,10,14,10,Jj Powell,Abc Studios,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1357.jpg,NA,NA
+366,Johann Krauss,NA,30,NA,NA,NA,NA,Johann Krauss,Dark Horse Comics,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1121.jpg,NA,NA
+367,John Constantine,63,10,8,40,54,65,John Constantine,Dc Comics,Good,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/718.jpg,183,NA
+368,John Stewart,56,85,42,64,100,65,John Stewart,Dc Comics,Good,Male,Green,Black,https://www.superherodb.com/pictures2/portraits/10/100/873.jpg,185,90
+369,John Wraith,75,12,35,28,87,80,John Wraith,Marvel Comics,Good,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/1314.jpg,183,88
+370,Joker,100,10,12,60,43,70,Jack Napier,Dc Comics,Bad,Male,Green,Green,https://www.superherodb.com/pictures2/portraits/10/100/719.jpg,196,86
+371,Jolt,63,12,27,32,31,42,Helen Takahama,Marvel Comics,Good,Female,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/1323.jpg,165,49
+372,Jubilee,56,8,22,20,66,90,Jubilation Lee,Marvel Comics,Good,Female,Red,Black,https://www.superherodb.com/pictures2/portraits/10/100/87.jpg,165,52
+373,Judge Dredd,75,18,38,50,52,95,Joseph Dredd,Others,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1163.jpg,188,NA
+374,Juggernaut,44,100,42,100,85,70,Cain Marko,Marvel Comics,Neutral,Male,Blue,Red,https://www.superherodb.com/pictures2/portraits/10/100/826.jpg,287,855
+375,Junkpile,50,38,17,90,81,30,NA,Marvel Comics,Bad,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/10002.jpg,NA,NA
+376,Justice,50,10,33,70,55,30,Vance Astrovik,Marvel Comics,Good,Male,Hazel,Brown,https://www.superherodb.com/pictures2/portraits/10/100/88.jpg,178,81
+377,Jyn Erso,NA,NA,NA,NA,NA,NA,Jyn Erso,George Lucas,Good,Female,Green,Brown,https://www.superherodb.com/pictures2/portraits/10/100/10562.jpg,NA,NA
+378,K-2so,NA,NA,NA,NA,NA,NA,NA,George Lucas,Good,Male,White,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/10643.jpg,213,NA
+379,Kang,100,48,58,70,100,70,Nathaniel Richards,Others,Bad,Male,Brown,Brown,https://www.superherodb.com/pictures2/portraits/10/100/1053.jpg,191,104
+380,Kathryn Janeway,75,8,21,25,21,50,Kathryn Janeway,Star Trek,Good,Female,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/10581.jpg,NA,NA
+381,Katniss Everdeen,56,8,21,25,24,55,Katniss Everdeen,NA,Good,Female,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/10484.jpg,NA,NA
+382,Kevin 11,25,7,12,14,100,40,Kevin Ethan Levin,Dc Comics,Good,Male,NA,Black,https://www.superherodb.com/pictures2/portraits/10/100/1408.jpg,NA,NA
+383,Kick-Ass,38,10,23,35,22,56,Dave Lizewski,Icon Comics,Good,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/1158.jpg,NA,NA
+384,Kid Flash,25,4,92,42,20,30,Wallace Rudolph West,Dc Comics,Good,Male,Green,Red,https://www.superherodb.com/pictures2/portraits/10/100/722.jpg,NA,NA
+385,Kid Flash Ii,NA,47,NA,NA,NA,NA,Bartholomew Allen Ii,Flash Iv,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/894.jpg,NA,NA
+386,Killer Croc,19,53,35,90,53,60,Waylon Jones,Dc Comics,Bad,Male,Red,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/723.jpg,244,356
+387,Killer Frost,88,10,13,35,59,30,Caitlin Snow,Dc Comics,Bad,Female,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/10508.jpg,NA,NA
+388,Kilowog,81,90,53,42,100,80,NA,Dc Comics,Good,Male,Red,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/1428.jpg,234,324
+389,King Kong,56,100,71,75,47,75,King Kong,NA,Good,Male,Yellow,Black,https://www.superherodb.com/pictures2/portraits/10/100/10591.jpg,NA,NA
+390,King Shark,50,88,50,90,86,40,Nanaue,Dc Comics,Bad,Male,Black,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/10512.jpg,NA,NA
+391,Kingpin,75,18,25,40,13,70,Wilson Grant Fisk,Marvel Comics,Bad,Male,Blue,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/623.jpg,201,203
+392,Klaw,63,38,33,100,62,60,Ulysses Klaw,Marvel Comics,Bad,Male,Red,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/1539.jpg,188,97
+393,Kool-Aid Man,25,18,8,10,9,14,NA,NA,Good,Male,Black,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/1343.jpg,NA,NA
+394,Kraven Ii,50,34,23,28,43,85,Alyosha Kravinoff,Marvel Comics,Bad,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/1034.jpg,191,99
+395,Kraven The Hunter,63,32,35,42,25,85,Sergei Kravinoff,Marvel Comics,Bad,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/1033.jpg,183,106
+396,Krypto,9,80,100,90,82,40,Krypto The Superdog,Dc Comics,Good,Male,Blue,White,https://www.superherodb.com/pictures2/portraits/10/100/725.jpg,64,18
+397,Kyle Rayner,69,90,50,60,100,60,Kyle Rayner,Dc Comics,Good,Male,Green,Black,https://www.superherodb.com/pictures2/portraits/10/100/1409.jpg,180,79
+398,Kylo Ren,56,44,33,30,100,70,Ben Solo,George Lucas,Bad,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/10559.jpg,NA,NA
+399,Lady Bullseye,NA,63,NA,NA,NA,NA,NA,Marvel Comics,Bad,Female,NA,Black,https://www.superherodb.com/pictures2/portraits/10/100/1170.jpg,NA,NA
+400,Lady Deathstrike,63,28,42,85,48,90,Yuriko Oyama,Marvel Comics,Bad,Female,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/810.jpg,175,58
+401,Leader,100,10,12,14,59,42,Samuel Sterns,Marvel Comics,Bad,Male,Green,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/885.jpg,178,63
+402,Leech,25,5,12,14,62,14,NA,Marvel Comics,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/834.jpg,NA,NA
+403,Legion,50,100,42,30,100,75,David Haller,Marvel Comics,Good,Male,Dual Color,Black,https://www.superherodb.com/pictures2/portraits/10/100/10651.jpg,175,59
+404,Leonardo,75,16,50,65,59,80,Leonardo,Idw Publishing,Good,Male,Blue,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/10327.jpg,NA,NA
+405,Lex Luthor,100,53,25,65,68,70,Lex Luthor,Dc Comics,Bad,Male,Green,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/727.jpg,188,95
+406,Light Lass,38,10,35,28,67,42,Ayla Ranzz,Dc Comics,Good,Female,Blue,Red,https://www.superherodb.com/pictures2/portraits/10/100/1178.jpg,165,54
+407,Lightning Lad,38,10,23,28,60,42,Garth Ranzz,Dc Comics,Good,Male,Blue,Red,https://www.superherodb.com/pictures2/portraits/10/100/1177.jpg,155,65
+408,Lightning Lord,44,10,23,42,66,42,Mekt Ranzz,Dc Comics,Bad,Male,Blue,Red,https://www.superherodb.com/pictures2/portraits/10/100/1179.jpg,191,95
+409,Living Brain,75,53,35,56,31,28,NA,Marvel Comics,Bad,NA,Yellow,NA,https://www.superherodb.com/pictures2/portraits/10/100/1037.jpg,198,360
+410,Living Tribunal,100,100,100,100,100,30,NA,Marvel Comics,Neutral,NA,Blue,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/10523.jpg,NA,NA
+411,Liz Sherman,NA,NA,NA,NA,NA,NA,Elizabeth Anne Sherman,Dark Horse Comics,Good,Female,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/868.jpg,NA,NA
+412,Lizard,50,51,27,70,63,56,Curtis Connors,Marvel Comics,Bad,Male,Red,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/11.jpg,203,230
+413,Lobo,94,100,54,100,100,85,Lobo,Dc Comics,Neutral,Male,Red,Black,https://www.superherodb.com/pictures2/portraits/10/100/1127.jpg,229,288
+414,Loki,88,63,46,85,100,60,Loki Laufeyson,Marvel Comics,Bad,Male,Green,Black,https://www.superherodb.com/pictures2/portraits/10/100/928.jpg,193,236
+415,Longshot,50,10,27,10,71,70,NA,Marvel Comics,Good,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/1531.jpg,188,36
+416,Luke Cage,50,63,29,95,44,70,Luke Cage,Others,Good,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/269.jpg,198,191
+417,Luke Campbell,NA,NA,NA,NA,NA,NA,Luke Campbell,Nbc - Heroes,Bad,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1311.jpg,NA,NA
+418,Luke Skywalker,69,38,42,25,100,100,Luke Skywalker,George Lucas,Good,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/10447.jpg,168,77
+419,Luna,38,6,83,14,53,14,Luna Maximoff,Marvel Comics,Good,Female,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/933.jpg,NA,NA
+420,Lyja,NA,NA,NA,NA,NA,NA,Lyja,Marvel Comics,Good,Female,Green,Green,https://www.superherodb.com/pictures2/portraits/10/100/1017.jpg,NA,NA
+421,Mach-Iv,75,36,60,84,60,56,Abner Jenkins,Marvel Comics,Bad,Male,Brown,Brown,https://www.superherodb.com/pictures2/portraits/10/100/370.jpg,180,79
+422,Machine Man,63,32,35,84,51,64,"X-51, Aaron Stack",Marvel Comics,Good,NA,Red,Black,https://www.superherodb.com/pictures2/portraits/10/100/90.jpg,183,383
+423,Magneto,88,80,27,84,91,80,Erik Magnus Lensherr,Marvel Comics,Bad,Male,Grey,White,https://www.superherodb.com/pictures2/portraits/10/100/12.jpg,188,86
+424,Magog,50,48,23,64,66,72,David Reid,Dc Comics,Good,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/1324.jpg,NA,NA
+425,Magus,88,100,70,99,100,74,NA,Marvel Comics,Bad,Male,Black,NA,https://www.superherodb.com/pictures2/portraits/10/100/1297.jpg,183,NA
+426,Man Of Miracles,100,100,100,100,100,100,NA,Image Comics,NA,NA,Blue,Silver,https://www.superherodb.com/pictures2/portraits/10/100/10889.jpg,NA,NA
+427,Man-Bat,38,18,50,70,33,30,Robert Kirkland Langstrom,Dc Comics,Neutral,Male,Brown,Brown,https://www.superherodb.com/pictures2/portraits/10/100/731.jpg,NA,NA
+428,Man-Thing,50,32,8,100,100,40,Dr. Theodore Sallis,Marvel Comics,Good,Male,Red,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/382.jpg,213,225
+429,Man-Wolf,63,44,35,42,45,70,John Jameson,Marvel Comics,Good,Male,Brown,Auburn,https://www.superherodb.com/pictures2/portraits/10/100/91.jpg,188,90
+430,Mandarin,100,28,23,28,100,95,Khan,Marvel Comics,Bad,Male,Blue,White,https://www.superherodb.com/pictures2/portraits/10/100/1175.jpg,188,97
+431,Mantis,63,8,33,80,100,80,NA,Marvel Comics,Good,Female,Green,Black,https://www.superherodb.com/pictures2/portraits/10/100/384.jpg,168,52
+432,Martian Manhunter,100,95,92,100,100,85,J'onn J'onzz,Dc Comics,Good,Male,Red,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/733.jpg,201,135
+433,Marvel Girl,63,85,47,42,100,80,Rachel Anne Summers,Marvel Comics,Good,Female,Green,Red,https://www.superherodb.com/pictures2/portraits/10/100/94.jpg,170,56
+434,Master Brood,NA,NA,NA,NA,NA,NA,Currently Colin Wood,Team Epic Tv,Good,Male,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/958.jpg,183,81
+435,Master Chief,75,73,35,80,69,100,John-117,Others,Good,Male,Brown,Brown,https://www.superherodb.com/pictures2/portraits/10/100/1110.jpg,213,NA
+436,Match,75,95,83,85,100,70,Kent Connor,Dc Comics,Bad,Male,Black,Black,https://www.superherodb.com/pictures2/portraits/10/100/1459.jpg,NA,NA
+437,Matt Parkman,63,10,12,14,59,56,Matthew Parkman,Nbc - Heroes,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/948.jpg,NA,NA
+438,Maverick,63,10,12,42,60,85,Christopher Bradley,Marvel Comics,Good,Male,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/257.jpg,193,110
+439,Maxima,75,90,35,56,81,75,NA,Dc Comics,Bad,Female,Brown,Red,https://www.superherodb.com/pictures2/portraits/10/100/1168.jpg,180,72
+440,Maya Herrera,50,10,12,14,60,14,Maya Herrera,Nbc - Heroes,Good,Female,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/944.jpg,NA,NA
+441,Medusa,75,34,35,70,37,56,Medusalith Amaquelin Boltagon,Marvel Comics,Good,Female,Green,Red,https://www.superherodb.com/pictures2/portraits/10/100/96.jpg,180,59
+442,Meltdown,38,10,12,42,62,64,Tabitha Smith,Others,Good,Female,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/258.jpg,165,54
+443,Mephisto,88,85,35,95,100,42,NA,Marvel Comics,Bad,Male,White,Black,https://www.superherodb.com/pictures2/portraits/10/100/1322.jpg,198,140
+444,Mera,56,62,79,60,92,80,Mera,Dc Comics,Good,Female,Blue,Red,https://www.superherodb.com/pictures2/portraits/10/100/1388.jpg,175,72
+445,Metallo,75,53,23,95,86,64,John Corben,Dc Comics,Bad,Male,Green,Brown,https://www.superherodb.com/pictures2/portraits/10/100/737.jpg,196,90
+446,Metamorpho,NA,82,NA,NA,NA,NA,Rex Mason,Dc Comics,Good,Male,Black,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/738.jpg,185,90
+447,Meteorite,NA,NA,NA,NA,NA,NA,NA,Marvel Comics,Good,Female,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1333.jpg,NA,NA
+448,Metron,88,10,47,56,100,28,Metron,Dc Comics,Good,Male,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/841.jpg,185,86
+449,Micah Sanders,63,8,12,14,57,14,Micah Sanders,Nbc - Heroes,Good,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/951.jpg,NA,NA
+450,Michelangelo,63,14,50,65,59,75,NA,Idw Publishing,Good,Male,Blue,NA,https://www.superherodb.com/pictures2/portraits/10/100/10329.jpg,NA,NA
+451,Micro Lad,38,28,27,28,44,32,Gim Allon,Dc Comics,Good,Male,Grey,Brown,https://www.superherodb.com/pictures2/portraits/10/100/1181.jpg,183,77
+452,Mimic,63,67,47,56,79,42,Calvin Montgomery Rankin,Marvel Comics,Good,Male,Brown,Brown,https://www.superherodb.com/pictures2/portraits/10/100/97.jpg,188,101
+453,Minna Murray,NA,NA,NA,NA,NA,NA,Wilhelmina Harker,Wildstorm,Good,Female,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/881.jpg,NA,NA
+454,Misfit,63,32,23,80,91,42,Charlotte Gage-Radcliffe,Others,Good,Female,Blue,Red,https://www.superherodb.com/pictures2/portraits/10/100/1114.jpg,NA,NA
+455,Miss Martian,63,85,58,100,100,45,M'gann M'orzz,Dc Comics,Good,Female,Red,Red,https://www.superherodb.com/pictures2/portraits/10/100/1394.jpg,178,61
+456,Mister Fantastic,100,10,18,70,33,64,Reed Richards,Marvel Comics,Good,Male,Brown,Brown,https://www.superherodb.com/pictures2/portraits/10/100/408.jpg,185,81
+457,Mister Freeze,75,32,12,70,37,28,Victor Fries,Dc Comics,Bad,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/742.jpg,183,86
+458,Mister Knife,75,10,17,30,13,65,J'son,Marvel Comics,Bad,Male,Blue,Brown,https://www.superherodb.com/pictures2/portraits/10/100/10633.jpg,NA,NA
+459,Mister Mxyzptlk,100,85,100,100,100,50,Mr. Mxyzptlk,Dc Comics,Bad,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/744.jpg,NA,NA
+460,Mister Sinister,100,48,46,90,100,50,Nathaniel Essex,Marvel Comics,Bad,Male,Red,Black,https://www.superherodb.com/pictures2/portraits/10/100/856.jpg,196,128
+461,Mister Zsasz,88,22,33,28,18,85,Victor Zsasz,Dc Comics,Bad,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/1486.jpg,NA,NA
+462,Mockingbird,75,31,38,20,48,95,Barbara Morse,Marvel Comics,Good,Female,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/1328.jpg,175,61
+463,Modok,100,18,25,25,79,15,George Tarleton,Marvel Comics,Bad,Male,White,Brown,https://www.superherodb.com/pictures2/portraits/10/100/10438.jpg,366,338
+464,Mogo,NA,NA,NA,NA,NA,NA,Mogo,Dc Comics,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1432.jpg,NA,NA
+465,Mohinder Suresh,NA,NA,NA,NA,NA,NA,Mohinder Suresh,Nbc - Heroes,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1313.jpg,NA,NA
+466,Moloch,NA,NA,NA,NA,NA,NA,Edgar William Jacobi,Dc Comics,Bad,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1061.jpg,NA,NA
+467,Molten Man,50,73,23,84,53,56,Mark Raxton,Marvel Comics,Bad,Male,Gold,Others,https://www.superherodb.com/pictures2/portraits/10/100/411.jpg,196,248
+468,Monarch,NA,100,NA,NA,NA,NA,Nathaniel Christopher Adam,Dc Comics,Good,Male,Blue,White,https://www.superherodb.com/pictures2/portraits/10/100/1006.jpg,193,90
+469,Monica Dawson,50,10,35,14,48,90,Monica Dawson,Nbc - Heroes,Good,Female,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/942.jpg,NA,NA
+470,Moon Knight,50,36,23,42,28,75,Marc Spector,Marvel Comics,Good,Male,Brown,Brown,https://www.superherodb.com/pictures2/portraits/10/100/415.jpg,188,101
+471,Moonstone,56,67,47,52,74,80,Karla Sofen,Marvel Comics,Bad,Female,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/100.jpg,180,59
+472,Morlun,63,60,35,42,74,56,Morlun,Marvel Comics,Bad,Male,Dual Color,Black,https://www.superherodb.com/pictures2/portraits/10/100/1171.jpg,188,79
+473,Morph,NA,40,NA,NA,NA,NA,Kevin Sydney,Marvel Comics,Good,Male,White,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/102.jpg,178,79
+474,Moses Magnum,75,28,12,42,55,56,Moses Magnum,Marvel Comics,Bad,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/1020.jpg,175,72
+475,Mr Immortal,50,10,8,100,69,30,Craig Hollis,Marvel Comics,Good,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/10794.jpg,188,70
+476,Mr Incredible,50,83,33,95,29,40,Robert Parr,Dark Horse Comics,Good,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/869.jpg,201,158
+477,Ms Marvel Ii,38,63,23,84,11,56,Sharon Ventura,Others,Good,Female,Blue,Red,https://www.superherodb.com/pictures2/portraits/10/100/897.jpg,173,61
+478,Multiple Man,63,11,23,70,28,62,James Arthur,Marvel Comics,Good,Male,Blue,Brown,https://www.superherodb.com/pictures2/portraits/10/100/104.jpg,180,70
+479,Mysterio,81,10,17,40,82,70,Quentin Beck,Marvel Comics,Bad,Male,Brown,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/1039.jpg,180,79
+480,Mystique,75,12,23,64,64,74,Raven Darkholme,Marvel Comics,Bad,Female,Yellow,Dual Color,https://www.superherodb.com/pictures2/portraits/10/100/817.jpg,178,54
+481,Namor,69,95,58,70,73,85,Namor Mckenzie,Marvel Comics,Good,Male,Grey,Black,https://www.superherodb.com/pictures2/portraits/10/100/137.jpg,188,125
+482,Namor,NA,NA,NA,NA,NA,NA,NA,Marvel Comics,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/105.jpg,NA,NA
+483,Namora,50,85,42,42,48,64,Aquaria Nautica Neptunia,Marvel Comics,Good,Female,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/1364.jpg,180,85
+484,Namorita,50,72,47,70,37,70,Namorita Prentiss,Marvel Comics,Good,Female,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/106.jpg,168,101
+485,Naruto Uzumaki,50,80,32,80,100,100,NA,Shueisha,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1540.jpg,168,54
+486,Nathan Petrelli,NA,NA,NA,NA,NA,NA,Nathan Petrelli,Nbc - Heroes,Good,Male,Brown,NA,https://www.superherodb.com/pictures2/portraits/10/100/949.jpg,NA,NA
+487,Nebula,63,52,13,50,42,60,NA,Marvel Comics,Bad,Female,Blue,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/10632.jpg,185,83
+488,Negasonic Teenage Warhead,50,7,8,10,45,35,Ellie Phimister,Marvel Comics,Good,Female,Black,Black,https://www.superherodb.com/pictures2/portraits/10/100/10556.jpg,NA,NA
+489,Nick Fury,75,11,23,42,25,100,Nicholas Joseph Fury,Marvel Comics,Good,Male,Brown,Dual Color,https://www.superherodb.com/pictures2/portraits/10/100/326.jpg,185,99
+490,Nightcrawler,50,10,47,14,76,80,Kurt Wagner,Marvel Comics,Good,Male,Yellow,Others,https://www.superherodb.com/pictures2/portraits/10/100/107.jpg,175,88
+491,Nightwing,88,11,33,28,36,100,Dick Grayson,Batman Ii,Good,Male,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/851.jpg,178,79
+492,Niki Sanders,63,52,35,28,37,56,Nicole Sanders,Nbc - Heroes,Good,Female,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/952.jpg,NA,NA
+493,Nina Theroux,63,5,8,10,68,20,NA,Syfy,Good,Female,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1529.jpg,NA,NA
+494,Nite Owl Ii,NA,45,NA,NA,NA,NA,Daniel Dreiberg,Dc Comics,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1059.jpg,NA,NA
+495,Northstar,50,18,83,56,65,70,Jean-Paul Beaubier,Marvel Comics,Good,Male,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/1287.jpg,180,83
+496,Nova,100,85,75,100,100,80,Richard Rider,Marvel Comics,Good,Male,Brown,Brown,https://www.superherodb.com/pictures2/portraits/10/100/109.jpg,185,86
+497,Nova,63,60,100,100,100,35,Frankie Raye,Marvel Comics,Good,Female,White,Red,https://www.superherodb.com/pictures2/portraits/10/100/10313.jpg,163,59
+498,Odin,100,83,67,95,100,90,Odin Borson,Marvel Comics,Good,Male,Blue,White,https://www.superherodb.com/pictures2/portraits/10/100/10388.jpg,206,293
+499,Offspring,50,10,35,99,100,56,Luke O'brian,Dc Comics,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1298.jpg,NA,NA
+500,Omega Red,NA,61,NA,NA,NA,NA,Arkady Gregorivich,Marvel Comics,Bad,Male,Red,Blond,https://www.superherodb.com/pictures2/portraits/10/100/208.jpg,211,191
+501,Omniscient,NA,NA,NA,NA,NA,NA,Omniscient Is The Closest English Word That Compares To His Alien Tongue.,Team Epic Tv,Good,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/1003.jpg,180,65
+502,One Punch Man,38,100,83,95,55,50,Saitama,Shueisha,Good,Male,NA,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/10522.jpg,175,69
+503,One-Above-All,100,100,100,100,100,100,NA,Marvel Comics,Neutral,NA,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/10374.jpg,NA,NA
+504,Onslaught,88,100,33,100,100,55,Onslaught,Marvel Comics,Bad,Male,Red,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/13.jpg,305,405
+505,Oracle,75,11,23,28,19,76,Barbara Gordon,Others,Good,Female,Blue,Red,https://www.superherodb.com/pictures2/portraits/10/100/749.jpg,178,59
+506,Osiris,75,85,60,95,65,42,Amon Tomaz,Dc Comics,Good,Male,Brown,Brown,https://www.superherodb.com/pictures2/portraits/10/100/1165.jpg,NA,NA
+507,Overtkill,NA,NA,NA,NA,NA,NA,Nicholas Rocca,Image Comics,Bad,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/866.jpg,NA,NA
+508,Ozymandias,100,18,33,20,49,95,Adrian Veidt,Dc Comics,Bad,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/1063.jpg,NA,NA
+509,Parademon,9,28,17,50,53,25,NA,Dc Comics,Bad,NA,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/10806.jpg,NA,NA
+510,Paul Blart,8,11,21,50,7,5,Paul Blart,Sony Pictures,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/10479.jpg,170,117
+511,Penance,NA,NA,NA,NA,NA,NA,NA,Marvel Comics,Good,NA,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/929.jpg,NA,NA
+512,Penance I,NA,NA,NA,NA,NA,NA,NA,Marvel Comics,Good,Female,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/930.jpg,NA,NA
+513,Penance Ii,NA,20,NA,NA,NA,NA,Robert Baldwin,Others,Good,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/900.jpg,183,89
+514,Penguin,75,10,12,28,30,45,Oswald Chesterfield Cobblepot,Dc Comics,Bad,Male,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/753.jpg,157,79
+515,Phantom,NA,48,NA,NA,NA,NA,Christopher Walker,Dc Comics,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/889.jpg,NA,NA
+516,Phantom Girl,38,10,23,28,53,42,Tinya Wazzo,Dc Comics,Good,Female,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/1184.jpg,168,54
+517,Phoenix,100,100,83,100,100,80,Jean Grey,Others,Good,Female,Green,Red,https://www.superherodb.com/pictures2/portraits/10/100/828.jpg,168,52
+518,Plantman,63,60,25,55,61,25,Samuel Smithers,Marvel Comics,Bad,Male,Green,Grey,https://www.superherodb.com/pictures2/portraits/10/100/10487.jpg,183,87
+519,Plastic Lad,NA,NA,NA,NA,NA,NA,Luke O'brian,Dc Comics,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1299.jpg,NA,NA
+520,Plastic Man,50,63,23,100,100,56,Patrick O'brian,Dc Comics,Good,Male,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/756.jpg,185,80
+521,Plastique,50,10,23,28,60,42,Bette Sans Souci,Dc Comics,Bad,Female,Blue,Red,https://www.superherodb.com/pictures2/portraits/10/100/1176.jpg,168,55
+522,Poison Ivy,81,14,21,40,100,40,Pamela Isley,Dc Comics,Bad,Female,Green,Red,https://www.superherodb.com/pictures2/portraits/10/100/757.jpg,168,50
+523,Polaris,63,73,42,50,100,45,Lorna Dane,Marvel Comics,Good,Female,Green,Green,https://www.superherodb.com/pictures2/portraits/10/100/1046.jpg,170,52
+524,Power Girl,94,100,100,100,100,75,Kara Zor-L,Dc Comics,Good,Female,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/758.jpg,180,81
+525,Power Man,NA,82,NA,NA,NA,NA,Luke Cage,Others,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1016.jpg,NA,NA
+526,Predator,63,30,25,85,100,90,Yautja,Dark Horse Comics,Bad,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/10448.jpg,213,234
+527,Professor X,100,8,12,14,100,32,Charles Francis Xavier,Marvel Comics,Good,Male,Blue,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/113.jpg,183,86
+528,Professor Zoom,94,10,100,20,83,20,Eobard Thawne,Dc Comics,Bad,Male,Blue,Strawberry Blond,https://www.superherodb.com/pictures2/portraits/10/100/766.jpg,180,81
+529,Psylocke,63,33,25,40,100,90,Elizabeth Braddock,Marvel Comics,Good,Female,Blue,Purple,https://www.superherodb.com/pictures2/portraits/10/100/114.jpg,180,70
+530,Punisher,69,16,21,45,42,100,Frank Castle,Marvel Comics,Good,Male,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/112.jpg,183,90
+531,Purple Man,56,10,8,30,92,10,Zebediah Killgrave,Marvel Comics,Bad,Male,Purple,Purple,https://www.superherodb.com/pictures2/portraits/10/100/10451.jpg,180,74
+532,Pyro,38,10,12,14,54,28,St. John Allerdyce,Marvel Comics,Bad,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/853.jpg,178,68
+533,Q,100,12,17,100,100,40,Q,Star Trek,NA,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/10578.jpg,NA,NA
+534,Quantum,NA,NA,NA,NA,NA,NA,NA,Harpercollins,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1157.jpg,NA,NA
+535,Question,81,14,27,35,20,80,Charles Victor Szasz,Dc Comics,Good,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/760.jpg,188,83
+536,Quicksilver,63,28,100,60,81,56,Pietro Django Maximoff,Marvel Comics,Good,Male,Blue,Silver,https://www.superherodb.com/pictures2/portraits/10/100/115.jpg,183,79
+537,Quill,38,10,12,14,23,14,Maxwell Jordan,Marvel Comics,Good,Male,Brown,Brown,https://www.superherodb.com/pictures2/portraits/10/100/830.jpg,163,56
+538,Ra's Al Ghul,100,28,32,42,27,100,Ra's Al Ghul,Dc Comics,Bad,Male,Green,Grey,https://www.superherodb.com/pictures2/portraits/10/100/761.jpg,193,97
+539,Rachel Pirzad,63,4,8,10,52,10,NA,Syfy,Good,Female,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1530.jpg,NA,NA
+540,Rambo,63,14,25,30,30,100,John Rambo,NA,Good,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/10475.jpg,178,83
+541,Raphael,63,17,50,65,59,80,NA,Idw Publishing,Good,Male,NA,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/10328.jpg,NA,NA
+542,Raven,50,10,29,70,84,40,Rachel Roth,Dc Comics,Neutral,Female,Others,Black,https://www.superherodb.com/pictures2/portraits/10/100/764.jpg,165,50
+543,Ray,50,10,92,100,100,20,Ray Terrill,Dc Comics,Good,Male,Green,Red,https://www.superherodb.com/pictures2/portraits/10/100/10204.jpg,178,70
+544,Razor-Fist Ii,NA,NA,NA,NA,NA,NA,Douglas Scott,Marvel Comics,Bad,Male,Blue,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/935.jpg,191,117
+545,Red Arrow,63,16,25,20,23,80,Roy Harper,Dc Comics,Good,Male,Green,Red,https://www.superherodb.com/pictures2/portraits/10/100/1013.jpg,180,83
+546,Red Hood,75,12,23,28,35,95,Jason Todd,Others,Neutral,Male,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/932.jpg,183,81
+547,Red Hulk,50,100,47,85,82,75,Thaddeus E. Ross,Marvel Comics,Neutral,Male,Yellow,Black,https://www.superherodb.com/pictures2/portraits/10/100/1342.jpg,213,630
+548,Red Mist,25,10,23,14,20,56,Chris Genovese,Icon Comics,Bad,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1337.jpg,NA,NA
+549,Red Robin,81,11,27,32,29,80,Tim Drake,Others,Good,Male,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/10009.jpg,165,56
+550,Red Skull,75,10,12,14,19,80,Johann Shmidt,Marvel Comics,Bad,Male,Blue,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/1392.jpg,188,108
+551,Red Tornado,75,38,67,60,100,40,John Smith,Dc Comics,Good,Male,Green,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/1149.jpg,185,146
+552,Redeemer Ii,NA,NA,NA,NA,NA,NA,Phil Timper,Image Comics,Bad,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1081.jpg,NA,NA
+553,Redeemer Iii,NA,NA,NA,NA,NA,NA,Eddie Frank,Image Comics,Bad,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1092.jpg,NA,NA
+554,Renata Soliz,NA,NA,NA,NA,NA,NA,NA,Harpercollins,Good,Female,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1151.jpg,NA,NA
+555,Rey,63,8,21,10,87,35,NA,George Lucas,Good,Female,Hazel,Brown,https://www.superherodb.com/pictures2/portraits/10/100/10561.jpg,297,NA
+556,Rhino,25,80,43,90,36,85,Aleksei Mikhailovich Sytsevich,Marvel Comics,Bad,Male,Brown,Brown,https://www.superherodb.com/pictures2/portraits/10/100/15.jpg,196,320
+557,Rick Flag,88,11,23,28,19,95,Richard Rogers Flag,Dc Comics,Bad,Male,Blue,Brown,https://www.superherodb.com/pictures2/portraits/10/100/1352.jpg,185,85
+558,Riddler,100,10,12,14,10,14,Edward Nigma,Dc Comics,Bad,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/768.jpg,NA,NA
+559,Rip Hunter,100,8,8,10,100,25,Richard Hunter,Dc Comics,Good,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/10543.jpg,NA,NA
+560,Ripcord,NA,NA,NA,NA,NA,NA,Miranda Leevald,Marvel Comics,Good,Female,Green,Black,https://www.superherodb.com/pictures2/portraits/10/100/1291.jpg,180,72
+561,Robin,88,11,27,28,32,85,Dick Grayson,Batman Ii,Good,Male,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/850.jpg,178,79
+562,Robin Ii,75,11,27,28,28,85,Jason Todd,Others,Good,Male,Blue,Red,https://www.superherodb.com/pictures2/portraits/10/100/849.jpg,183,101
+563,Robin Iii,81,11,27,28,29,85,Tim Drake,Others,Good,Male,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/769.jpg,165,56
+564,Robin V,69,8,33,16,29,65,Damian Wayne,Dc Comics,Good,Male,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/1473.jpg,137,38
+565,Robin Vi,50,8,25,20,17,70,Carrie Kelley,Dc Comics,Neutral,Female,Green,Red,https://www.superherodb.com/pictures2/portraits/10/100/10394.jpg,NA,NA
+566,Rocket Raccoon,50,5,23,28,28,64,Rocket Raccoon,Marvel Comics,Good,Male,Brown,Brown,https://www.superherodb.com/pictures2/portraits/10/100/10010.jpg,122,25
+567,Rogue,75,10,12,28,80,80,Anna Marie,Marvel Comics,Good,Female,Green,Dual Color,https://www.superherodb.com/pictures2/portraits/10/100/831.jpg,173,54
+568,Ronin,56,12,21,10,13,80,Clint Barton,Goliath,Good,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/1202.jpg,191,104
+569,Rorschach,75,10,29,20,23,80,Walter Joseph Kovacs,Dc Comics,Good,Male,Blue,Red,https://www.superherodb.com/pictures2/portraits/10/100/771.jpg,168,63
+570,Sabretooth,56,48,38,90,50,100,Victor Creed,Marvel Comics,Bad,Male,Amber,Blond,https://www.superherodb.com/pictures2/portraits/10/100/17.jpg,198,171
+571,Sage,75,10,12,14,28,56,Tessa,Marvel Comics,Good,Female,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/117.jpg,170,61
+572,Sandman,44,75,46,90,100,60,William Baker,Marvel Comics,Neutral,Male,Brown,Brown,https://www.superherodb.com/pictures2/portraits/10/100/621.jpg,185,203
+573,Sasquatch,75,80,23,56,15,42,Walter Langkowski,Marvel Comics,Good,Male,Red,Orange,https://www.superherodb.com/pictures2/portraits/10/100/863.jpg,305,900
+574,Sauron,88,85,33,100,100,70,Sauron,Others,Bad,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/10849.jpg,279,NA
+575,Savage Dragon,63,70,54,85,66,72,Kurr,Image Comics,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1117.jpg,NA,NA
+576,Scarecrow,81,10,12,14,48,50,Jonathan Crane,Dc Comics,Bad,Male,Blue,Brown,https://www.superherodb.com/pictures2/portraits/10/100/819.jpg,183,63
+577,Scarlet Spider,75,53,60,74,46,56,Benjamin Reilly,Others,Good,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/174.jpg,178,74
+578,Scarlet Spider Ii,88,55,60,40,37,56,Kaine Parker,Marvel Comics,Good,Male,Brown,Brown,https://www.superherodb.com/pictures2/portraits/10/100/1536.jpg,193,113
+579,Scarlet Witch,100,10,29,70,100,80,Wanda Maximoff,Marvel Comics,Bad,Female,Blue,Brown,https://www.superherodb.com/pictures2/portraits/10/100/444.jpg,170,59
+580,Scorpia,38,28,42,28,34,28,Elaine Coll,Marvel Comics,Bad,Female,Green,Red,https://www.superherodb.com/pictures2/portraits/10/100/1123.jpg,NA,NA
+581,Scorpion,50,52,60,85,49,80,Macdonald Gargan,Others,Bad,Male,Brown,Brown,https://www.superherodb.com/pictures2/portraits/10/100/1041.jpg,211,310
+582,Sebastian Shaw,63,85,12,95,36,56,Sebastian Hiram Shaw,Marvel Comics,Bad,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1482.jpg,NA,NA
+583,Sentry,75,100,100,84,100,40,Robert Reynolds,Marvel Comics,Neutral,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/447.jpg,188,87
+584,Shadow King,75,12,27,100,100,75,Amahl Farouk,Marvel Comics,Good,NA,Red,NA,https://www.superherodb.com/pictures2/portraits/10/100/121.jpg,185,149
+585,Shadow Lass,63,10,67,20,79,80,Tasmia Mallor,Dc Comics,Good,Female,Black,Black,https://www.superherodb.com/pictures2/portraits/10/100/1195.jpg,173,54
+586,Shadowcat,88,8,21,25,69,70,Kitty Pryde,Marvel Comics,Good,Female,Hazel,Brown,https://www.superherodb.com/pictures2/portraits/10/100/122.jpg,168,50
+587,Shang-Chi,63,12,30,50,29,100,Shang-Chi,Marvel Comics,Good,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/454.jpg,178,79
+588,Shatterstar,63,48,45,64,49,84,Gaveedra Seven,Marvel Comics,Good,Male,Brown,Red,https://www.superherodb.com/pictures2/portraits/10/100/124.jpg,191,88
+589,She-Hulk,81,100,42,100,40,70,Jennifer Walters,Marvel Comics,Good,Female,Green,Green,https://www.superherodb.com/pictures2/portraits/10/100/125.jpg,201,315
+590,She-Thing,69,72,21,80,23,65,Sharon Ventura,Others,Good,Female,Blue,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/461.jpg,183,153
+591,Shocker,63,10,23,70,79,56,Herman Schultz,Marvel Comics,Bad,Male,Brown,Brown,https://www.superherodb.com/pictures2/portraits/10/100/19.jpg,175,79
+592,Shriek,50,10,23,28,45,42,Frances Louise Barrison,Marvel Comics,Good,Female,Dual Color,Black,https://www.superherodb.com/pictures2/portraits/10/100/1319.jpg,173,52
+593,Shrinking Violet,NA,NA,NA,NA,NA,NA,NA,Dc Comics,Good,Female,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1188.jpg,NA,NA
+594,Sif,63,90,67,80,100,70,Sif,Marvel Comics,Good,Female,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/1533.jpg,188,191
+595,Silk,75,48,71,70,71,65,Cindy Moon,Marvel Comics,Good,Female,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/10495.jpg,NA,NA
+596,Silk Spectre,NA,NA,NA,NA,NA,NA,Sally Juspeczyk,Dc Comics,Good,Female,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1057.jpg,NA,NA
+597,Silk Spectre Ii,NA,51,NA,NA,NA,NA,Laurie Juspeczyk,Dc Comics,Good,Female,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1058.jpg,NA,NA
+598,Silver Surfer,56,100,100,90,100,32,Norrin Radd,Marvel Comics,Good,Male,White,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/127.jpg,193,101
+599,Silverclaw,50,28,35,42,34,42,Maria De Guadalupe Santiago,Marvel Comics,Good,Female,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/1019.jpg,157,50
+600,Simon Baz,56,90,42,55,100,60,Simoon Baz,Dc Comics,Good,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/10649.jpg,NA,NA
+601,Sinestro,75,85,53,64,100,55,Thaal Sinestro,Dc Comics,Neutral,Male,Black,Black,https://www.superherodb.com/pictures2/portraits/10/100/781.jpg,201,92
+602,Siren,56,62,79,60,92,60,Hila,Dc Comics,Bad,Female,Blue,Purple,https://www.superherodb.com/pictures2/portraits/10/100/1387.jpg,175,72
+603,Siren Ii,NA,NA,NA,NA,NA,NA,La Sirene La Bailene,Dc Comics,Bad,Female,Black,NA,https://www.superherodb.com/pictures2/portraits/10/100/1386.jpg,NA,NA
+604,Siryn,38,8,47,28,50,42,Theresa Rourke Cassidy,Marvel Comics,Bad,Female,Blue,Strawberry Blond,https://www.superherodb.com/pictures2/portraits/10/100/833.jpg,168,52
+605,Skaar,50,85,27,90,69,85,NA,Marvel Comics,Good,Male,Green,Black,https://www.superherodb.com/pictures2/portraits/10/100/1341.jpg,198,180
+606,Snake-Eyes,NA,NA,NA,NA,NA,NA,NA,Marvel Comics,Bad,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/10437.jpg,NA,NA
+607,Snowbird,50,32,27,42,70,52,Narya,Marvel Comics,Good,Female,White,Blond,https://www.superherodb.com/pictures2/portraits/10/100/130.jpg,178,49
+608,Sobek,50,34,23,46,20,56,Yurrd The Unknown,Dc Comics,Good,Male,White,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/1166.jpg,NA,NA
+609,Solomon Grundy,9,93,13,100,92,30,Cyrus Gold,Dc Comics,Bad,Male,Black,White,https://www.superherodb.com/pictures2/portraits/10/100/782.jpg,279,437
+610,Songbird,75,36,27,42,55,56,Melissa Joan Gold,Marvel Comics,Good,Female,Green,Dual Color,https://www.superherodb.com/pictures2/portraits/10/100/131.jpg,165,65
+611,Space Ghost,38,18,33,40,95,80,Thaddeus Bach,Dc Comics,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1505.jpg,188,113
+612,Spawn,75,60,50,90,100,95,Al Simmons,Image Comics,Good,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/842.jpg,211,405
+613,Spectre,88,100,100,100,100,70,Aztar,Others,Good,Male,White,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/784.jpg,NA,NA
+614,Speedball,NA,NA,NA,NA,NA,NA,Robert Baldwin,Others,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/132.jpg,NA,NA
+615,Speedy,50,6,33,20,26,70,Thea Queen,Dc Comics,Good,Female,Green,Brown,https://www.superherodb.com/pictures2/portraits/10/100/10558.jpg,NA,NA
+616,Speedy,NA,NA,NA,NA,NA,NA,"Roy William Harper, Jr.",Others,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1015.jpg,NA,NA
+617,Spider-Carnage,NA,69,NA,NA,NA,NA,Benjamin Reilly,Others,Bad,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/957.jpg,NA,NA
+618,Spider-Girl,63,38,60,65,53,75,May 'Mayday' Parker,Marvel Comics,Good,Female,Blue,Brown,https://www.superherodb.com/pictures2/portraits/10/100/480.jpg,170,54
+619,Spider-Gwen,75,55,63,70,66,70,Gwen Stacy,Marvel Comics,Good,Female,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/10507.jpg,165,56
+620,Spider-Man,90,55,67,75,74,85,Peter Parker,Marvel Comics,Good,Male,Hazel,Brown,https://www.superherodb.com/pictures2/portraits/10/100/133.jpg,178,74
+621,Spider-Man,NA,57,NA,NA,NA,NA,Miguel O'hara,Marvel Comics,Good,NA,Red,Brown,https://www.superherodb.com/pictures2/portraits/10/100/479.jpg,178,77
+622,Spider-Man,NA,58,NA,NA,NA,NA,Miles Morales,Marvel Comics,Good,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/10647.jpg,157,56
+623,Spider-Woman,56,42,42,60,68,70,Jessica Drew,Marvel Comics,Good,Female,Green,Black,https://www.superherodb.com/pictures2/portraits/10/100/481.jpg,178,59
+624,Spider-Woman Ii,NA,NA,NA,NA,NA,NA,NA,Marvel Comics,Good,Female,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/483.jpg,NA,NA
+625,Spider-Woman Iii,50,48,27,42,60,28,Martha Franklin,Marvel Comics,Good,Female,Brown,Brown,https://www.superherodb.com/pictures2/portraits/10/100/482.jpg,173,55
+626,Spider-Woman Iv,NA,NA,NA,NA,NA,NA,Charlotte Witter,Marvel Comics,Bad,Female,Red,White,https://www.superherodb.com/pictures2/portraits/10/100/883.jpg,178,58
+627,Spock,81,18,17,40,56,40,S'chn T'gai Spock,Star Trek,Good,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/10566.jpg,185,81
+628,Spyke,50,12,17,60,48,30,Evan Daniels,Marvel Comics,Good,Male,Brown,Blond,https://www.superherodb.com/pictures2/portraits/10/100/1455.jpg,183,83
+629,Stacy X,NA,NA,NA,NA,NA,NA,NA,Marvel Comics,Good,Female,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/485.jpg,NA,NA
+630,Star-Lord,69,20,33,50,25,70,Peter Jason Quill,Marvel Comics,Good,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/10015.jpg,188,79
+631,Stardust,88,85,100,110,100,85,NA,Marvel Comics,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1052.jpg,NA,NA
+632,Starfire,50,80,33,85,59,70,Koriand'r,Dc Comics,Good,Female,Green,Auburn,https://www.superherodb.com/pictures2/portraits/10/100/786.jpg,193,71
+633,Stargirl,63,80,25,90,87,55,Courtney Whitmore,Dc Comics,Good,Female,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/1326.jpg,165,62
+634,Static,69,8,42,50,90,40,Virgil Hawkins,Dc Comics,Good,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/1471.jpg,170,63
+635,Steel,81,82,53,90,64,64,John Henry Irons,Dc Comics,Good,Male,Brown,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/1383.jpg,201,131
+636,Stephanie Powell,69,10,54,10,24,10,Stephanie Powell,Abc Studios,Good,Female,NA,Blond,https://www.superherodb.com/pictures2/portraits/10/100/1355.jpg,NA,NA
+637,Steppenwolf,94,100,83,100,100,100,NA,Dc Comics,Bad,Male,Red,Black,https://www.superherodb.com/pictures2/portraits/10/100/10653.jpg,183,91
+638,Storm,75,10,47,30,88,75,Ororo Munroe,Marvel Comics,Good,Female,Blue,White,https://www.superherodb.com/pictures2/portraits/10/100/135.jpg,180,57
+639,Stormtrooper,10,8,8,15,5,20,NA,George Lucas,Bad,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/10539.jpg,183,NA
+640,Sunspot,63,63,35,25,90,70,Roberto Dacosta,Marvel Comics,Good,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/138.jpg,173,77
+641,Superboy,75,95,83,90,95,60,Kon-El / Conner Kent,Dc Comics,Good,Male,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/789.jpg,170,68
+642,Superboy-Prime,94,100,100,100,100,85,Kal-El,Dc Comics,Bad,Male,Blue,Dual Color,https://www.superherodb.com/pictures2/portraits/10/100/1535.jpg,180,77
+643,Supergirl,94,100,100,100,100,75,Kara Zor-El,Dc Comics,Good,Female,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/790.jpg,165,54
+644,Superman,94,100,100,100,100,85,Clark Kent,Others,Good,Male,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/791.jpg,191,101
+645,Swamp Thing,88,95,25,100,100,55,Alec Holland,Dc Comics,Bad,Male,Red,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/792.jpg,NA,NA
+646,Swarm,75,18,50,90,38,35,Fritz Von Meyer,Marvel Comics,Bad,Male,Yellow,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/10428.jpg,196,47
+647,Sylar,75,10,12,28,91,56,Gabriel Gray,Nbc - Heroes,Bad,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/953.jpg,NA,NA
+648,Synch,75,67,23,28,74,56,Everett Thomas,Marvel Comics,Good,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/175.jpg,180,74
+649,T-1000,75,34,33,100,100,75,Cyberdyne Systems Series 1000 Terminator,Dark Horse Comics,Bad,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/10411.jpg,183,146
+650,T-800,75,34,17,60,73,65,Cyberdyne Systems Series 800 Terminator Model 101,Dark Horse Comics,Bad,Male,Red,NA,https://www.superherodb.com/pictures2/portraits/10/100/10409.jpg,NA,176
+651,T-850,75,80,25,90,83,75,Cyberdyne Systems Series 850 Terminator,Dark Horse Comics,Bad,Male,Red,NA,https://www.superherodb.com/pictures2/portraits/10/100/10410.jpg,NA,198
+652,T-X,75,63,29,85,100,80,Cyberdyne Systems Series X Terminator,Dark Horse Comics,Bad,Female,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/10412.jpg,NA,149
+653,Taskmaster,75,12,50,20,63,100,Tony Masters,Marvel Comics,Bad,Male,Brown,Brown,https://www.superherodb.com/pictures2/portraits/10/100/21.jpg,188,99
+654,Tempest,38,10,45,28,66,60,Angel Salvadore Bohusk,Others,Good,Female,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/1407.jpg,163,54
+655,Thanos,100,100,33,100,100,80,Thanos,Marvel Comics,Bad,Male,Red,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/1305.jpg,201,443
+656,The Cape,38,10,23,32,22,64,Vince Faraday,NA,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1375.jpg,NA,NA
+657,The Comedian,63,14,17,10,12,80,Edward Morgen Blake,Dc Comics,Neutral,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/1062.jpg,188,101
+658,Thing,75,84,21,100,38,80,Ben Grimm,Marvel Comics,Good,Male,Blue,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/139.jpg,183,225
+659,Thor,69,100,83,100,100,100,Thor Odinson,Others,Good,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/140.jpg,198,288
+660,Thor Girl,75,83,70,84,100,70,Tarene,Marvel Comics,Good,Female,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/1296.jpg,175,143
+661,Thunderbird,50,32,27,32,13,70,John Proudstar,Marvel Comics,Good,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/611.jpg,185,101
+662,Thunderbird Ii,NA,NA,NA,NA,NA,NA,James Proudstar,Others,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/927.jpg,NA,NA
+663,Thunderbird Iii,NA,NA,NA,NA,NA,NA,Neal Shaara,Marvel Comics,Good,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/141.jpg,175,74
+664,Thunderstrike,63,80,70,84,42,72,Eric Kevin Masterson,Marvel Comics,Good,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/177.jpg,198,288
+665,Thundra,38,81,32,64,26,54,Thundra,Marvel Comics,Good,Female,Green,Red,https://www.superherodb.com/pictures2/portraits/10/100/508.jpg,218,158
+666,Tiger Shark,38,72,46,70,51,28,Todd Arliss,Marvel Comics,Bad,Male,Grey,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/10047.jpg,185,203
+667,Tigra,63,32,53,38,33,90,Greer Grant Nelson,Marvel Comics,Good,Female,Green,Auburn,https://www.superherodb.com/pictures2/portraits/10/100/42.jpg,178,81
+668,Tinkerer,100,10,23,14,10,14,Phineas Mason,Marvel Comics,Bad,Male,Brown,White,https://www.superherodb.com/pictures2/portraits/10/100/1036.jpg,163,54
+669,Titan,NA,NA,NA,NA,NA,NA,NA,Harpercollins,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1154.jpg,NA,NA
+670,Toad,50,34,58,56,70,28,Mortimer Toynbee,Marvel Comics,Neutral,Male,Black,Brown,https://www.superherodb.com/pictures2/portraits/10/100/1125.jpg,175,76
+671,Toxin,56,73,70,84,82,70,Patrick Mulligan,Marvel Comics,Good,Male,Blue,Brown,https://www.superherodb.com/pictures2/portraits/10/100/848.jpg,188,97
+672,Toxin,75,80,42,85,97,70,Eddie Brock,Anti-Venom,Good,Male,Black,Blond,https://www.superherodb.com/pictures2/portraits/10/100/10494.jpg,191,117
+673,Tracy Strauss,NA,NA,NA,NA,NA,NA,Tracy Strauss,Nbc - Heroes,Good,Female,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1312.jpg,NA,NA
+674,Trickster,NA,NA,NA,NA,NA,NA,Giovanni Giuseppe,Dc Comics,NA,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/1468.jpg,183,81
+675,Trigon,NA,99,NA,NA,NA,NA,NA,Dc Comics,Bad,Male,Yellow,Black,https://www.superherodb.com/pictures2/portraits/10/100/10703.jpg,NA,NA
+676,Triplicate Girl,63,10,23,42,44,42,Luornu Durgo,Dc Comics,Good,Female,Purple,Brown,https://www.superherodb.com/pictures2/portraits/10/100/1185.jpg,168,59
+677,Triton,56,63,50,65,35,55,Triton,Marvel Comics,Good,Male,Green,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/513.jpg,188,86
+678,Two-Face,88,10,12,14,9,28,Harvey Dent,Dc Comics,Bad,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/802.jpg,183,82
+679,Ultragirl,50,80,35,70,35,80,Tsu-Zana,Marvel Comics,Good,Female,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/1295.jpg,168,105
+680,Ultron,88,83,42,100,100,64,Ultron,Marvel Comics,Bad,Male,Red,NA,https://www.superherodb.com/pictures2/portraits/10/100/1339.jpg,206,331
+681,Utgard-Loki,50,80,23,84,85,64,NA,Marvel Comics,Bad,Male,Blue,White,https://www.superherodb.com/pictures2/portraits/10/100/1484.jpg,NA,NA
+682,Vagabond,NA,NA,NA,NA,NA,NA,Priscilla Lyons,Marvel Comics,Good,Female,Blue,Strawberry Blond,https://www.superherodb.com/pictures2/portraits/10/100/145.jpg,168,54
+683,Valerie Hart,NA,NA,NA,NA,NA,NA,NA,Team Epic Tv,Good,Female,Hazel,Black,https://www.superherodb.com/pictures2/portraits/10/100/1004.jpg,175,56
+684,Valkyrie,NA,94,NA,NA,NA,NA,Brunnhilde (Also Spelled Brunnhilda),Marvel Comics,Good,Female,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/147.jpg,191,214
+685,Vanisher,63,10,75,56,61,42,NA,Marvel Comics,Bad,Male,Green,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/1105.jpg,165,79
+686,Vegeta,81,100,92,95,100,100,Vegeta,Shueisha,Bad,Male,NA,Black,https://www.superherodb.com/pictures2/portraits/10/100/1206.jpg,168,73
+687,Venom,75,57,65,84,86,84,Eddie Brock,Anti-Venom,Bad,Male,Blue,Strawberry Blond,https://www.superherodb.com/pictures2/portraits/10/100/22.jpg,191,117
+688,Venom Ii,50,57,47,70,54,56,Angelo Fortunato,Marvel Comics,Bad,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/1124.jpg,175,50
+689,Venom Iii,63,73,35,90,73,56,Macdonald Gargan,Others,Bad,Male,Brown,Brown,https://www.superherodb.com/pictures2/portraits/10/100/1042.jpg,229,334
+690,Venompool,69,57,63,100,100,100,Wade Wilson,Deadpool,NA,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/10618.jpg,226,NA
+691,Vertigo Ii,NA,NA,NA,NA,NA,NA,NA,Others,Good,Female,Blue,Silver,https://www.superherodb.com/pictures2/portraits/10/100/149.jpg,168,52
+692,Vibe,50,10,17,30,99,30,Cisco Ramon,Dc Comics,Good,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/10509.jpg,178,71
+693,Vindicator,63,63,53,64,58,70,Heather Hudson,Others,Good,Female,Green,Red,https://www.superherodb.com/pictures2/portraits/10/100/150.jpg,165,54
+694,Vindicator,NA,NA,NA,NA,NA,NA,Dr. James Mcdonald Hudson,Marvel Comics,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/530.jpg,NA,NA
+695,Violator,NA,53,NA,NA,NA,NA,NA,Image Comics,Bad,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1064.jpg,NA,NA
+696,Violet Parr,56,9,13,50,79,15,Violet Parr,Dark Horse Comics,Good,Female,Violet,Black,https://www.superherodb.com/pictures2/portraits/10/100/825.jpg,137,41
+697,Vision,100,72,54,95,100,70,Vision,Anti-Vision,Good,Male,Gold,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/532.jpg,191,135
+698,Vision Ii,NA,NA,NA,NA,NA,NA,Vision,Anti-Vision,Good,NA,Red,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/151.jpg,191,135
+699,Vixen,50,38,50,50,62,25,Mari Mccabe,Dc Comics,Good,Female,Amber,Black,https://www.superherodb.com/pictures2/portraits/10/100/10109.jpg,175,63
+700,Vulcan,NA,56,NA,NA,NA,NA,Gabriel Summers,Marvel Comics,Good,Male,Black,Black,https://www.superherodb.com/pictures2/portraits/10/100/854.jpg,NA,NA
+701,Vulture,75,22,42,25,26,30,Adrian Toomes,Marvel Comics,Bad,Male,Brown,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/1031.jpg,180,79
+702,Walrus,50,28,8,50,11,20,Hubert Carpent,Marvel Comics,Bad,Male,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/10058.jpg,183,162
+703,War Machine,63,80,63,100,100,85,James Rupert Rhodes,Marvel Comics,Good,Male,Brown,Brown,https://www.superherodb.com/pictures2/portraits/10/100/536.jpg,185,95
+704,Warbird,NA,NA,NA,NA,NA,NA,Carol Danvers,Binary,Good,Female,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/153.jpg,180,54
+705,Warlock,88,36,79,95,71,95,Adam Warlock,Marvel Comics,Good,Male,Red,Blond,https://www.superherodb.com/pictures2/portraits/10/100/154.jpg,188,108
+706,Warp,38,10,23,28,85,50,Emil Lasalle,Dc Comics,Bad,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/1353.jpg,173,67
+707,Warpath,38,72,47,70,26,84,James Proudstar,Others,Good,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/541.jpg,218,158
+708,Wasp,63,17,58,52,29,42,Janet Van Dyne,Marvel Comics,Good,Female,Blue,Auburn,https://www.superherodb.com/pictures2/portraits/10/100/155.jpg,163,50
+709,Watcher,100,80,67,89,100,56,Uatu,Marvel Comics,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/516.jpg,NA,NA
+710,Weapon Xi,NA,NA,NA,NA,NA,NA,Weapon Xi,Marvel Comics,Bad,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1318.jpg,NA,NA
+711,White Canary,63,7,33,15,49,90,NA,Dc Comics,Bad,Female,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/10542.jpg,NA,NA
+712,White Queen,NA,NA,NA,NA,NA,NA,Emma Grace Frost,Marvel Comics,Good,Female,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/157.jpg,178,65
+713,Wildfire,50,32,23,100,77,42,Drake Burroughs,Dc Comics,Good,Male,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1186.jpg,NA,NA
+714,Winter Soldier,56,32,35,65,60,84,Bucky Barnes,Marvel Comics,Good,Male,Brown,Brown,https://www.superherodb.com/pictures2/portraits/10/100/10027.jpg,175,117
+715,Wiz Kid,NA,NA,NA,NA,NA,NA,Takashi Matsuya,Marvel Comics,Good,NA,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/159.jpg,140,39
+716,Wolfsbane,38,16,35,42,26,42,Rahne Sinclair,Marvel Comics,Good,Female,Green,Auburn,https://www.superherodb.com/pictures2/portraits/10/100/160.jpg,366,473
+717,Wolverine,63,32,50,100,89,100,Logan,Marvel Comics,Good,Male,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/161.jpg,160,135
+718,Wonder Girl,75,90,25,80,39,60,Cassandra Elizabeth Sandsmark,Dc Comics,Good,Female,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/1497.jpg,165,51
+719,Wonder Man,75,100,53,90,64,64,Simon Williams,Marvel Comics,Good,Male,Red,Black,https://www.superherodb.com/pictures2/portraits/10/100/162.jpg,188,171
+720,Wonder Woman,88,100,79,100,100,100,Diana Prince,Dc Comics,Good,Female,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/807.jpg,183,74
+721,Wondra,NA,NA,NA,NA,NA,NA,NA,Marvel Comics,Good,Female,NA,NA,https://www.superherodb.com/pictures2/portraits/10/100/1290.jpg,NA,NA
+722,Wyatt Wingfoot,10,10,12,1,1,56,Wyatt Wingfoot,Marvel Comics,Good,Male,Brown,Black,https://www.superherodb.com/pictures2/portraits/10/100/164.jpg,196,117
+723,X-23,75,24,42,100,55,95,Laura Kinney,Marvel Comics,Good,Female,Green,Black,https://www.superherodb.com/pictures2/portraits/10/100/565.jpg,155,50
+724,X-Man,88,53,53,95,100,84,Nate Grey,Marvel Comics,Good,Male,Blue,Brown,https://www.superherodb.com/pictures2/portraits/10/100/1150.jpg,175,61
+725,Yellow Claw,NA,NA,NA,NA,NA,NA,NA,Marvel Comics,Bad,Male,Blue,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/23.jpg,188,95
+726,Yellowjacket,88,10,12,28,12,14,Hank Pym,Ant-Man,Good,Male,Blue,Blond,https://www.superherodb.com/pictures2/portraits/10/100/70.jpg,183,83
+727,Yellowjacket Ii,50,10,35,28,31,28,Rita Demara,Marvel Comics,Good,Female,Blue,Strawberry Blond,https://www.superherodb.com/pictures2/portraits/10/100/178.jpg,165,52
+728,Ymir,50,100,27,100,98,28,Ymir,Marvel Comics,Good,Male,White,No Hair,https://www.superherodb.com/pictures2/portraits/10/100/179.jpg,NA,NA
+729,Yoda,88,52,33,25,100,90,Yoda,George Lucas,Good,Male,Brown,White,https://www.superherodb.com/pictures2/portraits/10/100/10454.jpg,66,17
+730,Zatanna,81,10,23,28,100,56,Zatanna Zatara,Dc Comics,Good,Female,Blue,Black,https://www.superherodb.com/pictures2/portraits/10/100/809.jpg,170,57
+731,Zoom,50,10,100,28,100,28,Hunter Zolomon,Dc Comics,Bad,Male,Red,Brown,https://www.superherodb.com/pictures2/portraits/10/100/1384.jpg,185,81

@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Model Building Process</title>
+
+<script src="site_libs/header-attrs-2.28/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Home</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="about.html">About us</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="source.html">Data Sources</a>
+</li>
+<li>
+  <a href="eda.html">EDA</a>
+</li>
+<li>
+  <a href="model.html">Model Building</a>
+</li>
+<li>
+  <a href="report.html">Project Report</a>
+</li>
+<li>
+  <a href="https://cj0915.shinyapps.io/shinyapp/">Pick your Hero</a>
+</li>
+<li>
+  <a href="https://github.com/cj0915/superhero.github.io.git">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-envelope fa-lg"></span>
+     
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="mailto:cj2793@cumc.columbia.edu">Chenyu Jin</a>
+    </li>
+    <li>
+      <a href="mailto:jl6521@cumc.columbia.edu">Jiayi Li</a>
+    </li>
+    <li>
+      <a href="mailto:rw3033@cumc.columbia.edu">Ruiyang Wu</a>
+    </li>
+    <li>
+      <a href="mailto:zg2486@cumc.columbia.edu">Ziqi Guo</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">Model Building Process</h1>
+
+</div>
+
+
+<div
+id="unveiling-the-secrets-of-superhero-power-a-data-driven-approach"
+class="section level1">
+<h1>Unveiling the Secrets of Superhero Power: A Data-driven
+Approach</h1>
+<p>Have you ever been curious about what makes a superhero truly
+powerful? Is it their intelligence, physical strength, or probably the
+combination of the factors that determines their success? In this
+analysis, we delve into a data-driven approach to uncover the key traits
+that determine superhero power, using statistical and machine learning
+techniques to identify patterns and interactions.</p>
+<pre class="r"><code>library(tidyverse)
+library(modelr)
+library(mice)
+library(mgcv)
+library(randomForest)
+library(readr)
+library(dplyr) 
+library(patchwork)
+library(car)
+set.seed(1)</code></pre>
+<div id="variables-selection" class="section level2">
+<h2>Variables Selection</h2>
+<div id="methods" class="section level4">
+<h4>Methods</h4>
+<p>We first do univariate analyses to predict the power by intelligence,
+strength, speed, durability, combat, height, weight, gender, and
+alignment respectively.</p>
+<pre class="r"><code>superheros &lt;- read_csv(&quot;./data/superheroes.csv&quot;)
+
+superheros_clean1 &lt;- superheros %&gt;% 
+  filter(complete.cases(intelligence, strength, speed, durability, combat, height_cm, weight_kg, gender, alignment, power))
+
+superheros_clean1$gender &lt;- as.factor(superheros_clean1$gender)
+superheros_clean1$alignment &lt;- as.factor(superheros_clean1$alignment)
+
+
+# we first do univariate analysis to find variables that significantly associate with the power with p value &lt; 0.05
+univariate_analysis = function(var, var_name){
+  model = summary(lm(power ~ var, data = superheros_clean1))
+  
+  p_value = model$coefficients[2, 4]
+  
+  return(data.frame(variable = var_name, p_value = p_value))
+}
+
+results = rbind(
+  univariate_analysis(superheros_clean1$intelligence, &quot;Intelligence&quot;),
+  univariate_analysis(superheros_clean1$strength, &quot;Strength&quot;),
+  univariate_analysis(superheros_clean1$speed, &quot;Speed&quot;),
+  univariate_analysis(superheros_clean1$durability, &quot;Durability&quot;),
+  univariate_analysis(superheros_clean1$combat, &quot;Combat&quot;),
+  univariate_analysis(superheros_clean1$height_cm, &quot;Height&quot;),
+  univariate_analysis(superheros_clean1$weight_kg, &quot;Weight&quot;),
+  univariate_analysis(superheros_clean1$gender, &quot;Gender&quot;),
+  univariate_analysis(superheros_clean1$alignment, &quot;Alignment&quot;)
+)
+
+results$p_value &lt;- round(results$p_value, 4)
+
+library(knitr)
+kable(results, col.names = c(&quot;Variable&quot;, &quot;P-Value&quot;), digits = 4, align = &quot;c&quot;)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Variable</th>
+<th align="center">P-Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Intelligence</td>
+<td align="center">0.0000</td>
+</tr>
+<tr class="even">
+<td align="center">Strength</td>
+<td align="center">0.0000</td>
+</tr>
+<tr class="odd">
+<td align="center">Speed</td>
+<td align="center">0.0000</td>
+</tr>
+<tr class="even">
+<td align="center">Durability</td>
+<td align="center">0.0000</td>
+</tr>
+<tr class="odd">
+<td align="center">Combat</td>
+<td align="center">0.0615</td>
+</tr>
+<tr class="even">
+<td align="center">Height</td>
+<td align="center">0.1282</td>
+</tr>
+<tr class="odd">
+<td align="center">Weight</td>
+<td align="center">0.0394</td>
+</tr>
+<tr class="even">
+<td align="center">Gender</td>
+<td align="center">0.3960</td>
+</tr>
+<tr class="odd">
+<td align="center">Alignment</td>
+<td align="center">0.6718</td>
+</tr>
+</tbody>
+</table>
+<p>Based on the results, we found <code>intelligence</code>,
+<code>strength</code>, <code>speed</code>, <code>durability</code>,
+<code>weight</code> are significantly associated with the power with
+p-value &lt; 0.05.</p>
+</div>
+</div>
+<div id="building-linear-regression-model" class="section level2">
+<h2>Building Linear Regression Model</h2>
+<p>We build a linear regression model to predict the power of superheros
+based on the four variables we identified.</p>
+<pre class="r"><code>sig_model = lm(power ~ intelligence + strength + speed + durability + weight_kg, data = superheros_clean1) 
+
+sig_model %&gt;% 
+  broom::tidy() %&gt;% 
+  dplyr::select(term, estimate, p.value) %&gt;% 
+  knitr::kable(digits = 4)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">term</th>
+<th align="right">estimate</th>
+<th align="right">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">(Intercept)</td>
+<td align="right">19.6052</td>
+<td align="right">0.0001</td>
+</tr>
+<tr class="even">
+<td align="left">intelligence</td>
+<td align="right">0.2065</td>
+<td align="right">0.0010</td>
+</tr>
+<tr class="odd">
+<td align="left">strength</td>
+<td align="right">0.1037</td>
+<td align="right">0.0491</td>
+</tr>
+<tr class="even">
+<td align="left">speed</td>
+<td align="right">0.3254</td>
+<td align="right">0.0000</td>
+</tr>
+<tr class="odd">
+<td align="left">durability</td>
+<td align="right">0.2704</td>
+<td align="right">0.0000</td>
+</tr>
+<tr class="even">
+<td align="left">weight_kg</td>
+<td align="right">-0.0165</td>
+<td align="right">0.1917</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code># Intelligence, strength, speed, durability, speed, weight are significant predictors </code></pre>
+<p>Based on the results, we see that 4 of the variables are
+statistically significant at 0.05 significance level. The effect of
+<code>weight</code> is not statistically significant at the 0.05 level.
+Superheroes’ <code>power</code> is positively related to
+<code>intelligence</code>, <code>strength</code>, <code>speed</code>,
+and <code>durability</code>, while negatively related to
+<code>weight</code>.</p>
+</div>
+<div id="model-selection" class="section level2">
+<h2>Model Selection</h2>
+<div id="performing-forward-backward-and-stepwise-model-selection"
+class="section level3">
+<h3>Performing forward, backward, and stepwise model selection</h3>
+<p>After performing forward, backward, and stepwise model selection,
+only the effect of <code>durability</code>, <code>speed</code>, and
+<code>intelligence</code> were significant, therefore, we included them
+in the regression model A. Since we had identified that the effect of
+<code>strength</code> is also significant, we included
+<code>durability</code>, <code>speed</code>, <code>intelligence</code>,
+and <code>strength</code> in the second linear regression model. For the
+last linear regression model, all 9 variables were included.</p>
+<p>The three models we built are:</p>
+<p>Model A: Power ~ Intelligence, speed, durability</p>
+<pre class="r"><code># After having forward/backward/stepwise model selection, durability, speed, intelligence, and strength are left in the model, and only durability, speed, intelligence are significant. 
+
+lm_modelA &lt;- lm(power ~ intelligence + speed + durability, data = superheros_clean1) %&gt;% 
+  broom::tidy() %&gt;% 
+  dplyr::select(term, estimate, p.value) </code></pre>
+<p>Model B: Power ~ Intelligence, strength, speed, durability</p>
+<pre class="r"><code>lm_modelB &lt;- lm(power ~ intelligence + strength + speed + durability, data = superheros_clean1) %&gt;% 
+  broom::tidy() %&gt;% 
+  dplyr::select(term, estimate, p.value) </code></pre>
+<p>Model C: Power ~ Intelligence, strength, speed, durability, combat,
+height_cm, weight_kg, alignment, gender</p>
+<pre class="r"><code>lm_modelC &lt;- lm(power ~ intelligence + strength + speed + durability + combat + height_cm + weight_kg + alignment + gender, data = superheros_clean1) %&gt;% 
+  broom::tidy() %&gt;% 
+  dplyr::select(term, estimate, p.value)</code></pre>
+</div>
+</div>
+<div id="model-evaluation" class="section level2">
+<h2>Model Evaluation</h2>
+<div id="method" class="section level3">
+<h3>Method</h3>
+<p>We wanted to compare the predictive performance of these 3 competing
+methods by using cross validation for repeating 100 times, and then
+comparing distribution of Root Mean Squared Error (RMSE) and of AIC of
+each model.</p>
+<pre class="r"><code>cv_df =
+  crossv_mc(superheros_clean1, 100) |&gt; 
+  mutate(
+    train = map(train, as_tibble),
+    test = map(test, as_tibble))
+
+cv_df = 
+  cv_df |&gt; 
+  mutate(
+    lm_modelA  = map(train, \(df) lm(power ~ intelligence + speed + durability, data = df)),
+    lm_modelB = map(train, \(df) lm(power ~ intelligence + strength + speed + durability, data = df)),
+    lm_modelC = map(train, \(df) lm(power ~ intelligence + strength + speed + durability + combat + height_cm + weight_kg + alignment, data = df))) %&gt;%  
+  mutate(
+    rmse_modelA = map2_dbl(lm_modelA, test, \(mod, df) rmse(model = mod, data = df)),
+    rmse_modelB = map2_dbl(lm_modelB, test, \(mod, df) rmse(model = mod, data = df)),
+    rmse_modelC = map2_dbl(lm_modelC, test, \(mod, df) rmse(model = mod, data = df)))
+
+cv_df |&gt; 
+  dplyr::select(starts_with(&quot;rmse&quot;)) |&gt; 
+  pivot_longer(
+    everything(),
+    names_to = &quot;model&quot;, 
+    values_to = &quot;rmse&quot;,
+    names_prefix = &quot;rmse_&quot;) |&gt; 
+  mutate(model = fct_inorder(model)) |&gt; 
+  ggplot(aes(x = model, y = rmse)) + geom_violin()</code></pre>
+<p><img src="model_files/figure-html/unnamed-chunk-8-1.png" width="672" />
+Although model A has similar RMSE distribution with model B, model B has
+the relatively lowest RMSE distribution overall. Moreover, model B has
+the lowest AIC value. Therefore, model B is the model has good
+predictive accuracy.</p>
+</div>
+<div id="random-forest-to-verify-predictors" class="section level3">
+<h3>Random Forest to Verify Predictors</h3>
+<p>To further verify the importance of selected predictors, a random
+forest model was trained. We choose to build 100 decision trees and 3
+random predictor variables are selected and considered at every
+split.</p>
+<pre><code>## 
+## Call:
+##  randomForest(formula = power ~ combat + strength + speed + durability +      intelligence + height_cm + weight_kg + gender + alignment,      data = superheros_clean1, mtry = 3, ntree = 100, importance = TRUE) 
+##                Type of random forest: regression
+##                      Number of trees: 100
+## No. of variables tried at each split: 3
+## 
+##           Mean of squared residuals: 605.4973
+##                     % Var explained: 27.19</code></pre>
+<pre class="r"><code>importance &lt;- importance(rf_model)
+varImpPlot(rf_model)</code></pre>
+<p><img src="model_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<pre class="r"><code>plot(rf_model)</code></pre>
+<p><img src="model_files/figure-html/unnamed-chunk-10-2.png" width="672" />
+From the variable importance plot, we found that speed, durability,
+strength, and intelligence are the most important variables for
+improving the model’s predictive performance and better fit as they have
+a larger %IncMSE and increase in Node Purity, which is consistent with
+our model. Therefore, intelligence, Strength, Speed, Durability was
+identified as the primary contributors to superheroes’ power.</p>
+</div>
+<div id="final-model" class="section level3">
+<h3>Final Model</h3>
+<p>Our final model would be:
+<code>lm_modelB &lt;- lm(power ~ intelligence + strength + speed + durability)</code></p>
+<p>Look at Model B:</p>
+<pre class="r"><code>lm_modelB &lt;- lm(power ~ intelligence + strength + speed + durability, data = superheros_clean1) %&gt;% 
+  broom::tidy() %&gt;% 
+  dplyr::select(term, estimate, p.value) 
+
+kable(lm_modelB, digits = 4)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">term</th>
+<th align="right">estimate</th>
+<th align="right">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">(Intercept)</td>
+<td align="right">18.5961</td>
+<td align="right">0.0001</td>
+</tr>
+<tr class="even">
+<td align="left">intelligence</td>
+<td align="right">0.2076</td>
+<td align="right">0.0010</td>
+</tr>
+<tr class="odd">
+<td align="left">strength</td>
+<td align="right">0.0819</td>
+<td align="right">0.1012</td>
+</tr>
+<tr class="even">
+<td align="left">speed</td>
+<td align="right">0.3402</td>
+<td align="right">0.0000</td>
+</tr>
+<tr class="odd">
+<td align="left">durability</td>
+<td align="right">0.2603</td>
+<td align="right">0.0000</td>
+</tr>
+</tbody>
+</table>
+<p>Based on the results, <code>intelligence</code>,
+<code>Strength</code>, <code>Speed</code>, and <code>Durability</code>
+are positively related to <code>power</code>. For one-unit increase in
+<code>speed</code>, it causes the largest increase in
+<code>power</code>, while one-unit increase in <code>strength</code>
+causes the least increase.</p>
+</div>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

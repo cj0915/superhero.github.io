@@ -1,0 +1,12 @@
+name: superhero_selector
+title: superhero_selector
+username: cj0915
+account: cj0915
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 13486217
+bundleId: 9440577
+url: https://cj0915.shinyapps.io/superhero_selector/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
