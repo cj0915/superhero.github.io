@@ -33,8 +33,17 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="site_libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="site_libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 <link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
 
@@ -221,6 +230,9 @@ $(document).ready(function () {
 </style>
 
 <!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
 
 
 
@@ -375,6 +387,14 @@ div.tocify {
 
 <div id="header">
 
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
 
 
 <h1 class="title toc-ignore">Project Report</h1>
@@ -382,7 +402,1310 @@ div.tocify {
 </div>
 
 
+<pre class="r"><code>library(tidyverse)
+library(naniar)
+library(stringr)
+library(janitor)
+library(dplyr)
+library(plotly)
+library(factoextra)
+library(gridExtra)
+library(kableExtra)
+library(knitr)
+library(tableone)
+library(fmsb)
+library(modelr)
+library(mice)
+library(mgcv)
+library(randomForest)
+library(readr)
+library(patchwork)
+library(car)
+set.seed(1)</code></pre>
+<div id="motivation" class="section level1">
+<h1><strong>1. Motivation</strong></h1>
+<p>The superhero universe is rich with complex characters who embody a
+wide range of skills, powers, and moral alignments. This project aims to
+explore the attributes and dynamics of superheroes and villains, drawing
+comparisons between their strengths, weaknesses, affiliations, and other
+characteristics. Finally, We will build an interactive tool where users
+can input their desired weight of each capability, such as intelligence,
+strength, or power, to find heroes and villains that match their
+preferences. This feature will allow superhero comic fanatics to explore
+characters based on personalized criteria, creating a more engaging and
+customizable experience.</p>
+</div>
+<div id="related-work" class="section level1">
+<h1><strong>2. Related Work</strong></h1>
+<p>As we all are the fans of superheros, this project is inspired by
+those fascinating superhero movies. Some of our favorite movies are Iron
+Man 123, The Avengers, Dr. Strange, Guardians of the Galaxy, which
+motivates us to explore the attributes of heroes and villians.</p>
+</div>
+<div id="initial-questions" class="section level1">
+<h1><strong>3. Initial questions</strong></h1>
+<p>Our initial goal was broad: to compare superheroes across multiple
+universes and identify ones that resonate with individual
+preferences.</p>
+<p>As we delved deeper into the data set and explored its diverse
+dimensions, our questions became more focused:</p>
+<ul>
+<li><p>Are there correlations among superheroes’ power dimensions or
+physical characteristics?<br />
+</p></li>
+<li><p>Do different publishers have preferences in creating characters
+with specific alignments or characteristics?</p></li>
+<li><p>How do power levels vary across characters with different
+alignments?</p></li>
+<li><p>Can we cluster superheroes based on their numeric attributes, and
+what insights can these clusters provide?</p></li>
+<li><p>What are the key factors that determine a superhero’s overall
+power?</p></li>
+</ul>
+<p>All of those questions drive our analysis and help to satisfy our
+curiosity.</p>
+</div>
+<div id="data-source-and-data-cleaning-process" class="section level1">
+<h1><strong>4. Data Source and Data Cleaning Process</strong></h1>
+<div id="data-source" class="section level2">
+<h2><strong>4.1. Data Source</strong></h2>
+<p>Our data source is from <a
+href="https://www.kaggle.com/datasets/shreyasur965/super-heroes-dataset">kaggle
+website</a>. This dataset covers detailed information on 731 superheroes
+and villains from various comic universes. It includes a wide range of
+attributes such as capability statistics, biographical information,
+physical appearance, and affiliations. The data was collected using the
+SuperHero API.The original dataset is called
+<code>superheroes_data</code>.</p>
+</div>
+<div id="data-cleaning-process" class="section level2">
+<h2><strong>4.2. Data Cleaning Process</strong></h2>
+<pre class="r"><code>superheroes_df &lt;- read_csv(
+  &quot;./data/superheroes_data.csv&quot;,
+  na = c(&quot;NA&quot;, &quot;.&quot;, &quot;&quot;, &quot;null&quot;, &quot;-&quot;)
+) |&gt;
+  janitor::clean_names() |&gt;
+  mutate(
+    height_cm = str_extract(height, &quot;\\d+(?= cm)&quot;) |&gt; as.numeric(),
+    height_cm = if_else(height_cm == 0, NA_real_, height_cm),
+    weight_kg = str_extract(weight, &quot;\\d+(?= kg)&quot;) |&gt; as.numeric(),
+    weight_kg = if_else(weight_kg == 0, NA_real_, weight_kg),
+    hair_color = if_else(str_detect(hair_color, &quot;/&quot;), &quot;Dual Color&quot;, hair_color),
+    eye_color = str_remove_all(eye_color, &quot;\\(.*?\\)&quot;) |&gt; str_trim(),
+    eye_color = if_else(str_detect(eye_color, &quot;/&quot;), &quot;Dual Color&quot;, eye_color)
+  ) |&gt;
+  mutate(across(
+    where(is.character) &amp; !any_of(&quot;url&quot;), 
+    ~ str_to_title(.)
+  )) |&gt;
+  select(
+    -aliases, -height, -weight, -base, -occupation, -group_affiliation, -relatives, -alter_egos, -place_of_birth, -first_appearance, -race
+  )
 
+superheros &lt;- superheroes_df
+
+publisher_counts &lt;- superheros |&gt;
+  group_by(publisher) |&gt;
+  summarise(hero_count = n()) |&gt;
+  arrange(desc(hero_count))
+
+single_hero_publishers &lt;- filter(publisher_counts, hero_count == 1) |&gt;
+  pull(publisher)
+
+superheros &lt;- superheros |&gt;
+  mutate(publisher = ifelse(publisher %in% single_hero_publishers, &quot;Others&quot;, publisher))
+
+alignment_counts &lt;- superheros |&gt;
+  group_by(alignment) |&gt;
+  summarise(hero_count = n()) |&gt;
+  arrange(desc(hero_count))
+
+gender_counts &lt;- superheros |&gt;
+  group_by(gender) |&gt;
+  summarise(hero_count = n()) |&gt;
+  arrange(desc(hero_count))
+
+eye_color_counts &lt;- superheros |&gt;
+  group_by(eye_color) |&gt;
+  summarise(hero_count = n()) |&gt;
+  arrange(desc(hero_count))
+
+single_hero_eye_color &lt;- filter(eye_color_counts, hero_count == 1) |&gt;
+  pull(eye_color)
+
+superheros &lt;- superheros |&gt;
+  mutate(eye_color = ifelse(eye_color %in% single_hero_eye_color, &quot;Others&quot;, eye_color))
+
+hair_color_counts &lt;- superheros |&gt;
+  group_by(hair_color) |&gt;
+  summarise(hero_count = n()) |&gt;
+  arrange(desc(hero_count))
+
+single_hero_hair_color &lt;- filter(hair_color_counts, hero_count == 1) |&gt;
+  pull(hair_color)
+
+superheros &lt;- superheros |&gt;
+  mutate(hair_color = ifelse(hair_color %in% single_hero_hair_color, &quot;Others&quot;, hair_color))</code></pre>
+<p>However, we are not interested in each variables in
+<code>superheroes_data</code> dataset. In addition, some of the data in
+this original dataset is not readable and analyzable. As a result, we
+conducted the following data cleaning process:</p>
+<ul>
+<li><p>When importing data, we set “NA”, “.”, ““,”null”, and “-” as
+missing values;</p></li>
+<li><p>We harmonized the height of heroes in cm and their weight in
+kg;</p></li>
+<li><p>We marked heroes with a height and weight of 0 as missing values:
+they are meaningless;</p></li>
+<li><p>If a hero has two hair colors or two eye colors
+(e.g. Blue/Yellow), we marked this color as ‘Dual Color’;</p></li>
+<li><p>We also reclassified some categorical variables. Specifically, if
+a <code>publisher</code> contains only one hero, then the publisher to
+which this hero belongs will be noted as ‘Others’. We did the same for
+the variables <code>alignment</code>, <code>eye_color</code>, and
+<code>hair_color</code>.</p></li>
+<li><p>We selected only the variables we were interested and deleted
+<code>aliases</code>, <code>base</code>, <code>occupation</code>,
+<code>group_affiliation</code>, <code>relatives</code>,
+<code>alter_egos</code>, <code>place_of_birth</code>,
+<code>first_appearance</code>, <code>race</code>. These variables are
+documented in a way that is difficult to read and difficult to
+clean.</p></li>
+</ul>
+</div>
+<div id="cleaned-dataset" class="section level2">
+<h2><strong>4.3. Cleaned Dataset</strong></h2>
+<p>The cleaned dataset is tidy, readable and analyzable. It includes the
+following variables:</p>
+<p><code>id</code>: A unique identifier for each character.</p>
+<p><code>name</code>: The superhero’s alias or code name.</p>
+<p><code>intelligence</code>: A numerical representation of the
+character’s intelligence level.</p>
+<p><code>strength</code>: A numerical value representing the character’s
+physical strength.</p>
+<p><code>speed</code>: A numerical representation of how fast the
+character can move.</p>
+<p><code>durability</code>: A measure of the character’s resilience and
+ability to withstand damage.</p>
+<p><code>power</code>: A numerical value representing the character’s
+overall power or abilities.</p>
+<p><code>combat</code>: A score depicting the character’s combat skills
+and experience.</p>
+<p><code>full-name</code>: The character’s real or full name, as opposed
+to their superhero alias.</p>
+<p><code>publisher</code>: The company responsible for creating and
+publishing the character.</p>
+<p><code>alignment</code>: Whether the character is good, evil, or
+neutral.</p>
+<p><code>gender</code>: The gender of the character.</p>
+<p><code>height_cm</code>: The character’s height, given in
+centimeters.</p>
+<p><code>weight_kg</code>: The character’s weight, provided in
+kilograms.</p>
+<p><code>eye-color</code>: The color of the character’s eyes.</p>
+<p><code>hair-color</code>: The color of the character’s hair.</p>
+<p><code>url</code>: A link to an image of the character or more
+detailed information.</p>
+</div>
+</div>
+<div id="eda" class="section level1">
+<h1><strong>5. EDA</strong></h1>
+<div id="numerical-data" class="section level2">
+<h2><strong>5.1. Numerical data</strong></h2>
+<pre class="r"><code>superheros &lt;- read_csv(&quot;./data/superheroes.csv&quot;)
+
+# Box plot
+
+numeric_vars &lt;- superheros |&gt;
+  select(intelligence, strength, speed, durability, power, combat, height_cm, weight_kg)
+
+plots &lt;- lapply(names(numeric_vars), function(var) {
+  plot_ly(y = numeric_vars[[var]], type = &quot;box&quot;, name = var)
+})
+
+boxplot_combined &lt;- subplot(plots, nrows = 3, margin = 0.05)
+
+boxplot_combined</code></pre>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-cf1e0fdafdc5c8044e80" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-cf1e0fdafdc5c8044e80">{"x":{"data":[{"fillcolor":"rgba(31,119,180,0.498)","y":[38,88,50,63,88,38,63,69,10,75,50,56,63,50,63,50,63,75,63,38,38,56,75,100,75,88,75,100,10,63,81,50,63,38,63,75,50,50,63,63,38,88,63,50,63,88,50,25,88,69,75,81,100,88,50,81,94,50,10,63,100,88,38,75,63,56,25,63,38,88,75,63,63,75,44,63,50,75,75,88,75,63,38,50,63,69,50,38,10,63,50,50,63,38,69,50,100,100,69,63,50,63,38,88,63,50,50,69,81,75,50,25,88,84,75,50,63,69,88,50,88,63,38,38,88,50,50,38,63,75,63,56,50,63,75,75,75,63,38,75,50,75,88,38,56,69,25,100,63,50,69,50,69,75,50,50,44,50,75,100,81,94,100,63,88,75,8,88,88,56,88,63,69,63,50,75,75,63,75,50,69,50,63,38,88,88,38,50,38,38,50,50,38,63,88,63,63,63,63,38,63,100,63,75,63,94,50,81,50,75,44,50,56,81,50,38,81,100,75,75,38,69,50,63,88,75,63,38,56,50,50,38,63,63,63,63,56,63,88,63,69,63,63,38,88,63,50,69,75,38,88,75,100,88,75,63,6,88,69,10,88,94,75,75,56,56,38,88,63,56,75,100,63,56,75,44,50,50,100,75,56,25,38,25,19,88,81,56,50,75,63,25,50,63,9,69,56,63,100,25,50,75,100,38,38,44,75,100,50,94,88,50,50,69,38,75,63,88,50,88,100,38,50,63,100,63,100,63,75,75,63,63,75,50,75,38,88,56,75,88,63,63,38,63,63,63,100,75,75,100,100,88,75,100,50,50,50,56,63,75,50,50,38,63,81,75,69,50,50,50,63,50,75,50,88,63,63,50,100,63,100,50,38,100,88,75,75,100,9,8,75,38,100,63,50,50,81,63,94,63,100,94,63,69,56,38,100,81,63,38,100,63,63,63,50,50,63,75,50,25,81,75,75,63,25,88,100,100,88,75,81,69,50,50,75,56,75,56,75,44,75,88,63,81,75,88,100,38,50,63,75,75,63,88,63,63,81,69,63,50,63,75,56,50,56,75,56,38,50,50,50,9,75,38,75,88,50,63,75,90,56,50,81,50,69,88,50,63,69,81,69,94,75,10,63,75,94,94,94,88,75,75,75,75,75,75,75,75,38,100,38,63,75,69,75,50,63,38,38,63,100,50,56,75,63,56,88,50,88,50,63,81,75,50,63,69,50,63,56,100,50,75,50,63,88,38,38,63,100,63,50,56,38,63,75,75,88,10,75,88,88,50,50,88,81,50],"name":"intelligence","type":"box","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(255,127,14,0.498)","y":[100,28,90,80,63,80,10,10,46,8,28,85,48,80,80,37,10,28,100,30,13,55,10,97,48,80,18,18,100,58,60,100,16,44,85,48,13,63,100,82,10,63,54,90,80,100,10,10,10,11,18,98,38,10,53,11,27,43,12,10,40,26,11,53,8,48,28,54,7,80,100,100,10,12,36,37,10,35,14,95,100,67,8,8,16,10,10,11,10,28,16,13,48,32,10,28,28,14,8,72,10,83,80,10,72,45,34,10,73,10,85,75,95,10,65,32,28,11,28,10,48,53,10,28,19,93,77,10,10,80,100,88,81,88,92,63,90,11,80,57,10,10,10,8,20,100,80,95,9,39,10,10,83,10,16,10,58,65,16,96,53,93,10,44,10,10,13,32,14,100,8,48,48,12,32,10,10,32,10,32,30,48,95,16,12,80,32,16,48,10,10,14,89,100,63,95,100,80,80,32,10,11,8,10,63,14,11,85,32,32,81,13,85,95,28,81,8,63,8,53,80,10,69,48,10,10,10,80,10,53,100,10,85,82,5,100,68,55,70,78,89,100,10,100,34,100,53,96,32,10,12,48,55,85,45,90,90,10,90,12,7,10,38,12,6,28,66,96,92,10,100,53,11,56,100,15,7,53,10,44,100,11,10,63,63,13,100,32,10,10,63,28,10,55,85,63,48,43,55,34,13,11,6,12,80,10,10,42,90,44,38,10,30,10,85,12,10,12,8,18,100,38,10,48,8,8,7,10,4,47,53,10,90,100,88,18,38,18,34,32,80,90,44,63,28,10,5,100,16,53,10,10,10,53,100,51,100,63,10,63,38,6,36,32,80,48,100,100,18,32,44,28,8,95,85,73,95,10,10,90,10,34,10,85,62,53,82,10,8,14,28,67,32,85,10,32,10,85,48,22,31,18,73,100,10,36,67,60,40,28,10,83,63,11,10,12,95,85,72,80,52,7,11,10,11,52,5,45,18,85,60,83,10,61,100,100,100,11,85,18,28,11,20,10,48,10,100,60,63,10,14,73,100,82,30,8,10,33,16,10,10,12,14,28,10,28,4,14,17,10,10,16,12,100,10,11,10,38,8,80,11,10,8,11,11,11,8,8,5,10,12,10,48,10,75,80,85,70,10,53,55,10,28,52,85,100,12,10,8,12,48,100,72,10,10,90,48,51,100,28,90,85,62,8,85,32,34,93,36,18,60,100,6,69,38,55,55,57,58,42,48,18,12,20,85,80,80,8,82,10,100,10,8,63,95,100,100,100,95,18,10,67,34,34,80,63,12,10,100,10,14,84,100,83,32,80,81,72,32,10,34,73,80,99,10,63,10,80,83,80,94,10,100,57,57,73,57,10,63,53,9,72,38,56,22,28,80,36,10,72,17,80,7,32,32,16,32,90,100,100,10,24,53,10,10,100,52,10,10],"name":"strength","type":"box","marker":{"color":"rgba(255,127,14,1)","line":{"color":"rgba(255,127,14,1)"}},"line":{"color":"rgba(255,127,14,1)"},"xaxis":"x2","yaxis":"y2","frame":null},{"fillcolor":"rgba(44,160,44,0.498)","y":[17,35,53,53,83,25,12,33,13,38,100,35,23,42,17,42,83,58,46,23,28,47,47,23,17,50,65,33,12,42,79,50,58,23,100,35,12,12,25,42,23,33,96,47,17,23,58,23,33,27,23,29,27,33,35,29,38,50,8,35,100,79,12,23,33,33,35,23,100,92,100,33,33,33,100,8,53,35,50,30,33,45,35,8,38,12,20,27,23,33,50,58,38,12,42,23,63,23,25,42,25,25,8,23,23,23,67,38,83,50,17,83,88,71,27,75,70,33,53,20,12,23,42,42,88,47,33,12,47,17,33,21,8,12,42,92,23,35,8,25,33,23,83,35,50,33,92,21,33,33,50,23,30,35,42,58,23,12,33,20,25,33,12,27,46,67,60,83,42,25,83,33,50,30,12,33,35,25,29,17,50,33,28,50,83,75,45,23,40,75,54,58,58,100,100,100,100,12,50,1,35,83,23,42,8,96,25,23,100,23,54,47,75,33,33,13,35,38,37,33,53,75,17,67,33,21,25,35,21,8,53,17,46,21,33,46,29,12,63,63,23,35,58,25,100,53,100,17,50,17,27,33,58,25,75,100,67,17,17,33,29,21,17,35,46,50,23,8,8,42,35,12,27,22,38,42,17,33,58,21,21,12,23,92,35,13,53,71,50,25,33,8,23,35,100,50,33,42,12,12,42,50,25,35,23,23,35,100,27,54,46,27,29,42,83,60,35,27,23,70,100,50,8,35,23,33,92,47,35,83,12,12,35,12,35,12,35,79,23,47,12,50,27,47,23,58,18,12,17,100,46,33,38,25,23,35,23,47,35,12,8,33,23,23,17,23,58,42,47,32,13,8,23,47,33,35,8,83,75,100,67,35,83,100,33,23,60,33,17,21,12,23,83,25,23,23,21,42,100,25,12,100,25,21,8,12,17,27,100,12,32,8,25,50,29,92,25,23,47,23,27,12,67,21,43,23,12,8,27,27,27,33,25,23,12,21,29,38,12,46,23,33,54,12,60,60,29,42,60,12,100,27,67,21,30,45,42,21,23,23,67,71,100,35,42,53,79,47,27,27,23,13,27,33,50,100,33,60,63,67,42,27,17,17,33,100,33,25,42,53,54,83,47,8,35,83,100,100,100,25,50,12,23,33,17,25,29,50,45,33,23,17,21,83,70,27,70,32,46,53,23,58,70,42,23,50,12,35,42,23,75,92,65,47,35,63,17,53,13,54,50,42,8,63,79,23,47,58,67,33,23,35,35,50,25,53,79,12,42,53,12,35,27,33,23,100],"name":"speed","type":"box","marker":{"color":"rgba(44,160,44,1)","line":{"color":"rgba(44,160,44,1)"}},"line":{"color":"rgba(44,160,44,1)"},"xaxis":"x3","yaxis":"y3","frame":null},{"fillcolor":"rgba(214,39,40,0.498)","y":[80,65,64,90,100,100,100,40,5,80,85,80,90,90,10,90,100,90,64,42,28,85,56,28,40,100,90,100,14,75,80,70,64,42,80,80,14,80,100,100,28,45,60,95,20,56,40,54,40,56,28,55,50,28,74,25,60,70,10,95,100,100,32,28,60,40,28,75,100,100,84,20,15,10,80,70,28,42,60,60,30,80,32,30,50,90,28,42,95,80,80,80,36,42,70,28,90,28,40,70,70,10,10,56,42,28,99,55,90,60,20,30,95,95,90,80,84,28,64,80,28,42,20,20,80,56,100,100,64,10,100,25,10,14,85,100,42,42,10,35,70,85,100,42,30,35,60,40,60,100,100,28,70,100,35,98,28,56,80,100,80,40,84,28,60,100,95,100,100,85,99,95,56,28,42,90,90,60,30,100,100,70,28,28,100,100,28,100,14,90,55,56,80,50,60,60,32,28,60,1,100,100,28,85,10,100,100,85,100,28,100,72,90,70,40,15,28,60,50,70,64,80,20,100,65,10,60,95,10,10,99,45,100,95,45,85,20,32,100,70,28,78,75,80,95,100,60,30,50,40,85,50,85,90,46,30,80,35,30,10,30,20,30,42,50,70,80,10,40,64,28,60,32,20,50,100,90,70,70,25,25,14,35,42,90,35,42,75,90,40,100,10,28,42,90,60,30,85,14,14,30,65,65,28,28,42,56,100,70,100,85,10,95,25,14,84,84,84,64,99,100,70,100,42,28,80,100,42,80,85,14,42,56,14,70,42,95,60,95,56,14,65,28,56,80,100,70,70,30,100,90,28,20,25,84,14,42,52,42,42,100,95,84,70,40,64,70,42,70,80,50,10,42,14,28,28,10,56,100,100,95,99,95,100,100,28,95,20,50,50,28,28,100,55,100,28,40,50,100,85,14,20,40,45,30,14,100,35,60,14,42,10,30,65,70,100,20,28,85,14,32,14,60,10,90,28,14,10,28,28,28,16,20,28,28,10,20,90,14,90,56,100,85,14,74,40,70,28,85,95,84,100,20,25,50,64,100,80,70,28,80,70,90,42,55,64,60,28,90,42,46,100,42,40,90,100,20,65,70,75,60,42,40,60,50,110,85,90,50,90,10,100,30,15,25,90,100,100,100,100,90,28,28,100,60,90,85,20,28,100,32,10,100,100,84,32,84,64,70,38,14,56,84,85,42,65,14,70,100,84,56,95,84,70,90,100,30,64,50,95,50,25,50,100,95,28,70,52,89,15,100,65,42,100,80,90,100,1,100,95,28,28,100,25,28,28],"name":"durability","type":"box","marker":{"color":"rgba(214,39,40,1)","line":{"color":"rgba(214,39,40,1)"}},"line":{"color":"rgba(214,39,40,1)"},"xaxis":"x4","yaxis":"y4","frame":null},{"fillcolor":"rgba(148,103,189,0.498)","y":[24,100,99,62,100,98,100,37,5,72,100,34,100,100,7,57,100,100,28,17,56,73,59,32,53,100,96,100,37,89,100,71,35,52,100,84,94,55,98,27,38,40,74,100,35,51,63,21,34,46,22,63,47,36,48,27,43,79,90,100,100,100,22,19,27,20,21,100,100,100,100,52,45,23,100,43,70,88,76,41,36,45,20,69,40,52,77,47,28,100,80,100,68,57,100,11,60,60,27,48,20,47,19,100,52,51,94,60,100,31,28,10,100,100,34,100,88,27,100,57,28,64,32,39,78,42,23,90,100,7,45,54,27,61,71,100,76,52,56,61,74,12,100,79,100,100,20,56,100,100,100,55,40,47,67,85,45,48,36,100,100,53,100,49,58,100,69,100,100,46,71,52,67,59,63,44,100,100,26,100,100,85,100,22,100,98,27,75,100,52,71,100,100,68,100,100,100,25,100,0,38,100,55,53,54,100,100,32,77,65,100,39,100,100,69,31,39,48,44,100,100,100,43,100,55,100,71,43,29,24,96,27,100,73,46,89,27,93,98,87,34,48,100,66,87,100,74,19,100,73,93,95,100,57,50,77,100,25,30,21,26,92,26,74,100,18,23,14,54,100,87,43,31,66,52,85,81,55,100,21,24,100,22,20,53,59,100,47,86,13,62,9,43,25,82,100,100,48,59,62,100,59,68,67,60,66,31,100,63,100,100,71,44,100,53,60,51,91,66,100,100,33,100,45,100,100,100,100,69,100,59,60,81,60,37,62,100,92,86,100,57,59,44,79,91,100,33,37,13,100,100,18,48,79,53,48,28,74,74,55,69,29,11,28,82,64,73,48,37,100,42,45,25,76,36,37,68,65,100,100,100,100,55,100,100,19,65,49,53,7,30,53,100,61,100,60,100,100,100,100,100,83,100,42,92,54,100,20,81,23,27,52,30,59,84,100,23,35,82,20,29,19,100,87,36,19,10,100,32,28,29,29,17,28,80,13,23,50,28,100,15,100,66,48,46,37,100,34,49,36,100,100,79,69,29,49,40,23,79,45,100,71,100,34,100,100,92,50,69,70,20,92,55,95,100,100,26,53,66,74,68,60,56,48,25,100,59,87,90,64,24,100,88,5,90,95,100,100,100,100,38,91,74,100,73,83,100,63,66,100,22,12,38,100,100,13,42,26,51,33,10,70,82,97,44,35,9,35,100,85,61,100,86,54,73,100,99,58,79,100,62,26,11,100,71,85,26,29,100,49,77,60,26,89,39,64,100,1,55,100,12,31,98,100,100,100],"name":"power","type":"box","marker":{"color":"rgba(148,103,189,1)","line":{"color":"rgba(148,103,189,1)"}},"line":{"color":"rgba(148,103,189,1)"},"xaxis":"x5","yaxis":"y5","frame":null},{"fillcolor":"rgba(140,86,75,0.498)","y":[64,85,65,95,55,64,64,50,20,95,40,55,32,50,55,60,100,75,42,30,60,80,64,32,30,90,84,60,14,60,80,70,42,70,25,101,28,54,50,80,42,60,56,80,80,95,70,56,90,100,80,90,100,100,74,80,85,40,40,84,84,100,64,70,40,40,42,65,85,56,56,80,80,70,30,70,75,65,85,100,100,65,56,25,90,28,64,56,72,84,64,30,70,64,40,56,75,32,15,60,70,35,70,80,85,70,56,100,80,80,20,20,75,90,56,60,90,85,100,64,28,64,70,60,95,99,60,28,56,40,80,60,25,56,64,80,80,70,10,100,64,28,95,64,100,100,30,50,55,42,100,80,60,90,60,70,60,56,70,84,50,65,60,74,75,90,84,80,42,65,28,70,64,100,42,40,42,40,95,50,100,64,70,64,56,90,70,70,42,28,32,42,40,32,60,32,48,48,50,10,52,50,84,100,10,95,60,42,70,56,20,56,100,65,30,40,90,50,26,64,64,70,60,50,80,50,45,42,80,50,72,30,45,75,70,100,65,75,85,42,95,64,80,50,80,64,60,30,50,50,56,100,64,56,56,30,6,90,75,15,100,70,65,72,55,55,20,10,65,65,80,70,42,90,95,70,30,30,70,50,55,40,56,30,60,30,80,75,40,70,60,14,85,85,40,60,70,90,42,14,75,80,70,42,42,42,28,30,56,85,60,70,70,100,14,56,64,80,72,74,100,30,40,70,95,80,85,80,100,70,56,85,75,14,56,64,42,80,64,28,14,75,32,42,42,45,64,28,65,50,50,85,95,15,56,90,75,80,56,56,30,40,56,62,70,74,85,64,70,100,60,35,100,80,100,56,20,70,80,35,90,56,50,100,55,76,42,95,25,5,45,42,80,25,56,42,40,45,75,90,32,20,90,100,10,28,40,80,56,14,100,10,100,80,40,20,80,95,75,56,80,80,40,35,85,95,14,25,85,85,85,65,70,64,80,80,80,100,56,60,42,70,72,50,56,56,80,28,80,56,40,75,80,70,100,84,70,65,56,42,70,65,32,42,60,55,60,42,85,52,56,30,56,80,95,70,70,75,70,85,70,28,40,30,70,85,70,55,40,64,10,100,75,20,70,60,85,75,85,55,35,56,56,75,65,75,80,100,60,80,64,80,80,100,70,70,72,54,28,90,14,28,70,70,42,55,28,80,64,64,42,100,84,56,56,100,30,70,15,70,25,30,20,85,95,50,84,42,56,90,42,84,42,100,60,64,100,56,95,84,14,28,28,90,56,28],"name":"combat","type":"box","marker":{"color":"rgba(140,86,75,1)","line":{"color":"rgba(140,86,75,1)"}},"line":{"color":"rgba(140,86,75,1)"},"xaxis":"x6","yaxis":"y6","frame":null},{"fillcolor":"rgba(227,119,194,0.498)","y":[203,191,185,203,193,185,173,178,191,188,193,180,178,244,257,188,183,165,163,183,180,211,183,229,213,178,185,175,183,173,193,185,165,163,183,198,178,168,183,180,183,203,183,165,170,165,168,178,188,178,198,178,175,180,173,201,188,165,180,198,191,191,188,170,165,178,183,185,170,188,183,170,170,191,185,188,188,168,165,175,178,218,183,183,165,196,193,198,170,183,193,157,183,170,203,175,183,188,193,198,188,188,193,180,175,185,173,175,170,201,175,180,163,170,175,185,178,183,226,178,226,183,191,183,180,168,198,191,175,183,185,267,168,170,198,122,173,183,188,185,193,193,185,188,193,198,201,201,188,175,188,173,175,244,196,185,193,168,180,175,185,178,168,168,193,188,191,183,196,188,175,975,165,193,173,188,180,183,183,157,183,142,188,211,180,876,185,183,185,188,198,168,175,183,198,178,178,170,188,180,178,183,178,701,188,188,183,188,170,183,185,191,165,175,185,175,170,180,213,259,173,185,196,180,170,168,79,244,178,180,170,175,188,183,173,170,183,180,168,180,198,155,71,183,178,193,168,168,170,188,183,185,183,196,165,165,188,287,178,213,191,244,234,201,188,191,183,64,180,175,178,175,188,165,155,191,198,203,229,193,188,198,168,180,183,188,183,213,188,188,168,201,170,183,213,193,180,180,165,198,175,196,185,185,183,188,178,185,183,196,175,366,196,193,188,180,188,178,175,188,201,173,180,180,178,188,180,168,168,185,185,175,178,180,185,163,206,211,180,175,305,178,170,183,157,168,168,183,185,168,168,170,180,213,183,180,180,183,180,178,188,183,163,193,178,165,178,191,180,183,213,165,188,185,297,196,185,180,178,183,165,137,122,173,191,168,198,170,185,305,279,183,178,193,170,211,188,185,173,168,178,191,201,183,175,173,188,193,157,201,175,168,198,178,279,165,188,211,170,165,178,178,157,178,173,178,185,183,188,193,165,170,201,183,180,183,173,170,180,165,191,196,180,183,188,163,201,188,183,198,175,185,175,198,218,185,178,163,175,188,191,183,168,188,183,168,206,168,175,191,165,168,191,175,229,226,168,178,165,137,191,191,175,180,183,185,180,188,173,218,163,178,175,140,366,160,165,188,183,196,155,175,188,183,165,66,170,185],"name":"height_cm","type":"box","marker":{"color":"rgba(227,119,194,1)","line":{"color":"rgba(227,119,194,1)"}},"line":{"color":"rgba(227,119,194,1)"},"xaxis":"x7","yaxis":"y7","frame":null},{"fillcolor":"rgba(127,127,127,0.498)","y":[441,65,90,441,122,88,61,81,104,108,90,90,72,169,173,101,68,57,54,83,90,122,86,358,135,106,146,63,68,57,98,270,59,50,101,126,68,54,81,72,63,67,180,77,54,57,52,61,77,95,79,133,63,181,68,216,135,71,54,124,155,113,95,59,58,54,86,90,52,92,90,59,61,104,86,88,97,68,56,77,230,495,86,55,97,110,135,61,99,52,90,59,158,74,81,108,90,116,108,101,74,74,86,61,61,62,97,63,81,50,55,54,86,170,70,78,225,67,79,99,104,50,173,88,68,52,90,81,817,56,135,27,52,90,95,91,178,101,95,383,90,171,187,132,89,110,81,54,63,412,104,306,56,74,59,80,65,57,203,95,106,88,96,108,50,56,99,56,91,81,88,86,52,81,45,92,104,167,81,77,86,99,630,268,50,62,90,270,115,79,88,83,77,88,79,95,90,79,63,79,89,104,57,61,88,54,65,81,225,158,61,81,146,83,48,18,630,77,59,58,77,119,207,65,65,79,81,54,79,191,79,14,77,52,55,56,113,90,88,86,49,52,855,81,104,356,324,203,97,99,106,18,79,58,63,59,95,54,65,95,360,230,288,236,36,191,77,79,383,86,225,90,97,52,135,56,81,110,72,59,54,140,72,90,90,86,77,101,61,81,86,128,61,338,248,90,101,59,79,79,72,70,158,61,70,79,54,125,85,101,54,83,99,88,79,83,86,59,293,191,65,69,405,59,117,89,79,54,52,87,80,55,50,52,81,234,86,81,70,90,74,68,83,79,56,97,83,50,70,117,83,81,630,56,108,146,320,85,72,79,101,56,38,25,54,104,63,171,61,203,900,63,74,113,59,310,87,149,54,50,79,88,315,153,79,52,191,101,50,92,72,52,180,49,437,65,113,405,54,56,74,77,56,59,55,58,81,83,79,71,62,63,131,91,57,77,68,77,54,101,47,74,146,176,198,149,99,54,443,101,225,288,143,101,74,288,158,203,81,54,76,97,117,81,59,86,82,105,331,54,56,214,79,73,117,50,334,52,71,54,41,135,135,63,79,162,95,54,108,67,158,50,65,117,39,473,135,51,171,74,117,50,61,95,83,52,17,57,81],"name":"weight_kg","type":"box","marker":{"color":"rgba(127,127,127,1)","line":{"color":"rgba(127,127,127,1)"}},"line":{"color":"rgba(127,127,127,1)"},"xaxis":"x8","yaxis":"y8","frame":null}],"layout":{"xaxis":{"domain":[0,0.28333333333333333],"automargin":true,"anchor":"y"},"xaxis2":{"domain":[0.3833333333333333,0.61666666666666659],"automargin":true,"anchor":"y2"},"xaxis3":{"domain":[0.71666666666666667,1],"automargin":true,"anchor":"y3"},"xaxis4":{"domain":[0,0.28333333333333333],"automargin":true,"anchor":"y4"},"xaxis5":{"domain":[0.3833333333333333,0.61666666666666659],"automargin":true,"anchor":"y5"},"xaxis6":{"domain":[0.71666666666666667,1],"automargin":true,"anchor":"y6"},"xaxis7":{"domain":[0,0.28333333333333333],"automargin":true,"anchor":"y7"},"xaxis8":{"domain":[0.3833333333333333,0.61666666666666659],"automargin":true,"anchor":"y8"},"yaxis8":{"domain":[0,0.28333333333333338],"automargin":true,"anchor":"x8"},"yaxis7":{"domain":[0,0.28333333333333338],"automargin":true,"anchor":"x7"},"yaxis6":{"domain":[0.38333333333333336,0.6166666666666667],"automargin":true,"anchor":"x6"},"yaxis5":{"domain":[0.38333333333333336,0.6166666666666667],"automargin":true,"anchor":"x5"},"yaxis4":{"domain":[0.38333333333333336,0.6166666666666667],"automargin":true,"anchor":"x4"},"yaxis3":{"domain":[0.71666666666666679,1],"automargin":true,"anchor":"x3"},"yaxis2":{"domain":[0.71666666666666679,1],"automargin":true,"anchor":"x2"},"yaxis":{"domain":[0.71666666666666679,1],"automargin":true,"anchor":"x"},"annotations":[],"shapes":[],"images":[],"margin":{"b":40,"l":60,"t":25,"r":10},"hovermode":"closest","showlegend":true},"attrs":{"118f0160cec36":{"y":[38,88,50,63,88,38,63,69,null,10,75,50,56,63,50,null,63,50,null,63,null,null,75,63,38,38,null,56,75,100,75,88,null,75,100,10,63,81,50,63,38,63,75,50,50,null,null,63,63,null,null,38,88,null,null,63,50,63,null,88,50,25,88,null,null,69,null,75,81,100,88,50,81,null,94,50,null,10,63,100,88,38,75,63,null,null,56,25,null,null,null,63,38,null,88,75,63,63,75,44,null,63,50,75,75,88,75,null,63,38,50,63,null,69,50,null,null,38,10,63,50,null,null,null,null,50,63,null,null,38,null,69,null,null,50,100,100,null,69,63,50,63,null,38,88,63,50,50,69,81,75,50,null,25,null,88,84,75,null,50,null,63,null,null,69,null,88,null,50,88,63,38,38,88,null,50,50,38,null,63,75,null,null,null,63,56,null,50,null,null,63,null,null,75,75,75,null,63,null,38,75,50,75,88,null,38,56,69,25,100,63,50,69,50,69,75,50,50,44,50,75,100,null,81,94,100,63,88,null,75,8,88,88,56,88,63,69,63,50,75,75,63,null,null,75,50,69,50,63,null,38,88,88,38,null,50,38,38,50,50,38,null,63,null,88,63,63,63,63,38,63,null,100,63,75,null,63,94,null,50,null,null,null,81,50,75,44,50,56,null,null,null,null,81,null,50,38,81,100,75,null,null,75,null,38,69,50,63,88,75,63,38,56,50,50,null,null,null,null,38,63,63,63,null,63,null,56,null,null,63,null,88,63,69,63,63,38,88,63,50,69,75,38,88,75,100,88,75,null,63,6,88,69,10,88,94,75,75,null,56,56,null,null,38,88,null,63,56,75,100,63,56,75,44,50,50,null,null,100,75,56,25,38,25,null,19,88,81,56,50,75,63,25,50,63,9,69,56,null,63,100,25,50,75,100,38,38,44,75,100,null,50,94,88,50,50,null,69,38,null,75,63,88,50,88,100,38,50,63,100,63,100,63,null,75,75,63,63,75,50,75,38,88,56,75,null,null,88,63,63,38,63,null,63,63,100,75,75,100,100,88,75,100,null,null,null,50,null,50,50,56,63,null,75,50,50,38,63,81,75,69,null,50,50,50,null,63,50,75,50,88,63,63,null,50,100,63,100,50,null,null,38,100,88,75,75,null,100,9,8,null,null,null,75,null,38,100,63,null,50,50,81,63,94,null,63,100,94,63,69,56,38,100,null,81,63,38,100,63,63,63,50,50,null,63,75,50,25,81,75,75,null,null,null,63,25,88,100,100,null,88,75,81,69,50,50,75,56,75,56,75,44,75,88,63,81,75,88,100,38,50,63,75,75,63,88,63,63,81,69,63,50,null,63,75,null,null,56,50,56,75,56,null,38,50,null,50,50,9,75,38,75,88,null,50,null,null,63,75,90,null,null,56,null,50,null,81,50,null,69,88,50,63,69,81,69,94,75,10,63,75,94,94,94,88,75,75,75,75,75,75,75,75,38,100,38,63,75,69,75,50,null,null,63,38,38,63,100,null,50,56,75,null,null,null,63,56,88,50,88,50,null,null,null,63,81,75,50,63,69,null,50,63,null,null,56,100,null,50,null,75,50,63,null,88,38,38,63,100,null,63,null,50,56,null,38,63,75,75,88,null,10,75,88,null,88,50,50,88,81,50],"name":"intelligence","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"box"},"118f02a67d889":{"y":[100,28,90,80,63,80,10,10,46,8,28,85,48,80,80,37,10,28,null,100,null,null,30,13,55,10,97,48,80,18,18,100,58,60,100,16,44,85,48,13,63,100,82,10,63,54,90,80,100,null,null,10,10,null,null,10,11,18,98,38,10,53,11,27,43,12,null,10,40,26,11,53,8,null,48,28,54,7,80,100,100,10,12,36,null,null,37,10,null,null,35,14,95,null,100,67,8,8,16,10,null,10,11,10,28,16,13,48,32,10,28,28,null,14,8,null,72,10,83,80,10,72,null,null,45,34,10,null,73,10,null,85,null,null,75,95,10,65,32,28,11,28,null,10,48,53,10,28,19,93,77,10,null,10,80,100,88,81,null,88,92,63,90,null,11,null,80,57,10,10,10,8,20,100,null,80,95,9,39,10,10,null,null,null,83,10,16,10,58,65,16,null,96,53,93,10,44,10,null,10,13,32,14,100,null,8,48,48,12,32,10,10,32,10,32,30,48,95,16,12,80,32,null,16,48,10,10,14,89,100,63,95,100,80,80,32,10,11,8,10,63,14,null,null,11,85,32,32,81,null,13,85,95,28,null,81,8,63,8,53,80,null,10,69,48,10,10,10,80,10,53,null,100,10,85,82,5,100,68,55,70,78,null,89,100,10,100,34,100,null,null,null,null,53,96,32,10,12,48,55,null,null,85,45,90,90,10,90,12,7,10,38,12,6,28,66,96,null,92,10,100,53,11,56,100,15,7,53,null,10,44,100,11,10,63,63,13,100,32,10,10,63,28,10,55,85,63,48,43,55,34,13,11,6,12,80,10,10,42,90,44,null,null,38,10,30,10,85,12,10,12,8,18,100,38,10,null,null,48,8,8,7,10,4,47,53,10,90,100,88,18,38,18,34,32,80,90,44,63,28,10,5,100,16,53,10,10,10,53,100,null,51,100,63,10,63,null,38,6,null,36,32,80,48,100,100,18,32,44,28,8,95,85,null,73,95,10,10,90,10,34,10,85,62,53,82,null,10,8,14,28,67,null,32,85,10,32,10,85,48,22,31,18,null,null,null,73,100,10,36,67,60,40,28,10,83,63,11,10,12,95,null,85,72,80,null,52,7,11,10,11,52,5,45,18,85,60,83,10,61,null,100,100,100,11,85,null,18,28,11,null,null,20,10,48,10,100,60,null,63,10,14,73,100,82,30,8,10,33,16,10,10,12,null,14,28,10,28,4,14,17,10,10,null,16,12,100,10,11,10,38,null,null,null,8,80,11,10,8,null,11,11,11,8,8,5,10,12,10,48,10,75,80,85,70,10,53,55,10,28,52,85,100,12,10,8,12,48,100,72,10,10,null,90,48,null,51,100,28,90,85,62,null,8,85,null,32,34,93,36,18,60,100,null,6,null,69,38,55,55,57,58,42,null,48,null,18,12,null,20,85,80,80,8,82,10,100,10,8,63,95,100,100,100,95,18,10,67,34,34,80,63,12,10,100,10,14,84,100,83,32,null,null,80,81,72,32,10,null,34,73,80,null,null,99,10,63,10,80,83,80,null,null,94,10,100,57,57,73,57,null,10,63,null,53,9,72,null,38,56,22,28,80,null,36,10,72,17,80,null,7,null,32,32,null,16,32,90,100,100,null,10,24,53,null,10,10,100,52,10,10],"name":"strength","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"box"},"118f07b9201f":{"y":[17,35,53,53,83,25,12,33,null,13,38,100,35,23,42,null,17,42,null,83,null,null,58,46,23,28,null,47,47,23,17,50,null,65,33,12,42,79,50,58,23,100,35,12,12,null,null,25,42,null,null,23,33,null,null,96,47,17,null,23,58,23,33,null,null,27,null,23,29,27,33,35,29,null,38,50,null,8,35,100,79,12,23,33,null,null,33,35,null,null,null,23,100,null,92,100,33,33,33,100,null,8,53,35,50,30,33,null,45,35,8,38,null,12,20,null,null,27,23,33,50,null,null,null,null,58,38,null,null,12,null,42,null,null,23,63,23,null,25,42,25,25,null,8,23,23,23,67,38,83,50,17,null,83,null,88,71,27,null,75,null,70,null,null,33,null,53,null,20,12,23,42,42,88,null,47,33,12,null,47,17,null,null,null,33,21,null,8,null,null,12,null,null,42,92,23,null,35,null,8,25,33,23,83,null,35,50,33,92,21,33,33,50,23,30,35,42,58,23,12,33,20,null,25,33,12,27,46,null,67,60,83,42,25,83,33,50,30,12,33,35,25,null,null,29,17,50,33,28,null,50,83,75,45,null,23,40,75,54,58,58,null,100,null,100,100,100,12,50,1,35,null,83,23,42,null,8,96,null,25,null,null,null,23,100,23,54,47,75,null,null,null,null,33,null,33,13,35,38,37,null,null,33,null,53,75,17,67,33,21,25,35,21,8,53,null,null,null,null,17,46,21,33,null,46,null,29,null,null,12,null,63,63,23,35,58,25,100,53,100,17,50,17,27,33,58,25,75,null,100,67,17,17,33,29,21,17,35,null,46,50,null,null,23,8,null,8,42,35,12,27,22,38,42,17,33,null,null,58,21,21,12,23,92,null,35,13,53,71,50,25,33,8,23,35,100,50,33,null,42,12,12,42,50,25,35,23,23,35,100,null,27,54,46,27,29,null,42,83,null,60,35,27,23,70,100,50,8,35,23,33,92,47,null,35,83,12,12,35,12,35,12,35,79,23,null,null,47,12,50,27,47,null,23,58,18,12,17,100,46,33,38,25,null,null,null,23,null,35,23,47,35,null,12,8,33,23,23,17,23,58,null,42,47,32,null,13,8,23,47,33,35,8,null,83,75,100,67,35,null,null,83,100,33,23,60,null,33,17,21,null,null,null,12,null,23,83,25,null,23,23,21,42,100,null,25,12,100,25,21,8,12,17,null,27,100,12,32,8,25,50,29,92,null,25,23,47,23,27,12,67,null,null,null,21,43,23,12,8,null,27,27,27,33,25,23,12,21,29,38,12,46,23,33,54,12,60,60,29,42,60,12,100,27,67,21,30,45,42,21,23,23,null,67,71,null,null,100,35,42,53,79,null,47,27,null,27,23,13,27,33,50,100,null,33,null,null,60,63,67,null,null,42,null,27,null,17,17,null,33,100,33,25,42,53,54,83,47,8,35,83,100,100,100,25,50,12,23,33,17,25,29,50,45,33,23,17,21,83,70,27,null,null,70,32,46,53,23,null,58,70,42,null,null,null,23,50,12,35,42,23,null,null,null,75,92,65,47,35,63,null,17,53,null,null,13,54,null,50,null,42,8,63,null,79,23,47,58,67,null,33,null,23,35,null,35,50,25,53,79,null,12,42,53,null,12,35,27,33,23,100],"name":"speed","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"box"},"118f0aebd72f":{"y":[80,65,64,90,100,100,100,40,null,5,80,85,80,90,90,null,10,90,null,100,null,null,90,64,42,28,null,85,56,28,40,100,null,90,100,14,75,80,70,64,42,80,80,14,80,null,null,100,100,null,null,28,45,null,null,60,95,20,null,56,40,54,40,null,null,56,null,28,55,50,28,74,25,null,60,70,null,10,95,100,100,32,28,60,null,null,40,28,null,null,null,75,100,null,100,84,20,15,10,80,null,70,28,42,60,60,30,null,80,32,30,50,null,90,28,null,null,42,95,80,80,null,null,null,null,80,36,null,null,42,null,70,null,null,28,90,28,null,40,70,70,10,null,10,56,42,28,99,55,90,60,20,null,30,null,95,95,90,null,80,null,84,null,null,28,null,64,null,80,28,42,20,20,80,null,56,100,100,null,64,10,null,null,null,100,25,null,10,null,null,14,null,null,85,100,42,null,42,null,10,35,70,85,100,null,42,30,35,60,40,60,100,100,28,70,100,35,98,28,56,80,100,null,80,40,84,28,60,null,100,95,100,100,85,99,95,56,28,42,90,90,60,null,null,30,100,100,70,28,null,28,100,100,28,null,100,14,90,55,56,80,null,50,null,60,60,32,28,60,1,100,null,100,28,85,null,10,100,null,100,null,null,null,85,100,28,100,72,90,null,null,null,null,70,null,40,15,28,60,50,null,null,70,null,64,80,20,100,65,10,60,95,10,10,99,null,null,null,null,45,100,95,45,null,85,null,20,null,null,32,null,100,70,28,78,75,80,95,100,60,30,50,40,85,50,85,90,46,null,30,80,35,30,10,30,20,30,42,null,50,70,null,null,80,10,null,40,64,28,60,32,20,50,100,90,70,null,null,70,25,25,14,35,42,null,90,35,42,75,90,40,100,10,28,42,90,60,30,null,85,14,14,30,65,65,28,28,42,56,100,null,70,100,85,10,95,null,25,14,null,84,84,84,64,99,100,70,100,42,28,80,100,42,null,80,85,14,42,56,14,70,42,95,60,95,null,null,56,14,65,28,56,null,80,100,70,70,30,100,90,28,20,25,null,null,null,84,null,14,42,52,42,null,42,100,95,84,70,40,64,70,null,42,70,80,null,50,10,42,14,28,28,10,null,56,100,100,95,99,null,null,95,100,100,28,95,null,20,50,50,null,null,null,28,null,28,100,55,null,100,28,40,50,100,null,85,14,20,40,45,30,14,100,null,35,60,14,42,10,30,65,70,100,null,20,28,85,14,32,14,60,null,null,null,10,90,28,14,10,null,28,28,28,16,20,28,28,10,20,90,14,90,56,100,85,14,74,40,70,28,85,95,84,100,20,25,50,64,100,80,70,28,null,80,70,null,null,90,42,55,64,60,null,28,90,null,42,46,100,42,40,90,100,null,20,null,null,65,70,75,null,null,60,null,42,null,40,60,null,50,110,85,90,50,90,10,100,30,15,25,90,100,100,100,100,90,28,28,100,60,90,85,20,28,100,32,10,100,100,84,32,null,null,84,64,70,38,14,null,56,84,85,null,null,null,42,65,14,70,100,84,null,null,null,56,95,84,70,90,100,null,30,64,null,null,50,95,null,50,null,25,50,100,null,95,28,70,52,89,null,15,null,100,65,null,42,100,80,90,100,null,1,100,95,null,28,28,100,25,28,28],"name":"durability","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"box"},"118f017c5443":{"y":[24,100,99,62,100,98,100,37,null,5,72,100,34,100,100,null,7,57,null,100,null,null,100,28,17,56,null,73,59,32,53,100,null,96,100,37,89,100,71,35,52,100,84,94,55,null,null,98,27,null,null,38,40,null,null,74,100,35,null,51,63,21,34,null,null,46,null,22,63,47,36,48,27,null,43,79,null,90,100,100,100,22,19,27,null,null,20,21,null,null,null,100,100,null,100,100,52,45,23,100,null,43,70,88,76,41,36,null,45,20,69,40,null,52,77,null,null,47,28,100,80,null,null,null,null,100,68,null,null,57,null,100,null,null,11,60,60,null,27,48,20,47,null,19,100,52,51,94,60,100,31,28,null,10,null,100,100,34,null,100,null,88,null,null,27,null,100,null,57,28,64,32,39,78,null,42,23,90,null,100,7,null,null,null,45,54,null,27,null,null,61,null,null,71,100,76,null,52,null,56,61,74,12,100,null,79,100,100,20,56,100,100,100,55,40,47,67,85,45,48,36,100,null,100,53,100,49,58,null,100,69,100,100,46,71,52,67,59,63,44,100,100,null,null,26,100,100,85,100,null,22,100,98,27,null,75,100,52,71,100,100,null,68,null,100,100,100,25,100,0,38,null,100,55,53,null,54,100,null,100,null,null,null,32,77,65,100,39,100,null,null,null,null,100,null,69,31,39,48,44,null,null,100,null,100,100,43,100,55,100,71,43,29,24,96,null,null,null,null,27,100,73,46,null,89,null,27,null,null,93,null,98,87,34,48,100,66,87,100,74,19,100,73,93,95,100,57,50,null,77,100,25,30,21,26,92,26,74,null,100,18,null,null,23,14,null,54,100,87,43,31,66,52,85,81,55,null,null,100,21,24,100,22,20,null,53,59,100,47,86,13,62,9,43,25,82,100,100,null,48,59,62,100,59,68,67,60,66,31,100,null,63,100,100,71,44,null,100,53,null,60,51,91,66,100,100,33,100,45,100,100,100,100,null,69,100,59,60,81,60,37,62,100,92,86,null,null,100,57,59,44,79,null,91,100,33,37,13,100,100,18,48,79,null,null,null,53,null,48,28,74,74,null,55,69,29,11,28,82,64,73,null,48,37,100,null,42,45,25,76,36,37,68,null,65,100,100,100,100,null,null,55,100,100,19,65,null,49,53,7,null,null,null,30,null,53,100,61,null,100,60,100,100,100,null,100,100,83,100,42,92,54,100,null,20,81,23,27,52,30,59,84,100,null,23,35,82,20,29,19,100,null,null,null,87,36,19,10,100,null,32,28,29,29,17,28,80,13,23,50,28,100,15,100,66,48,46,37,100,34,49,36,100,100,79,69,29,49,40,23,79,45,null,100,71,null,null,100,34,100,100,92,null,50,69,null,70,20,92,55,95,100,100,null,26,null,null,53,66,74,null,null,68,null,60,null,56,48,null,25,100,59,87,90,64,24,100,88,5,90,95,100,100,100,100,38,91,74,100,73,83,100,63,66,100,22,12,38,100,100,13,null,null,42,26,51,33,10,null,70,82,97,null,null,null,44,35,9,35,100,85,null,null,null,61,100,86,54,73,100,null,99,58,null,null,79,100,null,62,null,26,11,100,null,71,85,26,29,100,null,49,null,77,60,null,26,89,39,64,100,null,1,55,100,null,12,31,98,100,100,100],"name":"power","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"box"},"118f097ffb78":{"y":[64,85,65,95,55,64,64,50,null,20,95,40,55,32,50,null,55,60,null,100,null,null,75,42,30,60,null,80,64,32,30,90,null,84,60,14,60,80,70,42,70,25,101,28,54,null,null,50,80,null,null,42,60,null,null,56,80,80,null,95,70,56,90,null,null,100,null,80,90,100,100,74,80,null,85,40,null,40,84,84,100,64,70,40,null,null,40,42,null,null,null,65,85,null,56,56,80,80,70,30,null,70,75,65,85,100,100,null,65,56,25,90,null,28,64,null,null,56,72,84,64,null,null,null,null,30,70,null,null,64,null,40,null,null,56,75,32,null,15,60,70,35,null,70,80,85,70,56,100,80,80,20,null,20,null,75,90,56,null,60,null,90,null,null,85,null,100,null,64,28,64,70,60,95,null,99,60,28,null,56,40,null,null,null,80,60,null,25,null,null,56,null,null,64,80,80,null,70,null,10,100,64,28,95,null,64,100,100,30,50,55,42,100,80,60,90,60,70,60,56,70,84,null,50,65,60,74,75,null,90,84,80,42,65,28,70,64,100,42,40,42,40,null,null,95,50,100,64,70,null,64,56,90,70,null,70,42,28,32,42,40,null,32,null,60,32,48,48,50,10,52,null,50,84,100,null,10,95,null,60,null,null,null,42,70,56,20,56,100,null,null,null,null,65,null,30,40,90,50,26,null,null,64,null,64,70,60,50,80,50,45,42,80,50,72,null,null,null,null,30,45,75,70,null,100,null,65,null,null,75,null,85,42,95,64,80,50,80,64,60,30,50,50,56,100,64,56,56,null,30,6,90,75,15,100,70,65,72,null,55,55,null,null,20,10,null,65,65,80,70,42,90,95,70,30,30,null,null,70,50,55,40,56,30,null,60,30,80,75,40,70,60,14,85,85,40,60,70,null,90,42,14,75,80,70,42,42,42,28,30,null,56,85,60,70,70,null,100,14,null,56,64,80,72,74,100,30,40,70,95,80,85,80,null,100,70,56,85,75,14,56,64,42,80,64,null,null,28,14,75,32,42,null,42,45,64,28,65,50,50,85,95,15,null,null,null,56,null,90,75,80,56,null,56,30,40,56,62,70,74,85,null,64,70,100,null,60,35,100,80,100,56,20,null,70,80,35,90,56,null,null,50,100,55,76,42,null,95,25,5,null,null,null,45,null,42,80,25,null,56,42,40,45,75,null,90,32,20,90,100,10,28,40,null,80,56,14,100,10,100,80,40,20,null,80,95,75,56,80,80,40,null,null,null,35,85,95,14,25,null,85,85,85,65,70,64,80,80,80,100,56,60,42,70,72,50,56,56,80,28,80,56,40,75,80,70,100,84,70,65,56,42,null,70,65,null,null,32,42,60,55,60,null,42,85,null,52,56,30,56,80,95,70,null,70,null,null,75,70,85,null,null,70,null,28,null,40,30,null,70,85,70,55,40,64,10,100,75,20,70,60,85,75,85,55,35,56,56,75,65,75,80,100,60,80,64,80,80,100,70,70,null,null,72,54,28,90,14,null,28,70,70,null,null,null,42,55,28,80,64,64,null,null,null,42,100,84,56,56,100,null,30,70,null,null,15,70,null,25,null,30,20,85,null,95,50,84,42,56,null,90,null,42,84,null,42,100,60,64,100,null,56,95,84,null,14,28,28,90,56,28],"name":"combat","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"box"},"118f031568827":{"y":[203,191,185,203,null,193,null,185,173,178,191,188,193,180,null,null,178,244,null,257,188,null,null,183,165,163,null,183,180,211,183,null,null,229,213,null,178,185,175,183,173,193,185,165,163,null,null,183,198,178,null,168,183,null,null,180,183,null,null,203,183,165,170,null,null,165,null,168,178,188,178,198,178,175,180,173,null,null,201,null,188,null,165,null,null,180,null,null,null,null,null,198,191,null,191,188,170,165,178,null,null,183,185,170,188,183,170,170,191,185,188,188,null,168,165,null,null,175,178,218,null,null,null,null,183,null,183,null,null,165,null,196,null,193,null,198,170,183,193,157,183,170,null,null,203,175,null,183,188,193,198,null,188,null,188,193,180,175,null,null,null,185,173,null,175,170,201,null,175,null,180,163,170,175,185,178,183,null,null,226,178,null,null,null,226,183,191,183,null,180,168,null,null,198,null,191,175,null,null,null,183,185,null,267,null,168,170,198,122,null,173,183,188,185,193,193,185,188,193,null,198,201,201,188,175,188,173,null,175,244,196,185,null,193,null,168,180,175,null,185,178,168,null,null,168,193,188,191,183,196,188,null,null,175,null,975,165,193,173,null,188,null,180,null,183,183,157,183,142,188,211,180,876,185,183,null,null,null,185,188,null,null,null,null,198,168,null,null,175,null,null,null,183,198,178,178,170,188,180,178,183,178,701,null,188,188,183,188,170,null,183,185,191,165,175,185,175,null,170,180,213,259,173,185,196,null,null,180,170,168,79,244,178,180,170,175,188,183,173,170,183,null,180,168,180,198,null,null,null,155,71,183,178,193,null,168,null,168,null,null,170,null,188,null,null,null,183,185,183,196,165,165,188,287,null,178,null,213,191,null,null,null,null,null,null,244,null,234,null,null,201,188,null,191,183,64,180,null,null,175,178,null,175,null,188,165,155,191,198,null,null,203,229,193,188,198,null,168,null,null,180,183,188,null,183,null,null,213,188,188,168,201,170,183,213,null,null,193,180,null,180,165,198,175,196,185,null,185,null,null,183,188,null,null,178,185,183,null,null,196,null,175,366,null,null,null,196,193,null,188,180,188,178,175,188,201,173,180,180,178,188,null,180,168,168,null,185,null,185,175,178,null,null,null,180,185,163,206,null,211,180,175,null,305,178,null,null,null,null,170,null,null,183,157,null,168,168,183,null,185,168,168,170,180,null,213,183,180,180,183,180,178,null,null,188,183,163,193,null,178,null,165,178,191,180,183,213,null,165,188,185,null,null,null,297,196,185,null,null,180,178,183,165,137,null,122,173,191,168,198,170,185,305,279,null,183,178,193,170,null,211,null,188,185,173,168,178,191,201,183,175,173,null,188,null,null,null,193,157,null,201,175,null,168,198,null,178,null,279,165,188,211,null,null,null,null,null,170,165,178,178,157,178,null,173,178,185,183,null,188,null,193,165,170,201,null,183,180,183,173,170,180,165,191,null,196,null,180,183,null,null,null,188,163,201,null,188,183,198,175,185,null,175,198,218,185,178,163,null,175,188,191,null,183,null,168,188,183,168,206,null,168,175,191,165,168,191,175,229,226,168,178,165,null,null,137,191,191,175,null,180,183,185,180,188,173,218,163,null,null,null,178,null,175,140,366,160,165,188,183,null,196,155,175,188,183,165,null,66,170,185],"name":"height_cm","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"box"},"118f02804d1bf":{"y":[441,65,90,441,null,122,null,88,61,81,104,108,90,90,null,null,72,169,null,173,101,null,null,68,57,54,null,83,90,122,86,null,null,358,135,null,106,146,63,68,57,98,270,59,50,null,null,101,126,68,null,54,81,null,72,63,67,null,null,180,77,54,57,null,null,52,null,61,77,95,79,133,null,63,181,68,null,null,216,null,135,null,71,null,null,54,null,null,null,null,null,124,155,null,113,95,59,58,54,null,null,86,90,52,92,90,59,61,104,86,88,97,null,68,56,null,null,77,230,495,null,null,null,null,86,null,null,null,null,55,null,97,null,110,null,135,61,99,null,52,90,59,null,null,158,74,null,81,108,90,116,null,null,null,108,101,74,74,null,null,null,86,61,null,61,62,97,null,63,null,81,50,55,54,86,null,170,null,null,70,78,null,null,null,225,67,79,99,null,104,50,null,null,173,null,88,68,52,null,null,90,81,null,817,null,56,null,135,27,null,52,90,95,91,178,101,95,383,90,null,171,187,132,89,110,81,54,null,63,412,104,null,null,306,null,56,74,59,null,80,65,57,null,null,null,203,95,106,88,96,108,null,null,50,null,null,56,99,56,null,91,null,81,null,88,86,52,81,45,92,104,167,null,81,77,null,null,null,86,99,null,null,null,630,268,50,null,null,62,null,null,null,90,270,115,79,null,88,83,77,88,79,null,null,95,90,79,null,63,null,79,89,104,57,61,88,54,null,65,81,225,158,61,81,146,null,null,83,null,48,18,630,77,59,58,77,119,207,65,65,79,null,81,54,79,191,null,null,null,79,14,null,77,null,null,52,null,55,null,null,56,null,113,null,null,null,null,90,88,86,49,52,null,855,null,81,null,null,104,null,null,null,null,null,null,356,null,324,null,null,203,97,null,99,106,18,79,null,null,58,63,null,59,null,95,54,65,95,360,null,null,230,288,236,36,191,null,77,null,null,79,383,86,null,null,null,null,225,90,97,52,135,56,81,null,null,null,110,72,null,59,54,140,72,90,90,null,86,null,null,77,101,null,null,61,81,86,null,null,128,null,61,338,null,null,null,248,90,null,101,59,79,79,72,70,158,61,70,79,54,125,null,85,101,54,null,83,null,99,88,79,null,null,null,83,86,59,293,null,191,65,69,null,405,59,null,null,null,null,117,null,null,89,79,null,54,52,87,null,80,55,50,52,81,null,234,86,81,70,90,74,68,null,null,83,79,56,97,null,83,null,50,70,117,83,81,630,null,56,108,146,null,null,null,null,320,85,null,null,72,79,101,56,38,null,25,54,104,63,171,61,203,900,null,null,63,74,113,59,null,310,null,87,149,54,50,79,88,315,153,79,52,null,191,null,null,null,101,50,null,92,72,null,52,180,null,49,null,437,65,113,405,null,null,null,null,null,54,56,74,77,56,59,null,55,58,81,83,null,79,null,71,62,63,131,null,91,57,null,77,68,77,54,101,null,47,null,74,146,176,198,149,99,54,443,null,101,225,288,143,101,null,74,288,158,203,81,54,null,76,97,117,null,81,null,59,86,82,105,331,null,54,56,214,79,73,117,50,334,null,52,71,54,null,null,41,135,135,63,null,79,162,95,54,108,67,158,50,null,null,null,65,null,117,39,473,135,51,171,74,null,117,50,61,95,83,52,null,17,57,81],"name":"weight_kg","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"box"}},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"subplot":true,"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<pre class="r"><code># Correlation Matrix
+
+cor_matrix &lt;- cor(numeric_vars, use = &quot;complete.obs&quot;)
+
+cor_heatmap &lt;- plot_ly(
+  z = cor_matrix,
+  x = colnames(cor_matrix),
+  y = colnames(cor_matrix),
+  type = &quot;heatmap&quot;,
+  colors = colorRampPalette(c(&quot;lightblue&quot;, &quot;blue&quot;, &quot;darkblue&quot;))(100)
+) %&gt;%
+  layout(
+    title = &quot;Correlation Matrix Heatmap&quot;,
+    xaxis = list(title = &quot;Variables&quot;),
+    yaxis = list(title = &quot;Variables&quot;)
+  )
+
+cor_heatmap</code></pre>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-60c63d5a69d35d1d968f" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-60c63d5a69d35d1d968f">{"x":{"visdat":{"118f05466671f":["function () ","plotlyVisDat"]},"cur_data":"118f05466671f","attrs":{"118f05466671f":{"z":[[1,0.10946440131066096,0.10563527362659407,0.092270368509171363,0.20722162406299716,0.30955869231785049,0.12399222352029451,0.033776373118235947],[0.10946440131066096,1,0.46299522896664863,0.65291918841315566,0.40159235953260897,0.21026479765715428,0.27288040485163811,0.41717497016314031],[0.10563527362659407,0.46299522896664863,1,0.43051690914050095,0.44152435844301735,0.11534656559923499,-0.0084129220406300147,0.059875771295532426],[0.092270368509171363,0.65291918841315566,0.43051690914050095,1,0.45477315776308841,0.16422822553468014,0.25760751299029799,0.3504346916065384],[0.20722162406299716,0.40159235953260897,0.44152435844301735,0.45477315776308841,1,0.11185485812994368,0.076228452744639366,0.098634911956608423],[0.30955869231785049,0.21026479765715428,0.11534656559923499,0.16422822553468014,0.11185485812994368,1,0.081196847839566363,0.11787394215556118],[0.12399222352029451,0.27288040485163811,-0.0084129220406300147,0.25760751299029799,0.076228452744639366,0.081196847839566363,1,0.69370903481671764],[0.033776373118235947,0.41717497016314031,0.059875771295532426,0.3504346916065384,0.098634911956608423,0.11787394215556118,0.69370903481671764,1]],"x":["intelligence","strength","speed","durability","power","combat","height_cm","weight_kg"],"y":["intelligence","strength","speed","durability","power","combat","height_cm","weight_kg"],"colors":["#ADD8E6","#A9D3E6","#A6CFE7","#A2CAE7","#9FC6E8","#9BC2E8","#98BDE9","#94B9E9","#91B5EA","#8DB0EA","#8AACEB","#86A8EB","#83A3EC","#7F9FEC","#7C9AED","#7896ED","#7592EE","#718DEE","#6E89EF","#6A85EF","#6780F0","#637CF0","#6078F1","#5C73F1","#596FF2","#556AF2","#5266F3","#4E62F3","#4B5DF4","#4759F4","#4455F5","#4050F5","#3D4CF6","#3947F6","#3643F7","#323FF7","#2F3AF8","#2B36F8","#2832F9","#242DF9","#2129FA","#1D25FA","#1A20FB","#161CFB","#1318FC","#0F13FC","#0C0FFD","#080AFD","#0506FE","#0102FE","#0000FD","#0000FB","#0000F9","#0000F6","#0000F4","#0000F2","#0000EF","#0000ED","#0000EB","#0000E8","#0000E6","#0000E4","#0000E1","#0000DF","#0000DD","#0000DA","#0000D8","#0000D5","#0000D3","#0000D1","#0000CE","#0000CC","#0000CA","#0000C7","#0000C5","#0000C3","#0000C0","#0000BE","#0000BC","#0000B9","#0000B7","#0000B5","#0000B2","#0000B0","#0000AE","#0000AB","#0000A9","#0000A7","#0000A4","#0000A2","#0000A0","#00009D","#00009B","#000099","#000096","#000094","#000092","#00008F","#00008D","#00008B"],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"heatmap"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Correlation Matrix Heatmap","xaxis":{"domain":[0,1],"automargin":true,"title":"Variables"},"yaxis":{"domain":[0,1],"automargin":true,"title":"Variables"},"scene":{"zaxis":{"title":[]}},"hovermode":"closest","showlegend":false,"legend":{"yanchor":"top","y":0.5}},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"colorbar":{"title":"","ticklen":2,"len":0.5,"lenmode":"fraction","y":1,"yanchor":"top"},"colorscale":[["0","rgba(173,216,230,1)"],["0.0416666666666667","rgba(159,197,232,1)"],["0.0833333333333333","rgba(144,180,234,1)"],["0.125","rgba(130,161,236,1)"],["0.166666666666667","rgba(115,143,238,1)"],["0.208333333333333","rgba(101,125,240,1)"],["0.25","rgba(86,107,242,1)"],["0.291666666666667","rgba(72,90,244,1)"],["0.333333333333333","rgba(57,71,246,1)"],["0.375","rgba(43,54,248,1)"],["0.416666666666667","rgba(28,36,250,1)"],["0.458333333333333","rgba(14,18,252,1)"],["0.5","rgba(0,1,253,1)"],["0.541666666666667","rgba(0,0,245,1)"],["0.583333333333333","rgba(0,0,235,1)"],["0.625","rgba(0,0,225,1)"],["0.666666666666667","rgba(0,0,216,1)"],["0.708333333333333","rgba(0,0,206,1)"],["0.75","rgba(0,0,196,1)"],["0.791666666666667","rgba(0,0,187,1)"],["0.833333333333333","rgba(0,0,177,1)"],["0.875","rgba(0,0,168,1)"],["0.916666666666667","rgba(0,0,158,1)"],["0.958333333333333","rgba(0,0,148,1)"],["1","rgba(0,0,139,1)"]],"showscale":true,"z":[[1,0.10946440131066096,0.10563527362659407,0.092270368509171363,0.20722162406299716,0.30955869231785049,0.12399222352029451,0.033776373118235947],[0.10946440131066096,1,0.46299522896664863,0.65291918841315566,0.40159235953260897,0.21026479765715428,0.27288040485163811,0.41717497016314031],[0.10563527362659407,0.46299522896664863,1,0.43051690914050095,0.44152435844301735,0.11534656559923499,-0.0084129220406300147,0.059875771295532426],[0.092270368509171363,0.65291918841315566,0.43051690914050095,1,0.45477315776308841,0.16422822553468014,0.25760751299029799,0.3504346916065384],[0.20722162406299716,0.40159235953260897,0.44152435844301735,0.45477315776308841,1,0.11185485812994368,0.076228452744639366,0.098634911956608423],[0.30955869231785049,0.21026479765715428,0.11534656559923499,0.16422822553468014,0.11185485812994368,1,0.081196847839566363,0.11787394215556118],[0.12399222352029451,0.27288040485163811,-0.0084129220406300147,0.25760751299029799,0.076228452744639366,0.081196847839566363,1,0.69370903481671764],[0.033776373118235947,0.41717497016314031,0.059875771295532426,0.3504346916065384,0.098634911956608423,0.11787394215556118,0.69370903481671764,1]],"x":["intelligence","strength","speed","durability","power","combat","height_cm","weight_kg"],"y":["intelligence","strength","speed","durability","power","combat","height_cm","weight_kg"],"type":"heatmap","xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div id="attributes-of-characters" class="section level3">
+<h3><strong>5.1.1. Attributes of characters</strong></h3>
+<p>The numerical data in the superhero dataset reveals detailed insights
+into the attributes of various characters.</p>
+<ul>
+<li><p>Intelligence values range from 6 to 100, with a median of 63, and
+an interquartile range (IQR) from 50 to 75, indicating that most
+superheroes possess above-average intelligence, though there are a few
+outliers below 19.</p></li>
+<li><p>Strength varies widely from 4 to 100, with a median of 35, and an
+IQR spanning 10 to 80, suggesting high variability in physical power
+among characters.</p></li>
+<li><p>Speed also shows considerable variation, ranging from 1 to 100,
+with a median of 33 and an upper fence at 88, highlighting the presence
+of faster-than-average individuals as outliers.</p></li>
+<li><p>Durability, which measures resilience, ranges from 1 to 110, with
+a median of 60 and an IQR from 30 to 90, suggesting that durability is
+skewed slightly higher for many characters.</p></li>
+<li><p>Power spans from 0 to 100, with a median of 63.5 and a compact
+IQR between 38 and 100, indicating that many characters have significant
+abilities, although some have very low power levels.</p></li>
+<li><p>Combat skills range from 5 to 101, with a median of 64 and an IQR
+from 42 to 80, suggesting that fighting ability is moderately high for
+most characters.</p></li>
+<li><p>Physical traits exhibit greater variation. Height ranges from a
+minimum of 64 cm to an extreme outlier of 975 cm, with a median of 183
+cm and an IQR from 175 to 191 cm.</p></li>
+<li><p>Similarly, weight spans from 14 kg to an outlier of 900 kg, with
+a median of 81 kg and an IQR between 61.75 and 108 kg. The correlation
+between the weight and the height is going to be examed later.</p></li>
+</ul>
+</div>
+<div id="correlation-heatmap" class="section level3">
+<h3><strong>5.1.2. Correlation Heatmap</strong></h3>
+<p>The correlation matrix heatmap provides a comprehensive view of the
+relationships between the numerical variables in the superhero dataset.
+Notably, weight (kg) and height (cm) show a strong positive correlation,
+indicating that taller superheroes tend to weigh more, which aligns with
+physical expectations.</p>
+<p>Strength is positively correlated with power and durability,
+suggesting that characters with greater strength often exhibit higher
+power and durability. Moreover, power and durability also have a
+noticeable positive correlation themselves, reflecting that superheroes
+with greater endurance often possess high energy-based abilities
+together.</p>
+<p>Combat shows moderate positive correlations with intelligence and
+power, implying that characters proficient in combat tend to be both
+strategically intelligent and powerful. Speed, however, exhibits weaker
+correlations with other attributes, especially height, indicating it is
+a more distinct characteristic.</p>
+</div>
+</div>
+<div id="categorical-data" class="section level2">
+<h2><strong>5.2. Categorical data</strong></h2>
+<div id="publisher-and-alignment-of-distribution"
+class="section level3">
+<h3><strong>5.2.1. Publisher and alignment of distribution</strong></h3>
+<pre class="r"><code>publisher_counts &lt;- superheros |&gt;
+  count(publisher) |&gt;
+  arrange(desc(n))
+
+publisher_bar &lt;- plot_ly(publisher_counts, x = ~reorder(publisher, -n), y = ~n, type = &#39;bar&#39;, marker = list(color = &#39;#aec7e8&#39;)) |&gt;
+  layout(title = &quot;Publisher Distribution (Bar Chart - Sorted by Count)&quot;,
+         xaxis = list(title = &quot;Publisher&quot;),
+         yaxis = list(title = &quot;Count&quot;))
+
+publisher_bar</code></pre>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-7309ef79c1b8a48948a9" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-7309ef79c1b8a48948a9">{"x":{"visdat":{"118f06f0526fe":["function () ","plotlyVisDat"]},"cur_data":"118f06f0526fe","attrs":{"118f06f0526fe":{"x":{},"y":{},"marker":{"color":"#aec7e8"},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Publisher Distribution (Bar Chart - Sorted by Count)","xaxis":{"domain":[0,1],"automargin":true,"title":"Publisher","type":"category","categoryorder":"array","categoryarray":["Marvel Comics","Dc Comics","Others","Dark Horse Comics","Nbc - Heroes","George Lucas","Image Comics","Harpercollins","Star Trek","Syfy","Team Epic Tv","Abc Studios","Icon Comics","Idw Publishing","Shueisha","Ant-Man","Goliath","Wildstorm","Anti-Venom","Anti-Vision","Batman Ii","Binary","Deadpool","Flash Iv","Sony Pictures"]},"yaxis":{"domain":[0,1],"automargin":true,"title":"Count"},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":["Marvel Comics","Dc Comics","Others","Dark Horse Comics","Nbc - Heroes","George Lucas","Image Comics","Harpercollins","Star Trek","Syfy","Team Epic Tv","Abc Studios","Icon Comics","Idw Publishing","Shueisha","Ant-Man","Goliath","Wildstorm","Anti-Venom","Anti-Vision","Batman Ii","Binary","Deadpool","Flash Iv","Sony Pictures"],"y":[339,188,64,18,18,14,14,6,6,5,5,4,4,4,4,3,3,3,2,2,2,2,2,2,2],"marker":{"color":"#aec7e8","line":{"color":"rgba(31,119,180,1)"}},"type":"bar","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<pre class="r"><code>alignment_counts &lt;- superheros |&gt;
+  count(alignment)
+
+alignment_pie &lt;- plot_ly(alignment_counts, labels = ~alignment, values = ~n, type = &#39;pie&#39;,
+                        marker = list(colors = c(&#39;#98df8a&#39;, &#39;#ffbb78&#39;, &#39;#9edae5&#39;, &#39;#f7b6d2&#39;))) |&gt;
+  layout(title = &quot;Alignment Distribution&quot;,
+         xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
+         yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
+
+alignment_pie</code></pre>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-3f21fdaed736a056fbd2" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-3f21fdaed736a056fbd2">{"x":{"visdat":{"118f03b4326a3":["function () ","plotlyVisDat"]},"cur_data":"118f03b4326a3","attrs":{"118f03b4326a3":{"labels":{},"values":{},"marker":{"colors":["#98df8a","#ffbb78","#9edae5","#f7b6d2"]},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"pie"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Alignment Distribution","xaxis":{"showgrid":false,"zeroline":false,"showticklabels":false},"yaxis":{"showgrid":false,"zeroline":false,"showticklabels":false},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"labels":["Bad","Good","Neutral",null],"values":[206,494,24,7],"marker":{"color":"rgba(31,119,180,1)","colors":["#98df8a","#ffbb78","#9edae5","#f7b6d2"],"line":{"color":"rgba(255,255,255,1)"}},"type":"pie","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<pre class="r"><code>marvel_alignment &lt;- superheros |&gt;
+  filter(publisher == &quot;Marvel Comics&quot;) |&gt;
+  count(alignment)
+
+dc_alignment &lt;- superheros |&gt;
+  filter(publisher == &quot;Dc Comics&quot;) |&gt;
+  count(alignment)
+
+# Plot alignment distribution for Marvel Comics
+marvel_plot &lt;- plot_ly(marvel_alignment, labels = ~alignment, values = ~n, type = &#39;pie&#39;,
+                      marker = list(colors = c(&#39;#aec7e8&#39;, &#39;#ffbb78&#39;, &#39;#98df8a&#39;, &#39;#f4cccc&#39;))) |&gt;
+  layout(title = &quot;Alignment Distribution - Marvel Comics&quot;,
+         xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
+         yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
+
+# Plot alignment distribution for DC Comics
+dc_plot &lt;- plot_ly(dc_alignment, labels = ~alignment, values = ~n, type = &#39;pie&#39;,
+                   marker = list(colors = c(&#39;#c5b0d5&#39;, &#39;#c49c94&#39;, &#39;#f9cb9c&#39;, &#39;#d9d9d9&#39;))) |&gt;
+  layout(title = &quot;Alignment Distribution - DC Comics&quot;,
+         xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
+         yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
+
+marvel_plot</code></pre>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-6324342aa42b0597af13" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-6324342aa42b0597af13">{"x":{"visdat":{"118f0359db5ba":["function () ","plotlyVisDat"]},"cur_data":"118f0359db5ba","attrs":{"118f0359db5ba":{"labels":{},"values":{},"marker":{"colors":["#aec7e8","#ffbb78","#98df8a","#f4cccc"]},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"pie"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Alignment Distribution - Marvel Comics","xaxis":{"showgrid":false,"zeroline":false,"showticklabels":false},"yaxis":{"showgrid":false,"zeroline":false,"showticklabels":false},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"labels":["Bad","Good","Neutral",null],"values":[108,220,10,1],"marker":{"color":"rgba(31,119,180,1)","colors":["#aec7e8","#ffbb78","#98df8a","#f4cccc"],"line":{"color":"rgba(255,255,255,1)"}},"type":"pie","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<pre class="r"><code>dc_plot</code></pre>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-6fb1961071c0d77a74f3" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-6fb1961071c0d77a74f3">{"x":{"visdat":{"118f0505e1d6":["function () ","plotlyVisDat"]},"cur_data":"118f0505e1d6","attrs":{"118f0505e1d6":{"labels":{},"values":{},"marker":{"colors":["#c5b0d5","#c49c94","#f9cb9c","#d9d9d9"]},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"pie"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Alignment Distribution - DC Comics","xaxis":{"showgrid":false,"zeroline":false,"showticklabels":false},"yaxis":{"showgrid":false,"zeroline":false,"showticklabels":false},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"labels":["Bad","Good","Neutral",null],"values":[59,116,12,1],"marker":{"color":"rgba(31,119,180,1)","colors":["#c5b0d5","#c49c94","#f9cb9c","#d9d9d9"],"line":{"color":"rgba(255,255,255,1)"}},"type":"pie","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p>The publisher distribution analysis reveals publishers of different
+characters. It is worth noting that Marvel Comics and DC Comics dominate
+the superhero dataset, collectively contributing the majority of
+characters. Marvel leads significantly with around 339 characters,
+followed by DC with approximately 188 characters. These two publishers
+are the most well-known in the superhero universe and represent the most
+iconic and expansive rosters. Due to their prominence and influence,
+further investigation will focus specifically on the data related to
+Marvel and DC characters to uncover patterns, differences, and trends
+unique to these two leading publishers.</p>
+<p>In the complete dataset, 67.6% of characters are classified as good,
+indicating that most superheroes have a positive alignment. Characters
+with a bad alignment constitute 28.2%, while neutral characters make up
+only 3.28%, and less than 1% fall into the “null” or undefined category.
+Within Marvel, the proportion of good characters is slightly lower at
+64.9%, suggesting a slightly more diverse representation of moral
+alignments compared to the overall dataset. Bad characters constitute
+31.9%, indicating a larger share of villains in Marvel than neutral
+characters, which are only 2.95%. The “null” category is negligible at
+0.295%. For DC Comics, 61.7% of characters are good, showing a similar
+but slightly smaller majority compared to Marvel. DC also has a
+significant portion of bad characters at 31.4%, closely mirroring
+Marvel’s percentage. However, DC has a higher proportion of neutral
+characters of 6.38%, suggesting a tendency to explore more morally
+ambiguous characters. The “null” category remains minimal at 0.532%.</p>
+<p>In summary, both Marvel and DC emphasize good-aligned characters, but
+Marvel leans slightly more toward a traditional hero-villain dichotomy,
+while DC shows a higher representation of neutral or ambiguous
+characters. These differences reflect the nuanced storytelling and
+character development strategies employed by the two publishers.</p>
+</div>
+<div id="eye-color-and-hair-color" class="section level3">
+<h3><strong>5.2.2. Eye color and Hair color</strong></h3>
+<pre class="r"><code>eye_color_counts &lt;- superheros |&gt;
+  count(eye_color)
+
+eye_color_bar &lt;- plot_ly(eye_color_counts, 
+                         x = ~n, 
+                         y = ~reorder(eye_color, n), 
+                         type = &#39;bar&#39;, 
+                         orientation = &#39;h&#39;, 
+                         marker = list(color = &quot;#dbdb8d&quot;)) |&gt;
+  layout(title = &quot;Eye Color Distribution&quot;,
+         xaxis = list(title = &quot;Count&quot;),
+         yaxis = list(title = &quot;Eye Color&quot;))
+
+hair_color_counts &lt;- superheros |&gt;
+  count(hair_color)
+
+hair_color_bar &lt;- plot_ly(hair_color_counts, 
+                          x = ~n, 
+                          y = ~reorder(hair_color, n), 
+                          type = &#39;bar&#39;, 
+                          orientation = &#39;h&#39;, 
+                          marker = list(color = &quot;#c7c7c7&quot;)) |&gt;
+  layout(title = &quot;Hair Color Distribution&quot;,
+         xaxis = list(title = &quot;Count&quot;),
+         yaxis = list(title = &quot;Hair Color&quot;))
+
+eye_color_bar</code></pre>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-6b2df9d7055495058a4e" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-6b2df9d7055495058a4e">{"x":{"visdat":{"118f0697dd4f7":["function () ","plotlyVisDat"]},"cur_data":"118f0697dd4f7","attrs":{"118f0697dd4f7":{"x":{},"y":{},"orientation":"h","marker":{"color":"#dbdb8d"},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Eye Color Distribution","xaxis":{"domain":[0,1],"automargin":true,"title":"Count"},"yaxis":{"domain":[0,1],"automargin":true,"title":"Eye Color","type":"category","categoryorder":"array","categoryarray":["Amber","Others","Violet","Gold","Purple","Dual Color","Grey","Hazel","White","Yellow","Black","Red","Green","Brown","Blue"]},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[2,23,225,126,5,3,72,6,6,2,4,46,2,17,21],"y":["Amber","Black","Blue","Brown","Dual Color","Gold","Green","Grey","Hazel","Others","Purple","Red","Violet","White","Yellow"],"orientation":"h","marker":{"color":"#dbdb8d","line":{"color":"rgba(31,119,180,1)"}},"type":"bar","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<pre class="r"><code>hair_color_bar</code></pre>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-333032cc8b1eaa58c95b" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-333032cc8b1eaa58c95b">{"x":{"visdat":{"118f04428da3c":["function () ","plotlyVisDat"]},"cur_data":"118f04428da3c","attrs":{"118f04428da3c":{"x":{},"y":{},"orientation":"h","marker":{"color":"#c7c7c7"},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Hair Color Distribution","xaxis":{"domain":[0,1],"automargin":true,"title":"Count"},"yaxis":{"domain":[0,1],"automargin":true,"title":"Hair Color","type":"category","categoryorder":"array","categoryarray":["Orange","Yellow","Blue","Others","Silver","Grey","Purple","Strawberry Blond","Green","Dual Color","Auburn","White","Red","No Hair","Brown","Blond","Black"]},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[13,161,101,3,86,10,8,5,75,2,4,5,51,4,7,23,2],"y":["Auburn","Black","Blond","Blue","Brown","Dual Color","Green","Grey","No Hair","Orange","Others","Purple","Red","Silver","Strawberry Blond","White","Yellow"],"orientation":"h","marker":{"color":"#c7c7c7","line":{"color":"rgba(31,119,180,1)"}},"type":"bar","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p>The distribution of eye color and hair color among superheroes
+reveals interesting patterns in their physical characteristics:</p>
+<p>The most common eye color is blue, observed in 225 characters, making
+it the dominant eye color in the dataset. This is followed by brown eyes
+with a significant count of 126, and green eyes rounding out the top
+three. Less common colors such as red, black, and yellow are also
+present, likely representing unique or supernatural traits among certain
+characters. Rare eye colors like purple, gold, and amber, as well as
+characters with dual-colored eyes, indicate a diverse spectrum of visual
+aesthetics.</p>
+<p>For hair color, black is the most frequently observed, with 161
+characters having this trait. Blond and brown hair are also highly
+common, 101 and 86 respectively, reflecting traditional human traits.
+Interestingly, the category “No Hair” is also prominent, suggesting a
+significant number of bald or non-human characters. Less common hair
+colors like red, white, and auburn add variety, while rare colors such
+as purple, green, and silver showcase the creative range in superhero
+designs. Unique colors like blue, yellow, and orange appear rarely,
+often associated with otherworldly or supernatural beings.</p>
+</div>
+</div>
+<div id="demographic-summary-by-alignment-and-gender"
+class="section level2">
+<h2><strong>5.3. Demographic Summary by Alignment and
+Gender</strong></h2>
+<pre class="r"><code>superheros1 &lt;- superheros |&gt;
+  filter(!is.na(alignment), !is.na(gender))
+
+vars &lt;- c(&quot;intelligence&quot;, &quot;strength&quot;, &quot;speed&quot;, &quot;durability&quot;, &quot;power&quot;, &quot;combat&quot;, &quot;height_cm&quot;, &quot;weight_kg&quot;)
+
+alignment_summary &lt;- CreateTableOne(vars = vars, strata = &quot;alignment&quot;, data = superheros1, test = TRUE)
+
+alignment_summary_df &lt;- print(alignment_summary, quote = FALSE, noSpaces = TRUE, printToggle = FALSE)
+
+alignment_summary_df |&gt; as.data.frame() |&gt;
+  rename(`p-value` = p) |&gt;
+  mutate(test = &quot;F-test&quot;) |&gt;
+  kable()</code></pre>
+<table>
+<colgroup>
+<col width="28%" />
+<col width="18%" />
+<col width="17%" />
+<col width="18%" />
+<col width="9%" />
+<col width="8%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">Bad</th>
+<th align="left">Good</th>
+<th align="left">Neutral</th>
+<th align="left">p-value</th>
+<th align="left">test</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">n</td>
+<td align="left">199</td>
+<td align="left">475</td>
+<td align="left">22</td>
+<td align="left"></td>
+<td align="left">F-test</td>
+</tr>
+<tr class="even">
+<td align="left">intelligence (mean (SD))</td>
+<td align="left">68.21 (21.80)</td>
+<td align="left">63.09 (18.66)</td>
+<td align="left">59.77 (17.49)</td>
+<td align="left">0.012</td>
+<td align="left">F-test</td>
+</tr>
+<tr class="odd">
+<td align="left">strength (mean (SD))</td>
+<td align="left">48.77 (32.95)</td>
+<td align="left">40.89 (32.23)</td>
+<td align="left">54.14 (39.52)</td>
+<td align="left">0.009</td>
+<td align="left">F-test</td>
+</tr>
+<tr class="even">
+<td align="left">speed (mean (SD))</td>
+<td align="left">38.86 (23.55)</td>
+<td align="left">39.92 (23.95)</td>
+<td align="left">50.77 (28.77)</td>
+<td align="left">0.092</td>
+<td align="left">F-test</td>
+</tr>
+<tr class="odd">
+<td align="left">durability (mean (SD))</td>
+<td align="left">63.02 (30.52)</td>
+<td align="left">55.96 (29.12)</td>
+<td align="left">70.55 (31.72)</td>
+<td align="left">0.007</td>
+<td align="left">F-test</td>
+</tr>
+<tr class="even">
+<td align="left">power (mean (SD))</td>
+<td align="left">66.48 (29.17)</td>
+<td align="left">62.79 (29.57)</td>
+<td align="left">73.82 (31.33)</td>
+<td align="left">0.129</td>
+<td align="left">F-test</td>
+</tr>
+<tr class="odd">
+<td align="left">combat (mean (SD))</td>
+<td align="left">62.94 (22.42)</td>
+<td align="left">61.73 (23.27)</td>
+<td align="left">60.59 (23.34)</td>
+<td align="left">0.818</td>
+<td align="left">F-test</td>
+</tr>
+<tr class="even">
+<td align="left">height_cm (mean (SD))</td>
+<td align="left">191.61 (26.83)</td>
+<td align="left">184.19 (57.20)</td>
+<td align="left">237.41 (166.78)</td>
+<td align="left">0.001</td>
+<td align="left">F-test</td>
+</tr>
+<tr class="odd">
+<td align="left">weight_kg (mean (SD))</td>
+<td align="left">140.12 (119.62)</td>
+<td align="left">95.53 (80.17)</td>
+<td align="left">209.50 (223.86)</td>
+<td align="left">&lt;0.001</td>
+<td align="left">F-test</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>gender_summary &lt;- CreateTableOne(vars = vars, strata = &quot;gender&quot;, data = superheros1, test = TRUE)
+
+gender_summary_df &lt;- print(gender_summary, quote = FALSE, noSpaces = TRUE, printToggle = FALSE)
+
+gender_summary_df |&gt; as.data.frame() |&gt;
+  rename(`p-value` = p) |&gt;
+  mutate(test = &quot;T-test&quot;) |&gt;
+  kable()</code></pre>
+<table style="width:100%;">
+<colgroup>
+<col width="35%" />
+<col width="21%" />
+<col width="22%" />
+<col width="11%" />
+<col width="9%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">Female</th>
+<th align="left">Male</th>
+<th align="left">p-value</th>
+<th align="left">test</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">n</td>
+<td align="left">200</td>
+<td align="left">496</td>
+<td align="left"></td>
+<td align="left">T-test</td>
+</tr>
+<tr class="even">
+<td align="left">intelligence (mean (SD))</td>
+<td align="left">62.46 (15.21)</td>
+<td align="left">65.27 (21.20)</td>
+<td align="left">0.135</td>
+<td align="left">T-test</td>
+</tr>
+<tr class="odd">
+<td align="left">strength (mean (SD))</td>
+<td align="left">38.36 (32.53)</td>
+<td align="left">45.75 (32.88)</td>
+<td align="left">0.013</td>
+<td align="left">T-test</td>
+</tr>
+<tr class="even">
+<td align="left">speed (mean (SD))</td>
+<td align="left">37.03 (21.17)</td>
+<td align="left">41.21 (25.07)</td>
+<td align="left">0.069</td>
+<td align="left">T-test</td>
+</tr>
+<tr class="odd">
+<td align="left">durability (mean (SD))</td>
+<td align="left">49.82 (28.06)</td>
+<td align="left">62.10 (29.87)</td>
+<td align="left">&lt;0.001</td>
+<td align="left">T-test</td>
+</tr>
+<tr class="even">
+<td align="left">power (mean (SD))</td>
+<td align="left">61.44 (26.49)</td>
+<td align="left">65.47 (30.66)</td>
+<td align="left">0.153</td>
+<td align="left">T-test</td>
+</tr>
+<tr class="odd">
+<td align="left">combat (mean (SD))</td>
+<td align="left">60.65 (21.77)</td>
+<td align="left">62.59 (23.45)</td>
+<td align="left">0.376</td>
+<td align="left">T-test</td>
+</tr>
+<tr class="even">
+<td align="left">height_cm (mean (SD))</td>
+<td align="left">175.54 (21.88)</td>
+<td align="left">193.35 (67.45)</td>
+<td align="left">0.002</td>
+<td align="left">T-test</td>
+</tr>
+<tr class="odd">
+<td align="left">weight_kg (mean (SD))</td>
+<td align="left">78.84 (76.98)</td>
+<td align="left">126.88 (110.70)</td>
+<td align="left">&lt;0.001</td>
+<td align="left">T-test</td>
+</tr>
+</tbody>
+</table>
+<p>This table summarizes the demographic characteristics of superheroes
+by alignment (“Bad,” “Good,” “Neutral”) and gender (“Female,” “Male”).
+The mean and standard deviation are provided for attributes such as
+intelligence, strength, speed, and others. Significant differences are
+observed among alignment categories for attributes like intelligence,
+strength, durability, height, and weight, as indicated by F-test
+p-values. In the gender comparison, significant differences are found in
+strength, durability, height, and weight, with males generally showing
+higher values. These statistical tests highlight notable variations in
+superhero traits based on alignment and gender.</p>
+</div>
+<div id="clustering-of-superheroes" class="section level2">
+<h2><strong>5.4 Clustering of superheroes</strong></h2>
+<p>Then, we performed a clustering analysis on superheroes using the
+k-means algorithm. Initially, the attributes, <code>intelligence</code>,
+<code>strength</code>, <code>speed</code>, <code>durability</code>,
+<code>power</code>, <code>combat</code>, <code>height_cm</code>, and
+<code>weight_kg</code> were extracted into a subset called
+<code>numeric_vars</code>. Missing values were removed from this subset
+to ensure only complete cases (428 cases) were used in the clustering
+analysis, which is crucial for obtaining reliable clustering results.
+The cleaned data (<code>numeric_vars_clean</code>) was then standardized
+using the <code>scale()</code> function, ensuring that all variables are
+on the same scale and do not unduly influence the clustering due to
+differences in magnitude.</p>
+<p>The analysis involved applying the k-means algorithm with different
+numbers of clusters (k = 2, k = 3, and k = 4) to the scaled data,
+represented by <code>numeric_vars_scaled</code>. The k-means algorithm
+attempts to partition the data into k distinct clusters based on
+minimizing within-cluster variances. The use of <code>nstart = 25</code>
+indicates that the algorithm will be run 25 times with different initial
+centroid configurations, and the best result (in terms of minimizing
+within-cluster sum of squares) will be chosen. This approach helps avoid
+local minima and provides a more robust clustering outcome. To help
+users better understand the k-means, a flowchart about how this
+algorithm works was attached here:</p>
+<p><img src="images/Kmeans.jpg" /></p>
+<p>For each value of k (2, 3, and 4), the resulting clusters are
+visualized using the <code>fviz_cluster()</code> function, which plots
+the superheroes based on their clustering assignment. The
+<code>geom = "point"</code> argument indicates that individual data
+points are plotted, and the <code>ellipse.type = "convex"</code>
+argument represents each cluster with a convex hull to visually
+distinguish different groups.</p>
+<pre class="r"><code>numeric_vars &lt;- superheros |&gt;
+  select(intelligence, strength, speed, durability, power, combat, height_cm, weight_kg)
+superheros_clean &lt;- superheros[complete.cases(numeric_vars), ]
+numeric_vars_clean &lt;- superheros_clean |&gt;
+  select(intelligence, strength, speed, durability, power, combat, height_cm, weight_kg)
+
+numeric_vars_scaled &lt;- scale(numeric_vars_clean)
+
+set.seed(123)
+
+kmeans_result_2 &lt;- kmeans(numeric_vars_scaled, centers = 2, nstart = 25)
+plot_2 &lt;- fviz_cluster(kmeans_result_2, data = numeric_vars_scaled,
+                       geom = &quot;point&quot;,
+                       ellipse.type = &quot;convex&quot;,
+                       ggtheme = theme_minimal()) +
+  labs(title = &quot;k = 2&quot;)
+
+kmeans_result_3 &lt;- kmeans(numeric_vars_scaled, centers = 3, nstart = 25)
+plot_3 &lt;- fviz_cluster(kmeans_result_3, data = numeric_vars_scaled,
+                       geom = &quot;point&quot;,
+                       ellipse.type = &quot;convex&quot;,
+                       ggtheme = theme_minimal()) +
+  labs(title = &quot;k = 3&quot;)
+
+kmeans_result_4 &lt;- kmeans(numeric_vars_scaled, centers = 4, nstart = 25)
+plot_4 &lt;- fviz_cluster(kmeans_result_4, data = numeric_vars_scaled,
+                       geom = &quot;point&quot;,
+                       ellipse.type = &quot;convex&quot;,
+                       ggtheme = theme_minimal()) +
+  labs(title = &quot;k = 4&quot;)
+
+grid.arrange(plot_2, plot_3, plot_4, ncol = 3)</code></pre>
+<p><img src="report_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>The figure above shows the clustering analysis, where k-means method
+was applied with different values for the number of clusters
+(k=2,3,4).</p>
+<ul>
+<li><p>In the first plot (k=2), the data points are grouped into two
+cluster. Compared to k = 3, two clusters are insufficient to adequately
+capture the diversity within the data, resulting in misclassification
+and poor separation between distinct groups.</p></li>
+<li><p>In the third plot (k=4), the data is divided into four clusters.
+There is evidence of over-classification, with cluster 1 and cluster 3
+overlapping to much with each other.</p></li>
+<li><p>In the third plot (k=3), the clustering with three clusters
+appears to strike the right balance. The distinct groups are more
+clearly defined compared to k=2. Unlike k=4, there is no evidence of
+excessive fragmentation. This value, k=3, captures the major variations
+while maintaining well-separated and interpretable groups.</p></li>
+</ul>
+<div id="list-of-clustering" class="section level3">
+<h3><strong>5.4.1 List of clustering</strong></h3>
+<p>Here is the list of superheroes in each clustering group.You may find
+your favourite superhero here.</p>
+<pre class="r"><code>superheros_clean$cluster &lt;- kmeans_result_3$cluster
+
+superheros_clean |&gt;
+  group_by(cluster) |&gt;
+  summarise(heroes = paste(name, collapse = &quot;, &quot;)) |&gt;
+  kable()</code></pre>
+<table>
+<colgroup>
+<col width="0%" />
+<col width="99%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right">cluster</th>
+<th align="left">heroes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">Abe Sapien, Abin Sur, Absorbing Man, Agent Zero,
+Air-Walker, Alan Scott, Animal Man, Annihilus, Apocalypse, Aqualad,
+Aquaman, Arachne, Ardina, Ares, Atlas, Atlas, Aurora, Azazel,
+Battlestar, Beast, Beast Boy, Beta Ray Bill, Big Barda, Bishop, Bizarro,
+Black Adam, Black Bolt, Black Manta, Blackout, Blob, Booster Gold,
+Brainiac, Cable, Cannonball, Captain Atom, Captain Britain, Captain
+Marvel, Captain Marvel, Captain Marvel Ii, Carnage, Century, Cheetah
+Iii, Citizen Steel, Cloak, Cyborg, Darth Vader, Deadman, Deadpool,
+Deathstroke, Doc Samson, Doctor Doom, Doctor Fate, Doctor Strange,
+Doppelganger, Elastigirl, Emma Frost, Etrigan, Evil Deadpool, Evilhawk,
+Exodus, Firelord, Firestorm, Flash, Flash Ii, Flash Iii, Flash Iv,
+Franklin Richards, Frenzy, Gamora, Ghost Rider, Gladiator, Goku, Gorilla
+Grodd, Guy Gardner, Hal Jordan, Hawkgirl, Hela, Hercules, Human Torch,
+Husk, Hybrid, Hyperion, Iceman, Impulse, Invisible Woman, Iron Fist,
+Iron Man, Jack Of Hearts, John Stewart, Kang, Klaw, Krypto, Kyle Rayner,
+Lady Deathstrike, Legion, Lex Luthor, Lizard, Loki, Luke Cage, Mach-Iv,
+Magneto, Man-Thing, Mantis, Martian Manhunter, Marvel Girl, Maxima,
+Mephisto, Mera, Metallo, Mimic, Miss Martian, Mister Sinister, Molten
+Man, Moonstone, Mr Incredible, Namor, Namora, Namorita, Naruto Uzumaki,
+Northstar, Nova, Nova, Odin, One Punch Man, Phoenix, Plastic Man,
+Polaris, Power Girl, Predator, Quicksilver, Ray, Red Tornado,
+Sabretooth, Sandman, Scarlet Spider, Scarlet Witch, Sentry, Shadow King,
+Shatterstar, She-Thing, Sif, Silver Surfer, Sinestro, Siren, Skaar,
+Spider-Girl, Spider-Gwen, Spider-Man, Spider-Woman, Starfire, Stargirl,
+Steel, Steppenwolf, Superboy, Superboy-Prime, Supergirl, Superman,
+T-1000, Thing, Thor, Thor Girl, Thunderstrike, Thundra, Tiger Shark,
+Toxin, Toxin, Triton, Ultragirl, Vegeta, Venom, Venom Ii, Vindicator,
+Vision, War Machine, Warlock, Warpath, Wolverine, Wonder Girl, Wonder
+Man, Wonder Woman, X-23, X-Man, Zoom</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="left">A-Bomb, Abomination, Alien, Amazo, Anti-Venom,
+Bloodaxe, Colossus, Darkseid, Destroyer, Doomsday, Drax The Destroyer,
+Hellboy, Hulk, Juggernaut, Killer Croc, Kilowog, Living Brain, Lobo,
+Machine Man, Modok, Onslaught, Red Hulk, Rhino, Sasquatch, Scorpion,
+She-Hulk, Solomon Grundy, Spawn, Thanos, Ultron, Venom Iii,
+Wolfsbane</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="left">Adam Strange, Agent Bob, Ajax, Alfred Pennyworth,
+Angel, Angel Dust, Angel Salvadore, Ant-Man, Ant-Man Ii, Archangel,
+Arclight, Ariel, Armor, Atom Girl, Atom Ii, Bane, Banshee, Bantam,
+Batgirl, Batgirl Iv, Batgirl Vi, Batman, Batman, Batman Ii, Big Man,
+Black Canary, Black Canary, Black Cat, Black Knight Iii, Black
+Lightning, Black Mamba, Black Panther, Black Widow, Blackwing,
+Blackwulf, Blade, Bling!, Blink, Blizzard Ii, Boom-Boom, Brainiac 5,
+Buffy, Bullseye, Bumblebee, Callisto, Captain America, Catwoman,
+Chamber, Changeling, Cheetah, Cheetah Ii, Clock King, Copycat,
+Cottonmouth, Crystal, Cyclops, Daredevil, Darkhawk, Darkstar, Dash,
+Dazzler, Deadshot, Deathlok, Demogoblin, Diamondback, Doctor Octopus,
+Domino, Electro, Elektra, Elongated Man, Enchantress, Falcon, Feral,
+Firebird, Firestar, Forge, Franklin Storm, Gambit, Goblin Queen,
+Gravity, Green Arrow, Green Goblin, Green Goblin Ii, Han Solo, Harley
+Quinn, Havok, Hawk, Hawkeye, Hawkeye Ii, Heat Wave, Hellcat, Hope
+Summers, Huntress, Hydro-Man, Indiana Jones, Ink, Jack-Jack, James T.
+Kirk, Jean Grey, Jennifer Kale, Jessica Jones, John Wraith, Joker, Jolt,
+Jubilee, Justice, Kingpin, Kraven Ii, Kraven The Hunter, Leader, Light
+Lass, Lightning Lad, Lightning Lord, Longshot, Luke Skywalker, Man-Wolf,
+Mandarin, Maverick, Medusa, Meltdown, Metron, Micro Lad, Mister
+Fantastic, Mister Freeze, Mockingbird, Moon Knight, Morlun, Moses
+Magnum, Mr Immortal, Ms Marvel Ii, Multiple Man, Mysterio, Mystique,
+Nebula, Nick Fury, Nightcrawler, Nightwing, Oracle, Paul Blart, Penguin,
+Phantom Girl, Plantman, Plastique, Poison Ivy, Professor X, Professor
+Zoom, Psylocke, Punisher, Purple Man, Pyro, Question, Quill, Ra’s Al
+Ghul, Rambo, Raven, Red Arrow, Red Hood, Red Robin, Red Skull, Rick
+Flag, Robin, Robin Ii, Robin Iii, Robin V, Rocket Raccoon, Rogue, Ronin,
+Rorschach, Sage, Scarecrow, Scarlet Spider Ii, Shadow Lass, Shadowcat,
+Shang-Chi, Shocker, Shriek, Silverclaw, Siryn, Snowbird, Songbird, Space
+Ghost, Spider-Woman Iii, Spock, Spyke, Star-Lord, Static, Storm,
+Sunspot, Swarm, Synch, Taskmaster, Tempest, The Comedian, Thunderbird,
+Tigra, Tinkerer, Toad, Triplicate Girl, Two-Face, Vanisher, Vibe, Violet
+Parr, Vixen, Vulture, Walrus, Warp, Wasp, Winter Soldier, Wyatt
+Wingfoot, Yellowjacket, Yellowjacket Ii, Yoda, Zatanna</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="check-capability-statistics-within-each-cluster-group"
+class="section level3">
+<h3><strong>5.4.2. Check capability statistics within each cluster
+group</strong></h3>
+<p>We also digged into the average capability statistics within each
+cluster group to learn about the feature of each group.</p>
+<pre class="r"><code>superheros_clean |&gt;
+  group_by(cluster) |&gt;
+  summarise(
+    intelligence_mean = mean(intelligence, na.rm = TRUE),
+    intelligence_sd = sd(intelligence, na.rm = TRUE),
+    strength_mean = mean(strength, na.rm = TRUE),
+    strength_sd = sd(strength, na.rm = TRUE),
+    speed_mean = mean(speed, na.rm = TRUE),
+    speed_sd = sd(speed, na.rm = TRUE),
+    durability_mean = mean(durability, na.rm = TRUE),
+    durability_sd = sd(durability, na.rm = TRUE),
+    power_mean = mean(power, na.rm = TRUE),
+    power_sd = sd(power, na.rm = TRUE),
+    combat_mean = mean(combat, na.rm = TRUE),
+    combat_sd = sd(combat, na.rm = TRUE),
+    height_mean = mean(height_cm, na.rm = TRUE),
+    height_sd = sd(height_cm, na.rm = TRUE),
+    weight_mean = mean(weight_kg, na.rm = TRUE),
+    weight_sd = sd(weight_kg, na.rm = TRUE)
+  ) |&gt;
+  pivot_longer(-cluster, names_to = c(&quot;variable&quot;, &quot;.value&quot;), names_sep = &quot;_&quot;) |&gt;
+  mutate(mean_sd = paste0(round(mean, 2), &quot; (&quot;, round(sd, 2), &quot;)&quot;)) |&gt;
+  select(variable, cluster, mean_sd) |&gt;
+  pivot_wider(names_from = cluster, values_from = mean_sd, names_prefix = &quot;cluster&quot;) |&gt;
+  kable()</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">variable</th>
+<th align="left">cluster1</th>
+<th align="left">cluster2</th>
+<th align="left">cluster3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">intelligence</td>
+<td align="left">67.3 (18.18)</td>
+<td align="left">64.16 (22.83)</td>
+<td align="left">62.77 (19.05)</td>
+</tr>
+<tr class="even">
+<td align="left">strength</td>
+<td align="left">63.93 (28.43)</td>
+<td align="left">76.31 (26.18)</td>
+<td align="left">19.15 (15.04)</td>
+</tr>
+<tr class="odd">
+<td align="left">speed</td>
+<td align="left">54.56 (25.02)</td>
+<td align="left">43.06 (17.41)</td>
+<td align="left">28.38 (14.3)</td>
+</tr>
+<tr class="even">
+<td align="left">durability</td>
+<td align="left">80.62 (17.83)</td>
+<td align="left">85.72 (19.8)</td>
+<td align="left">38.65 (19.79)</td>
+</tr>
+<tr class="odd">
+<td align="left">power</td>
+<td align="left">81.31 (23.54)</td>
+<td align="left">71.81 (28.23)</td>
+<td align="left">49.62 (25.07)</td>
+</tr>
+<tr class="even">
+<td align="left">combat</td>
+<td align="left">68.07 (19.15)</td>
+<td align="left">69.47 (20.79)</td>
+<td align="left">59.68 (24.07)</td>
+</tr>
+<tr class="odd">
+<td align="left">height</td>
+<td align="left">184.7 (15.56)</td>
+<td align="left">238.72 (46.7)</td>
+<td align="left">175.79 (15.58)</td>
+</tr>
+<tr class="even">
+<td align="left">weight</td>
+<td align="left">111.26 (56.52)</td>
+<td align="left">412.97 (180.88)</td>
+<td align="left">74.5 (24.59)</td>
+</tr>
+</tbody>
+</table>
+<p>The table presents the average values (with standard deviations) of
+several attributes for superheroes categorized into three clusters. Each
+row represents a different variable, including intelligence, strength,
+speed, durability, power, combat, height, and weight. Cluster 1,
+characterized by moderate values for most attributes, shows relatively
+balanced abilities, particularly in intelligence and power. Cluster 2
+displays the highest average values for strength, durability, height,
+and weight, indicating that members of this cluster are likely to be
+physically dominant. Conversely, Cluster 3 exhibits lower values for
+attributes like strength, speed, and weight, suggesting that the
+superheroes in this cluster might rely less on physical prowess compared
+to the other clusters.</p>
+</div>
+<div id="radar-plot" class="section level3">
+<h3><strong>5.4.3. Radar Plot!</strong></h3>
+<p>The radar plot below is a visualization of superhero 6 capabilities
+values in each group from the previous section.</p>
+<pre class="r"><code>library(fmsb)
+cluster_averages &lt;- superheros_clean |&gt;
+  group_by(cluster) |&gt;
+  summarise(
+    intelligence = mean(intelligence, na.rm = TRUE),
+    strength = mean(strength, na.rm = TRUE),
+    speed = mean(speed, na.rm = TRUE),
+    durability = mean(durability, na.rm = TRUE),
+    power = mean(power, na.rm = TRUE),
+    combat = mean(combat, na.rm = TRUE)
+  )
+
+radar_data &lt;- as.data.frame(cluster_averages)
+radar_data &lt;- radar_data[, -1]
+
+radar_data &lt;- rbind(rep(100, 6), rep(0, 6), radar_data)
+
+colors_border &lt;- c(&#39;#f08080&#39;, &#39;#90ee90&#39;, &#39;#87cefa&#39;)
+colors_in &lt;- c(&#39;#ffcccb&#39;, &#39;#c6e7c6&#39;, &#39;#b0e0e6&#39;)
+
+radarchart(radar_data, axistype = 2, 
+           pcol = colors_border, 
+           pfcol = adjustcolor(colors_in, alpha.f = 0.6), plwd = 2.5, plty = 1,
+           cglcol = &quot;grey&quot;, cglty = 1, 
+           axislabcol = &quot;black&quot;)
+
+legend(x = &quot;topright&quot;, legend = paste(&quot;Cluster&quot;, 1:3), pch = 20, col = colors_border, text.col = &quot;black&quot;, cex = 1.2, pt.cex = 2)</code></pre>
+<p><img src="report_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+</div>
+</div>
+</div>
+<div id="model-building-for-superheros-power" class="section level1">
+<h1><strong>6. Model Building for Superhero’s Power</strong></h1>
+<p>Among all these variables such as intelligence, strength, speed,
+durability, combat, height, weight, gender, alignment, we were
+interested in knowing what factors contribute the most to a superhero’s
+power, which is defined as representing the character’s overall power or
+abilities. Therefore, the goal is to identify key predictors of
+superhero power, evaluate model performance, and validate the results
+using advanced methods such as Random Forest.</p>
+<div id="univariate-analysis" class="section level2">
+<h2><strong>6.1 Univariate Analysis</strong></h2>
+<p>A univariate analysis was performed to determine which predictors
+(independent variables) are significantly associated with
+<code>power</code> (dependent variable) at 0.05 significance level.</p>
+<pre class="r"><code>superheros &lt;- read_csv(&quot;./data/superheroes.csv&quot;,  show_col_types = FALSE)
+
+superheros_clean1 &lt;- superheros %&gt;% 
+  filter(complete.cases(intelligence, strength, speed, durability, combat, height_cm, weight_kg, gender, alignment, power))
+
+superheros_clean1$gender &lt;- as.factor(superheros_clean1$gender)
+superheros_clean1$alignment &lt;- as.factor(superheros_clean1$alignment)
+univariate_analysis = function(var, var_name){
+  model = summary(lm(power ~ var, data = superheros_clean1))
+  p_value = model$coefficients[2, 4]
+  return(data.frame(variable = var_name, p_value = p_value))
+}
+
+results = rbind(
+  univariate_analysis(superheros_clean1$intelligence, &quot;Intelligence&quot;),
+  univariate_analysis(superheros_clean1$strength, &quot;Strength&quot;),
+  univariate_analysis(superheros_clean1$speed, &quot;Speed&quot;),
+  univariate_analysis(superheros_clean1$durability, &quot;Durability&quot;),
+  univariate_analysis(superheros_clean1$combat, &quot;Combat&quot;),
+  univariate_analysis(superheros_clean1$height_cm, &quot;Height&quot;),
+  univariate_analysis(superheros_clean1$weight_kg, &quot;Weight&quot;),
+  univariate_analysis(superheros_clean1$gender, &quot;Gender&quot;),
+  univariate_analysis(superheros_clean1$alignment, &quot;Alignment&quot;)
+)
+
+results$p_value &lt;- round(results$p_value, 4)
+library(knitr)
+kable(results, col.names = c(&quot;Variable&quot;, &quot;P-Value&quot;), digits = 4, align = &quot;c&quot;)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Variable</th>
+<th align="center">P-Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Intelligence</td>
+<td align="center">0.0000</td>
+</tr>
+<tr class="even">
+<td align="center">Strength</td>
+<td align="center">0.0000</td>
+</tr>
+<tr class="odd">
+<td align="center">Speed</td>
+<td align="center">0.0000</td>
+</tr>
+<tr class="even">
+<td align="center">Durability</td>
+<td align="center">0.0000</td>
+</tr>
+<tr class="odd">
+<td align="center">Combat</td>
+<td align="center">0.0615</td>
+</tr>
+<tr class="even">
+<td align="center">Height</td>
+<td align="center">0.1282</td>
+</tr>
+<tr class="odd">
+<td align="center">Weight</td>
+<td align="center">0.0394</td>
+</tr>
+<tr class="even">
+<td align="center">Gender</td>
+<td align="center">0.3960</td>
+</tr>
+<tr class="odd">
+<td align="center">Alignment</td>
+<td align="center">0.6718</td>
+</tr>
+</tbody>
+</table>
+<p>Based on the results, <code>intelligence</code>,
+<code>strength</code>, <code>speed</code>, <code>durability</code>,
+<code>weight</code> are significantly associated with the power with
+p-value &lt; 0.05.</p>
+<p>Next, A linear regression model was built using the significant
+predictors from univariate analysis.</p>
+<pre class="r"><code>sig_model = lm(power ~ intelligence + strength + speed + durability + weight_kg, data = superheros_clean1) 
+
+sig_model %&gt;% 
+  broom::tidy() %&gt;% 
+  dplyr::select(term, estimate, p.value) %&gt;% 
+  knitr::kable(digits = 4)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">term</th>
+<th align="right">estimate</th>
+<th align="right">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">(Intercept)</td>
+<td align="right">19.6052</td>
+<td align="right">0.0001</td>
+</tr>
+<tr class="even">
+<td align="left">intelligence</td>
+<td align="right">0.2065</td>
+<td align="right">0.0010</td>
+</tr>
+<tr class="odd">
+<td align="left">strength</td>
+<td align="right">0.1037</td>
+<td align="right">0.0491</td>
+</tr>
+<tr class="even">
+<td align="left">speed</td>
+<td align="right">0.3254</td>
+<td align="right">0.0000</td>
+</tr>
+<tr class="odd">
+<td align="left">durability</td>
+<td align="right">0.2704</td>
+<td align="right">0.0000</td>
+</tr>
+<tr class="even">
+<td align="left">weight_kg</td>
+<td align="right">-0.0165</td>
+<td align="right">0.1917</td>
+</tr>
+</tbody>
+</table>
+<p>All of the variables are statistically significant associated with
+the power at 0.05 level except for <code>weight</code>. From the table,
+we can conclude that as the <code>intelligence</code>,
+<code>strength</code>, <code>speed</code>, and <code>durability</code>
+increase respectively, superheroes’ <code>power</code> also increases,
+as indicated by the positive estimates.</p>
+</div>
+<div id="model-selection" class="section level2">
+<h2><strong>6.2 Model selection</strong></h2>
+<p>Forward, backward, and stepwise selection methods were used to refine
+the model. Based on these methods, three competing models were
+built:</p>
+<p>Model A: <code>Intelligence</code>, <code>Speed</code>,
+<code>Durability</code>.</p>
+<p>Model B: <code>Intelligence</code>, <code>Strength</code>,
+<code>Speed</code>, <code>Durability</code>.</p>
+<p>Model C: All variables: <code>Intelligence</code>,
+<code>Strength</code>, <code>Speed</code>, <code>Durability</code>,
+<code>Combat</code>, <code>Height</code>, <code>Weight</code>,
+<code>Alignment</code>, <code>Gender</code>.</p>
+</div>
+<div id="model-comparison-and-evaluation" class="section level2">
+<h2><strong>6.3 Model comparison and evaluation</strong></h2>
+<p>Three models were evaluated using cross-validation repeated 100
+times. Root Mean Squared Error (RMSE) distributions were compared.</p>
+<p>From the figure, Model B has the relatively lowest RMSE distribution
+overall. In addition, AIC was also assessed, and Model B also has the
+lowest value. Therefore, Model B was selected as the final model due to
+its superior predictive performance and simplicity.</p>
+<pre class="r"><code>cv_df =
+  crossv_mc(superheros_clean1, 100) |&gt; 
+  mutate(
+    train = map(train, as_tibble),
+    test = map(test, as_tibble))
+
+cv_df = 
+  cv_df |&gt; 
+  mutate(
+    lm_modelA  = map(train, \(df) lm(power ~ intelligence + speed + durability, data = df)),
+    lm_modelB = map(train, \(df) lm(power ~ intelligence + strength + speed + durability, data = df)),
+    lm_modelC = map(train, \(df) lm(power ~ intelligence + strength + speed + durability + combat + height_cm + weight_kg + alignment, data = df))) %&gt;%  
+  mutate(
+    rmse_modelA = map2_dbl(lm_modelA, test, \(mod, df) rmse(model = mod, data = df)),
+    rmse_modelB = map2_dbl(lm_modelB, test, \(mod, df) rmse(model = mod, data = df)),
+    rmse_modelC = map2_dbl(lm_modelC, test, \(mod, df) rmse(model = mod, data = df)))
+
+cv_df |&gt; 
+  dplyr::select(starts_with(&quot;rmse&quot;)) |&gt; 
+  pivot_longer(
+    everything(),
+    names_to = &quot;model&quot;, 
+    values_to = &quot;rmse&quot;,
+    names_prefix = &quot;rmse_&quot;) |&gt; 
+  mutate(model = fct_inorder(model)) |&gt; 
+  ggplot(aes(x = model, y = rmse)) + geom_violin()</code></pre>
+<p><img src="report_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<pre class="r"><code>lm_modelA &lt;- lm(power ~ intelligence + speed + durability, data = superheros_clean1)
+lm_modelB &lt;- lm(power ~ intelligence + strength + speed + durability, data = superheros_clean1)
+lm_modelC &lt;- lm(power ~ intelligence + strength + speed + durability + combat + height_cm + weight_kg + alignment + gender, data = superheros_clean1)
+aic_values &lt;- data.frame(
+  Model = c(&quot;Model A&quot;, &quot;Model B&quot;, &quot;Model C&quot;),
+  AIC = c(
+    AIC(lm_modelA),
+    AIC(lm_modelB),
+    AIC(lm_modelC)
+  )
+)  
+
+library(knitr)
+kable(
+  aic_values,
+  col.names = c(&quot;Model&quot;, &quot;AIC&quot;),
+  digits = 2,
+  align = &quot;c&quot;,
+  caption = &quot;AIC Comparison for Models&quot;
+)</code></pre>
+<table>
+<caption>AIC Comparison for Models</caption>
+<thead>
+<tr class="header">
+<th align="center">Model</th>
+<th align="center">AIC</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Model A</td>
+<td align="center">3869.10</td>
+</tr>
+<tr class="even">
+<td align="center">Model B</td>
+<td align="center">3868.38</td>
+</tr>
+<tr class="odd">
+<td align="center">Model C</td>
+<td align="center">3875.80</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="random-forest-model-to-verify-predictors"
+class="section level2">
+<h2><strong>6.4 Random Forest Model to Verify Predictors</strong></h2>
+<p>To verify and enhance our model for predicting superhero powers, we
+used a random forest model to complement and validate insights from our
+statistical analyses, providing an additional predictive layer.</p>
+<p>The random forest algorithm is a supervised learning method that
+constructs multiple decision trees using subsets of the data and
+features, then aggregates their predictions to improve accuracy and
+robustness. Compared to single decision trees, random forests are less
+prone to overfitting due to their ensemble approach, though careful
+tuning of hyperparameters remains important to ensure optimal
+performance. This method allowed us to validate our findings from a
+predictive perspective while mitigating the risk of overfitting inherent
+in individual tree-based models.</p>
+<pre class="r"><code>set.seed(123)
+
+rf_model &lt;- randomForest(power ~ combat + strength + speed + durability + intelligence + height_cm + weight_kg + gender + alignment, data = superheros_clean1, mtry = 3, ntree = 100, importance = TRUE)
+
+importance &lt;- importance(rf_model)
+varImpPlot(rf_model)</code></pre>
+<p><img src="report_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p>From the variable importance plot, we found that speed, durability,
+strength, and intelligence are the most important variables for
+improving the model’s predictive performance and better fit as they have
+a larger %IncMSE and increase in Node Purity, which is consistent with
+our model. Therefore, <code>intelligence</code>, <code>Strength</code>,
+<code>Speed</code>, <code>Durability</code> was identified as the
+primary contributors to superheroes’ <code>power</code>.</p>
+</div>
+<div id="conclusion" class="section level2">
+<h2><strong>6.5 Conclusion</strong></h2>
+<p>Our final model would be:
+<code>lm_modelB &lt;- lm(power ~ intelligence + strength + speed + durability)</code></p>
+<p>Look at Model B:</p>
+<pre class="r"><code>lm_modelB &lt;- lm(power ~ intelligence + strength + speed + durability, data = superheros_clean1) %&gt;% 
+  broom::tidy() %&gt;% 
+  dplyr::select(term, estimate, p.value) 
+
+kable(lm_modelB, digits = 4)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">term</th>
+<th align="right">estimate</th>
+<th align="right">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">(Intercept)</td>
+<td align="right">18.5961</td>
+<td align="right">0.0001</td>
+</tr>
+<tr class="even">
+<td align="left">intelligence</td>
+<td align="right">0.2076</td>
+<td align="right">0.0010</td>
+</tr>
+<tr class="odd">
+<td align="left">strength</td>
+<td align="right">0.0819</td>
+<td align="right">0.1012</td>
+</tr>
+<tr class="even">
+<td align="left">speed</td>
+<td align="right">0.3402</td>
+<td align="right">0.0000</td>
+</tr>
+<tr class="odd">
+<td align="left">durability</td>
+<td align="right">0.2603</td>
+<td align="right">0.0000</td>
+</tr>
+</tbody>
+</table>
+<p>Based on the results, <code>intelligence</code>,
+<code>Strength</code>, <code>Speed</code>, and <code>Durability</code>
+are positively related to <code>power</code>. For one-unit increase in
+<code>speed</code>, it causes the largest increase in
+<code>power</code>, while one-unit increase in <code>strength</code>
+causes the least increase.</p>
+</div>
+</div>
 
 
 
@@ -419,6 +1742,11 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
 
 <script>
 $(document).ready(function ()  {
