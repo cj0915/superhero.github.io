@@ -666,4 +666,22 @@ lm_modelB <- lm(power ~ intelligence + strength + speed + durability, data = sup
 
 kable(lm_modelB, digits = 4)
 ```
-Based on the results, `intelligence`, `Strength`, `Speed`, and `Durability` are positively related to `power`. For one-unit increase in `speed`, it causes the largest increase in `power`, while one-unit increase in `strength` causes the least increase. 
+Based on the results, `intelligence`, `Strength`, `Speed`, and `Durability` are positively related to `power`. For one-unit increase in `speed`, it causes the largest increase in `power`, while one-unit increase in `strength` causes the least increase.
+
+# **7. R Shinny App: Pcik Your Hero**
+
+Users can use this shinny app to identify 5 top ranked heroes based on their preferences on speed, intelligence, durability, strength, combat, and power, then can pick their hero among these 5 heroes by filtering alighment, gender, hair color, and eye color.
+
+![](images/shinny_image.jpg){width=75%}
+
+# **8. Discussion**
+
+We found that characters with a high combination of mental acuity (intelligence), physical prowess (strength and durability), and agility (speed) tend to possess greater overall power, which align with our expectations for superheroes, emphasizing a blend of physical and mental capabilities. In addition, from cross validation and random forest analysis, we could confirm that speed, durability, strength, and intelligence were the most critical variables for predicting power. One surprising finding was the high contribution of speed to power, as it often takes a backseat to strength or combat skills in storytelling.
+
+Good alignment dominated the data set and this prevalence of good-aligned characters reflects traditional superhero narratives. However, we found the bad alignment had overall higher intelligence, strength, durability, power, combat, height, and weight than good alignment. One reason we thought might explain this was that villains were often designed to present formidable challenges to heroes, necessitating higher physical and mental attributes to justify their role as significant threats. 
+
+Male characters tended to have higher strength, durability, and physical attributes, while female characters often exhibited higher agility and intelligence. This gender differences in attributes aligned with stereotypes in superhero depictions, and we hope this analysis can help modern comics create more nuanced and diverse characters that break traditional norms.
+
+We also distinct superhero types by clustering them into 3 groups: heroes in cluster1 had relatively balanced attributes, cluster 2 included heroes physically dominated with exceptional strength and durability, and strategically inclined heroes with lower physical attributes but higher intelligence and speed were classified in cluster 3. 
+
+To sum up, we hope our analysis would guide and enrich character creation and team compositions in storytelling, enhancing diversity in character design and balance in superhero teams.
