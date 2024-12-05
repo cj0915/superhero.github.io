@@ -20,6 +20,25 @@ ui <- navbarPage(
              You can choose two attributes, find the top 5 ranked heroes (including ties)
              based on their average score, and then filter the result further by alignment, gender, hair color, and eye color in any order.",
                style = "font-size: 20px;"),
+             p("Here is the instruction:", style = "font-size: 20px;"),
+             p("1. Select Attributes:", style = "font-size: 18px;"),
+             p("First, click on the 'Custom Attribute Selection' tab.
+               On the left side of the page, you will see a dropdown menu where you can select your two favorite attributes.
+               The available attributes to choose from are: intelligence, strength, speed, durability, power, and combat skills.
+               Note: You cannot select the same attribute twice. If you do, a warning message will appear. And the results may include ties, so you might see more than five heroes listed.", 
+               style = "font-size: 15px;"),
+             p("2. Find Top Heroes:", style = "font-size: 18px;"),
+             p("After selecting your top 2 attributes, click the 'Find Top 5 Ranked Heroes' button.
+               The results will appear on the right side, showing the top 5 heroes ranked based on your selected attributes.",
+               style = "font-size: 15px;"),
+             p("3. Filter Your Hero:", style = "font-size: 18px;"),
+             p("Once the top heroes are displayed, you can narrow down your match using the filters provided for: Alignment, Gender, Hair Color, Eye Color.
+               The web application will then identify the hero that best matches your criteria.
+               Note: You might notice that some filtering options are missing. This is because the filters follow a logical hierarchy. During the selection process, some outcomes are automatically filtered out if they don't match the earlier criteria.",
+               style = "font-size: 15px;"),
+             p("4. Logic Reset:", style = "font-size: 18px;"),
+             p("If you want to go back and change your top 2 attributes, you must refresh the results by clicking the 'Find Top 5 Ranked Heroes' button again. This will reset your selections and allow you to start over.",
+               style = "font-size: 15px;"),
              img(src = "selector.jpg")
            )
   ),
