@@ -7,6 +7,16 @@ output:
     theme: flatly
 ---
 
+Click the video to enjoy you superhero exploring journey!
+
+<iframe width="560" height="315" 
+        src="https://www.youtube.com/embed/UNuujMTBQPI" 
+        title="YouTube video player" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+</iframe>
+
 ### **Welcome to the Superhero Exploration!**
 
 We’ve all experienced the thrill of superhero movies that keep us on the edge of our seats. Superheroes captivate us not only with their world-saving heroics but also with the unique qualities that make them larger than life. But here’s the catch: superheroes are often confined to their own universes, rarely crossing paths. What if we could break those barriers? In this project, we bring together heroes and villains from Marvel, DC, and beyond, exploring their strengths, weaknesses, and defining traits. We also try to uncover the secrets of a superhero —— what are the important dimensions makes a superhero powerful? Even better, we empower you to define your own superhero standards—create your ideal hero and discover the one that perfectly matches your vision.
