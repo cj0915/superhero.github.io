@@ -11,16 +11,16 @@ output:
 
 ### [**Jiayi Li**](https://yayayyds1122.github.io/)
 
-<img src="images/jiayi.jpg" style="width:25%">
+<img src="images/jiayi.jpg" style="width:50%">
 
 ### [**Ziqi Guo**](https://gzqgzq9.github.io/)
 
-<img src="images/ziqi.jpg" style="width:25%">
+<img src="images/ziqi.jpg" style="width:50%">
 
 ### [**Ruiyang Wu**](https://ruiyang-wu.github.io/)
 
-<img src="images/ruiyang.jpg" style="width:25%">
+<img src="images/ruiyang.jpg" style="width:50%">
 
 ### [**Chenyu Jin**](https://cj0915.github.io/)
 
-<img src="images/capybara.jpg" style="width:25%">
+<img src="images/capybara.jpg" style="width:50%">
