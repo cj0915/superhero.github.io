@@ -139,8 +139,6 @@ lm_modelC <- lm(power ~ intelligence + strength + speed + durability + combat + 
 
 ## Model Evaluation
 
-### Method
-
 We wanted to compare the predictive performance of these 3 competing methods by using cross validation for repeating 100 times, and then comparing distribution of Root Mean Squared Error (RMSE) and of AIC of each model.
 
 ```{r}

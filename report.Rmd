@@ -37,7 +37,7 @@ The superhero universe is rich with complex characters who embody a wide range o
 
 # **2. Related Work**
 
-As we all are the fans of superheros, this project is inspired by those fascinating superhero movies. Some of our favorite movies are Iron Man 123, The Avengers, Dr. Strange, Guardians of the Galaxy, which motivates us to explore the attributes of heroes and villians. 
+As we all are the fans of superheros, this project is inspired by those fascinating superhero movies. Some of our favorite movies are Iron Man 123, The Avengers, Dr. Strange, Guardians of the Galaxy, which motivates us to explore the attributes of heroes and villains. 
 
 # **3. Initial questions** 
 
@@ -656,7 +656,7 @@ From the variable importance plot, we found that speed, durability, strength, an
 
 
 ## **6.5 Conclusion**
-Our final model would be: `lm_modelB <- lm(power ~ intelligence + strength + speed + durability)`
+Final model we chose: `lm_modelB <- lm(power ~ intelligence + strength + speed + durability)`
 
 Look at Model B:
 ```{r}
@@ -682,6 +682,8 @@ Good alignment dominated the data set and this prevalence of good-aligned charac
 
 Male characters tended to have higher strength, durability, and physical attributes, while female characters often exhibited higher agility and intelligence. This gender differences in attributes aligned with stereotypes in superhero depictions, and we hope this analysis can help modern comics create more nuanced and diverse characters that break traditional norms.
 
-We also distinct superhero types by clustering them into 3 groups: heroes in cluster1 had relatively balanced attributes, cluster 2 included heroes physically dominated with exceptional strength and durability, and strategically inclined heroes with lower physical attributes but higher intelligence and speed were classified in cluster 3. 
+To further distinguish superhero types, we clustered characters into three distinct groups: heroes in Cluster 1 had relatively balanced attributes, Cluster 2 included heroes physically dominated with exceptional strength and durability, and strategically inclined heroes with lower physical attributes but higher intelligence and speed were classified in Cluster 3. 
 
-To sum up, we hope our analysis would guide and enrich character creation and team compositions in storytelling, enhancing diversity in character design and balance in superhero teams.
+While our analysis yielded valuable insights, there are areas for improvement. First, a more integrated dataset with clear and standardized criteria for assigning attribute values would enhance the robustness of the analysis. Moreover, developing an interactive model that allows users to input ability values and appearance characteristics as predictors to generate customized heroes as outputs would significantly improve user experience. This approach would enable users to design heroes tailored to their preferences, fostering creativity and engagement.
+
+Our findings provide a foundation for guiding character creation and team compositions in storytelling, with the potential to enhance diversity in character design and balance in superhero teams. By integrating data-driven insights with creative applications, we hope this work will enrich the superhero genre, offering opportunities to break traditional norms and craft more inclusive narratives.
